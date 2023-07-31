@@ -17,7 +17,7 @@ namespace Unfair
 
         private void OnGUI()
         {
-            
+            GUI.Label(new Rect(5, 5, 100, 20), "Unfair sucks");
         }
     }
 }

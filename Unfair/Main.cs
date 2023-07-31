@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unfair.Util;
+using UnityEngine;
 
 namespace Unfair
 {
@@ -6,8 +7,7 @@ namespace Unfair
     {
         private void Start()
         {
-            // Just log out 
-            Debug.Log("Hello World!");
+            DebugConsole.Write("Hello, world!");
         }
 
         private void Update()

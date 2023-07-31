@@ -2,7 +2,7 @@
 
 namespace Unfair
 {
-    public class Loader
+    public static class Loader
     {
         private static GameObject _gameObject;
 

@@ -10,9 +10,7 @@ namespace Unfair
 {
     public class Main : MonoBehaviour
     {
-	    public Harmony Harmony;
-	    
-        private void Start()
+	    private void Start()
         {
             DebugConsole.Write("Hello, world!");
         }

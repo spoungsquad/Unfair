@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unfair", "Unfair\Unfair.csproj", "{2381479E-D5F2-4EE9-8934-D29AD1181157}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2381479E-D5F2-4EE9-8934-D29AD1181157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2381479E-D5F2-4EE9-8934-D29AD1181157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2381479E-D5F2-4EE9-8934-D29AD1181157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2381479E-D5F2-4EE9-8934-D29AD1181157}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

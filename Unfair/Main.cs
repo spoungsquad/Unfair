@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using HarmonyLib;
 using Invector.CharacterController;
 using Unfair.Util;
 using UnityEngine;

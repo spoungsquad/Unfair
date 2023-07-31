@@ -10,15 +10,15 @@ namespace Unfair
 {
     public class Main : MonoBehaviour
     {
-	    private Harmony _harmony;
+	    public Harmony Harmony;
 	    
         private void Start()
         {
             DebugConsole.Write("Hello, world!");
             
             // patches
-            _harmony = new Harmony("unfair");
-            _harmony.PatchAll();
+            Harmony = new Harmony("unfair");
+            Harmony.PatchAll();
         }
 
         private void Update()

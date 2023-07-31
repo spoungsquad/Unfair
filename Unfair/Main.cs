@@ -15,10 +15,6 @@ namespace Unfair
         private void Start()
         {
             DebugConsole.Write("Hello, world!");
-            
-            // patches
-            Harmony = new Harmony("unfair");
-            Harmony.PatchAll();
         }
 
         private void Update()

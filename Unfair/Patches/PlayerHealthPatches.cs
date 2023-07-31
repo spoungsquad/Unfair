@@ -2,16 +2,15 @@
 
 namespace Unfair.Patches
 {
+	[HarmonyPatch(typeof(PlayerHealth))]
 	public class PlayerHealthPatches
 	{
-		[HarmonyPatch(typeof(PlayerHealth), nameof(PlayerHealth.Die))]
-		public class Die
+		[HarmonyPrefix]
+		[HarmonyPatch("Die")]
+		private static bool Prefix()
 		{
-			// return false to skip original method
-			private static bool Prefix()
-			{
-				return false;
-			}
+			// skip original method
+			return false;
 		}
 	}
 }

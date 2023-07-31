@@ -42,8 +42,6 @@ namespace Unfair.Util
 				Allocate();
 			} // only allocates a console if visual studio is found
 #endif
-
-			if (!_init) return;
 			
 			_writer.WriteLine(text);
 			Console.WriteLine(text);

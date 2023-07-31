@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Invector.CharacterController;
 using Unfair.Util;
 using UnityEngine;
 using HarmonyLib;
@@ -9,9 +10,15 @@ namespace Unfair
 {
     public class Main : MonoBehaviour
     {
+	    private Harmony _harmony;
+	    
         private void Start()
         {
             DebugConsole.Write("Hello, world!");
+            
+            // patches
+            _harmony = new Harmony("unfair");
+            _harmony.PatchAll();
         }
 
         private void Update()

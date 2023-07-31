@@ -52,6 +52,9 @@
       <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Lib.Harmony.2.2.2\lib\net48\0Harmony.dll</HintPath>
+        </Reference>
         <Reference Include="1v1">
           <HintPath>dlls\1v1.dll</HintPath>
         </Reference>

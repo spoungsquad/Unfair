@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HarmonyLib;
+using UnityEngine;
 
 namespace Unfair
 {
@@ -14,6 +15,7 @@ namespace Unfair
             Object.DontDestroyOnLoad(_gameObject);
             
             // initialize harmony and patch
+            Harmony.DEBUG = true;
             _main.Harmony = new HarmonyLib.Harmony("unfair");
             _main.Harmony.PatchAll();
         }

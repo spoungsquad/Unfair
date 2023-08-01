@@ -11,10 +11,9 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
+            // Doesn't work?
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.RecoilForce = 0;
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.RecoilDuration = 0;
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.DamageSettings.DamageToBuildings = 1000;
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.DamageSettings.DamageToPlayers = 1000;
         }
     }
 }

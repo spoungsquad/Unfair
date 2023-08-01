@@ -10,12 +10,12 @@ namespace Unfair.Module.Modules.Player
 		
 		public override void OnUpdate()
 		{
-			PlayerController.LHFJFKJJKCG.ICCJNHOFBGO.enabled = false;
+			PlayerController.LHFJFKJJKCG.NPPCBODBJDN._capsuleCollider.enabled = false;
 		}
 		
 		public override void OnDisable()
 		{
-			PlayerController.LHFJFKJJKCG.ICCJNHOFBGO.enabled = true;
+			PlayerController.LHFJFKJJKCG.NPPCBODBJDN._capsuleCollider.enabled = true;
 		}
 	}
 }

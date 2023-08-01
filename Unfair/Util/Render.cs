@@ -53,6 +53,25 @@ namespace Unfair.Util
                 
 			GUI.color = originalColor;
 		}
+		
+		public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color)
+		{
+			var texture = new Texture2D(1, 1);
+			texture.SetPixel(0, 0, color);
+			texture.Apply();
+			
+			var angle = Vector2.Angle(pointB - pointA, Vector2.right);
+			
+			if (pointA.y > pointB.y)
+				angle = -angle;
+			
+			var length = (pointB - pointA).magnitude;
+			
+			GUI.DrawTexture(new Rect(pointA.x, pointA.y, length, 1f), texture);
+			
+			Destroy(texture);
+		}
+		
 
 		public static Texture2D lineTex;
 		public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color, float width)

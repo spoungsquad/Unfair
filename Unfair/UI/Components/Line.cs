@@ -8,7 +8,13 @@ namespace Unfair.UI.Components
 		public float thickness = 1;
 		public Vector2 start;
 		public Vector2 end;
-		
+
+		protected override void Start()
+		{
+			// make the size very big so we can see the line
+			rectTransform.sizeDelta = new Vector2(10000, 10000);
+		}
+
 		protected override void OnPopulateMesh(VertexHelper vh)
 		{
 			vh.Clear();

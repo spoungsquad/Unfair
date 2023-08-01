@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unfair.Util;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Unfair.UI
@@ -51,9 +52,28 @@ namespace Unfair.UI
 			return obj.GetComponent<T>();
 		}
 		
+		// maybe you wanna add a regular component to the menu
+		public T Add<T>(T component) where T : Component
+		{
+			component.transform.SetParent(_gameObject.transform);
+			return component;
+		}
+		
 		public void Toggle()
 		{
 			_gameObject.SetActive(!_gameObject.activeSelf);
+		}
+
+		public void DebugRender()
+		{
+			Render.DrawString(new Vector2(0, 300), $"Menu active: {_gameObject.activeSelf}");
+			
+			if (!_gameObject.activeSelf) return;
+			
+			Render.DrawString(new Vector2(0, 320), $"Menu position: {_gameObject.transform.position}");
+			Render.DrawString(new Vector2(0, 340), $"Menu scale: {_gameObject.transform.localScale}");
+			Render.DrawString(new Vector2(0, 360), $"Canvas size: {_canvas.pixelRect.size}");
+			Render.DrawString(new Vector2(0, 380), $"Component count: {_gameObject.transform.childCount}");
 		}
 	}
 }

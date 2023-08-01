@@ -27,5 +27,10 @@ namespace Unfair.Module.Modules.Visual
 
 		public override void OnEnable() => _menu.Toggle();
 		public override void OnDisable() => _menu.Toggle();
+
+		public override void OnGUI()
+		{
+			_menu.DebugRender();
+		}
 	}
 }

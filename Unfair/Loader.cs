@@ -13,15 +13,15 @@ namespace Unfair
             _main = _gameObject.AddComponent<Main>();
             Object.DontDestroyOnLoad(_gameObject);
             
-            // initialize harmony and patch
+            /*// initialize harmony and patch
             _main.Harmony = new HarmonyLib.Harmony("unfair");
-            _main.Harmony.PatchAll();
+            _main.Harmony.PatchAll();*/
         }
 
         public static void Unload()
         {
 	        // unpatch
-	        _main.Harmony.UnpatchAll();
+	        //_main.Harmony.UnpatchAll();
 	        
             Object.Destroy(_gameObject);
         }

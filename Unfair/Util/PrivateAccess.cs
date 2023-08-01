@@ -23,7 +23,7 @@ namespace Unfair.Util
 			}
 		}
 		
-		//da n
+		//da naming convention
 		public static T CallMeth<T>(this object obj, string methodName, object[] param)
 		{
 			MethodInfo mi = obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Instance);

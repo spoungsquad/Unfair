@@ -18,6 +18,9 @@ namespace Unfair.Module
             {
                 Modules.Add((Module)Activator.CreateInstance(type));
             }
+            
+            // Sort by keyid
+            Modules = Modules.OrderBy(x => x.Key).ToList();
         }
         
         

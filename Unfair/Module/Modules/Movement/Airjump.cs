@@ -22,9 +22,6 @@ namespace Unfair.Module.Modules.Movement
             thirdPersonController.isGrounded = true;
             thirdPersonController.isJumping = false;
             thirdPersonController.IsCrawling = false;
-
-
-            thirdPersonController.Jump();
         }
     }
 }

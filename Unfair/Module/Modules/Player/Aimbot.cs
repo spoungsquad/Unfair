@@ -6,7 +6,7 @@ namespace Unfair.Module.Modules.Player
     public class Aimbot : Module
     {
         // Constructor
-        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Player, KeyCode.Mouse1)
+        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Player, KeyCode.LeftShift)
         {
         }
 

@@ -812,7 +812,6 @@
         <Compile Include="Module\Modules\Player\Aimbot.cs" />
         <Compile Include="Module\Modules\Player\GodMode.cs" />
         <Compile Include="Module\Modules\Player\Noclip.cs" />
-        <Compile Include="Module\Modules\Player\Godmode.cs" />
         <Compile Include="Module\Modules\Visual\ESP.cs" />
         <Compile Include="Module\Modules\Visual\Tracers.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

@@ -816,6 +816,7 @@
         <Compile Include="Module\Modules\Player\GodMode.cs" />
         <Compile Include="Module\Modules\Player\NoFall.cs" />
         <Compile Include="Module\Modules\Visual\ESP.cs" />
+        <Compile Include="Module\Modules\Visual\TestMenu.cs" />
         <Compile Include="Module\Modules\Visual\ItemESP.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UI\Arraylist.cs" />

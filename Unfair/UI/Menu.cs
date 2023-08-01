@@ -7,13 +7,13 @@ namespace Unfair.UI
 	{
 		public class MenuComponent : Graphic
 		{
-			public MenuComponent Add<T>() where T : MenuComponent
+			public T Add<T>() where T : MenuComponent
 			{
 				var obj = new GameObject();
 				obj.AddComponent<T>();
 				obj.transform.SetParent(transform);
 				
-				return this;
+				return obj.GetComponent<T>();
 			}
 		}
 		
@@ -37,16 +37,23 @@ namespace Unfair.UI
 			// config stuff
 			_canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 			_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+			
+			Toggle(); // hidden by default
 		}
 		
 		// add a component to the menu
-		public Menu Add<T>() where T : MenuComponent
+		public T Add<T>() where T : MenuComponent
 		{
 			var obj = new GameObject();
 			obj.AddComponent<T>();
 			obj.transform.SetParent(_gameObject.transform);
 			
-			return this;
+			return obj.GetComponent<T>();
+		}
+		
+		public void Toggle()
+		{
+			_gameObject.SetActive(!_gameObject.activeSelf);
 		}
 	}
 }

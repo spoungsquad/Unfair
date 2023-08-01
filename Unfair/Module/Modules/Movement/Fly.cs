@@ -11,6 +11,7 @@ namespace Unfair.Module.Modules.Movement
         
         public override void OnEnable()
         {
+            PlayerController.LHFJFKJJKCG.NPPCBODBJDN.isGrounded = true; // allows for ADS
             PlayerController.LHFJFKJJKCG.SetGodMode(true);
         }
         

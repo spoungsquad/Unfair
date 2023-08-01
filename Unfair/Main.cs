@@ -24,10 +24,12 @@ namespace Unfair
             GUI.Label(new Rect(5, 5, 1000, 20), "Hello, world!");
             GUI.Label(new Rect(5, 25, 1000, 20), "123abc");
             GUI.Label(new Rect(5, 85, 1000, 20), "sillied");
-            IntPtr p = Marshal.GetFunctionPointerForDelegate(typeof(PlayerHealth).GetMethod("Die",
-                BindingFlags.Instance | BindingFlags.Public));
-            GUI.Label(new Rect(5, 105, 1000, 20), p.ToString("X"));
-
+			
+            var method = typeof(PlayerHealth).GetMethod("Die", BindingFlags.Public | BindingFlags.Instance);
+			if (method == null) return;
+			
+			var ptr = method.MethodHandle.Value;
+			GUI.Label(new Rect(5, 45, 1000, 20), ptr.ToString("X"));
         }
     }
 }

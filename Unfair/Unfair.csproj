@@ -804,7 +804,7 @@
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />
         <Compile Include="Module\Modules\Player\Aimbot.cs" />
-        <Compile Include="Module\Modules\Player\NoReloadCooldown.cs" />
+        <Compile Include="Module\Modules\Player\Noclip.cs" />
         <Compile Include="Module\Modules\Visual\ESP.cs" />
         <Compile Include="Module\Modules\Visual\Tracers.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

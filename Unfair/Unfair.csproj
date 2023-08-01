@@ -811,10 +811,12 @@
         <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />
         <Compile Include="Module\Modules\Movement\Spinbot.cs" />
+        <Compile Include="Module\Modules\Movement\VClip.cs" />
         <Compile Include="Module\Modules\Player\Aimbot.cs" />
         <Compile Include="Module\Modules\Player\GodMode.cs" />
         <Compile Include="Module\Modules\Player\NoFall.cs" />
         <Compile Include="Module\Modules\Visual\ESP.cs" />
+        <Compile Include="Module\Modules\Visual\ItemESP.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UI\Arraylist.cs" />
         <Compile Include="UI\ColorUtils.cs" />

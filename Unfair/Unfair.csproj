@@ -56,9 +56,6 @@
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Lib.Harmony.2.2.2\lib\net48\0Harmony.dll</HintPath>
-        </Reference>
         <Reference Include="1v1">
           <HintPath>dlls\1v1.dll</HintPath>
         </Reference>
@@ -802,18 +799,10 @@
     <ItemGroup>
         <Compile Include="Loader.cs" />
         <Compile Include="Main.cs" />
-        <Compile Include="Module\Module.cs" />
-        <Compile Include="Module\ModuleManager.cs" />
-        <Compile Include="Module\Modules\Movement\Airjump.cs" />
-        <Compile Include="Module\Modules\Movement\Fly.cs" />
-        <Compile Include="Module\Modules\Visual\ESP.cs" />
-        <Compile Include="Module\Modules\Visual\Tracers.cs" />
-        <Compile Include="Patches\PlayerHealthPatches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Util\DebugConsole.cs" />
         <Compile Include="Util\Memory.cs" />
         <Compile Include="Util\PrivateAccess.cs" />
-        <Compile Include="Util\Render.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

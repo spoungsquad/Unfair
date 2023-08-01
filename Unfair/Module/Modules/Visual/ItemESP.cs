@@ -13,8 +13,6 @@ namespace Unfair.Module.Modules.Visual
         // Called every frame
         public override void OnGUI()
         {
-            
-            
             // Loop through all items
             foreach (var item in Main.Pickupables)
             {
@@ -27,10 +25,33 @@ namespace Unfair.Module.Modules.Visual
                 if (pos.z < 0) continue;
                 var color = Color.white;
 
-                GUI.color = color;
+                //item.PickUp(PlayerController.LHFJFKJJKCG, Pickupable.KDKHDANBCMA.Manual);
                 
+                string name = item.name;
 
-                GUI.Label(new Rect(pos.x, Screen.height - pos.y, 100, 20), item.tag);
+                switch (item.KFALIJDJALB)
+                {
+                    case KICLMFPGIAI.BuildingAmmo:
+                        color = Color.green;
+                        name = "Mats";
+                        break;
+                    case KICLMFPGIAI.WeaponAmmo:
+                        color = Color.yellow;
+                        name = "Ammo";
+                        break;
+                    case KICLMFPGIAI.WeaponDrop:
+                        color = Color.blue;
+                        name = "Weapon";
+                        break;
+                    case KICLMFPGIAI.WeaponLevelBooster:
+                        color = Color.magenta;
+                        name = "Weapon Level Booster";
+                        break;
+                }
+                GUI.color = color;
+
+
+                GUI.Label(new Rect(pos.x, Screen.height - pos.y, 100, 20), name);
             }
         }
     }

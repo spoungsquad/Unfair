@@ -43,15 +43,20 @@ namespace Unfair.Module
 
         public void Toggle()
         {
-            Enabled = !Enabled;
-            if (Enabled)
-                OnEnable();
-            else
-                OnDisable();
+            try
+            {
+                
+                Enabled = !Enabled;
+                if (Enabled)
+                    OnEnable();
+                else
+                    OnDisable();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log(e);
+            }
             
-            string state = Enabled ? "enabled" : "disabled";
-            
-            UiManager.PFGFOGOILPA.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""), Name + " " + state ));
         }
     }
 }

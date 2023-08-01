@@ -29,36 +29,33 @@ namespace Unfair
 	        
 	        foreach (var module in ModuleManager.Modules)
 	        {
-		        if (Input.GetKeyDown(module.Key))
+		        try
 		        {
-			        module.Toggle();
-		        }
+			        
+			        if (Input.GetKeyDown(module.Key))
+			        {
+				        module.Toggle();
+			        }
 		        
-		        if (module.Enabled)
-			        module.OnUpdate();
+			        if (module.Enabled)
+				        module.OnUpdate();
+		        }
+		        catch (Exception e)
+		        {
+			        Debug.Log(e);
+		        }
 	        }
         }
 
         private void OnGUI()
         {
+	        UI.Arraylist.ArrayList();
 	        
-	        
-	        int index = 0;
             foreach (var module in ModuleManager.Modules)
             {
-	            // Draw module info
-	            GUI.Label(new Rect(5, 5 + index * 20, 1000, 20), $"{module.Name} ({module.Key}) : " + (module.Enabled ? "Enabled" : "Disabled"));
-	            
 	            if (module.Enabled)
 		            module.OnGUI();
-	            index++;
             }
-            
-            var method = typeof(PlayerHealth).GetMethod("Die", BindingFlags.Public | BindingFlags.Instance);
-			if (method == null) return;
-			
-			var ptr = method.MethodHandle.Value;
-			//GUI.Label(new Rect(50, 5, 1000, 20), ptr.ToString("X"));
         }
     }
 }

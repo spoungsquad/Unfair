@@ -5,7 +5,7 @@ namespace Unfair.Module.Modules.Movement
     public class Fly : Module
     {
         // Constructor
-        public Fly() : base("Fly", "Allows you to fly around the map", Category.Movement, KeyCode.F4)
+        public Fly() : base("Fly", "Allows you to fly around the map", Category.Movement, KeyCode.G)
         {
         }
         

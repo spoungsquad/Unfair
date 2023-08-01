@@ -9,7 +9,6 @@ namespace Unfair.Module.Modules.Movement
         // Constructor
         public Airjump() : base("Airjump", "Allows you to jump in midair", Category.Movement, KeyCode.F5)
         {
-            Enabled = true;
         }
         
         public override void OnUpdate()

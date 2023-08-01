@@ -6,47 +6,29 @@ namespace Unfair.Module.Modules.Player
     public class Aimbot : Module
     {
         // Constructor
-        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Player, KeyCode.F3)
+        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Player, KeyCode.Mouse1)
         {
-        }
-        
-        public PlayerController GetClosestPlayer()
-        {
-            PlayerController[] fish = Object.FindObjectsOfType(typeof(PlayerController)) as PlayerController[];
-            if (fish.Length != 0)
-            {
-                PlayerController currentFish = fish[0];
-
-                foreach (PlayerController nextFish in fish)
-                {
-                     
-                    
-                    if ((nextFish.transform.position - PlayerController.LHFJFKJJKCG.transform.position).sqrMagnitude <
-                        (currentFish.transform.position - PlayerController.LHFJFKJJKCG.transform.position).sqrMagnitude || !nextFish.IsMine())
-                    {
-                        currentFish = nextFish;
-                    }
-                }
-                return currentFish;
-            }
-            return null;
         }
 
         public override void OnUpdate()
         {   
-            // Get nearest player
+            
+            // Sort players by distance
+            var players = Main.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
 
-            var player = GetClosestPlayer();
+            players.Remove(PlayerController.LHFJFKJJKCG);
             
-            if (player == null)
-                return;
-            
-            // Get camera 
-            var camera = Camera.current;
+            var player = players.FirstOrDefault();
+            var camera = Camera.main;
+                
+            // Get animator
+            var animator = player.GetComponent<Animator>();
+                
+            // Get head position
+            var headPos = animator.GetBoneTransform(HumanBodyBones.UpperChest);
                 
             // Look at player
-            camera.transform.LookAt(player.transform);
-            
+            camera.transform.LookAt(headPos);
         }
     }
 }

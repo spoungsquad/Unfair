@@ -67,9 +67,7 @@ namespace Unfair.Util
 			
 			var length = (pointB - pointA).magnitude;
 			
-			GUIUtility.RotateAroundPivot(angle, pointA);
 			GUI.DrawTexture(new Rect(pointA.x, pointA.y, length, 1f), texture);
-			GUIUtility.RotateAroundPivot(-angle, pointA);
 			
 			Destroy(texture);
 		}
@@ -88,9 +86,7 @@ namespace Unfair.Util
 
 			if (pointA.y > pointB.y)
 				num = -num;
-
-			GUIUtility.ScaleAroundPivot(new Vector2((pointB - pointA).magnitude, width), new Vector2(pointA.x, pointA.y + 0.5f));
-			GUIUtility.RotateAroundPivot(num, pointA);
+			
 			GUI.DrawTexture(new Rect(pointA.x, pointA.y, 1f, 1f), lineTex);
 			GUI.matrix = matrix;
 			GUI.color = color2;

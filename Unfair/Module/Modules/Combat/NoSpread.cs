@@ -11,6 +11,7 @@ namespace Unfair.Module.Modules.Combat
 
         public override void OnUpdate()
         {
+            // Doesn't work
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.AimingSpread = 0;
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.SpreadOutTime = 0;
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.DefaultSpread = 0;

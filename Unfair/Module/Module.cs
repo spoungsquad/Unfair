@@ -1,4 +1,6 @@
+using JustPlay.Localization;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Unfair.Module
 {
@@ -46,6 +48,10 @@ namespace Unfair.Module
                 OnEnable();
             else
                 OnDisable();
+            
+            string state = Enabled ? "enabled" : "disabled";
+            
+            UiManager.PFGFOGOILPA.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""), Name + " " + state ));
         }
     }
 }

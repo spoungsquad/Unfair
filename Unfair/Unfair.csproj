@@ -806,12 +806,15 @@
         <Compile Include="Module\Modules\Combat\NoRecoil.cs" />
         <Compile Include="Module\Modules\Combat\NoSpread.cs" />
         <Compile Include="Module\Modules\Combat\RapidFire.cs" />
+        <Compile Include="Module\Modules\Misc\Instabreak.cs" />
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
+        <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />
         <Compile Include="Module\Modules\Movement\Spinbot.cs" />
         <Compile Include="Module\Modules\Player\Aimbot.cs" />
         <Compile Include="Module\Modules\Player\GodMode.cs" />
         <Compile Include="Module\Modules\Player\Noclip.cs" />
+        <Compile Include="Module\Modules\Player\NoFall.cs" />
         <Compile Include="Module\Modules\Visual\ESP.cs" />
         <Compile Include="Module\Modules\Visual\Tracers.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

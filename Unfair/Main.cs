@@ -2,10 +2,12 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Invector.CharacterController;
+using JustPlay.Localization;
 using Unfair.Module;
 using Unfair.Module.Modules.Player;
 using Unfair.Util;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Unfair
 {
@@ -16,7 +18,8 @@ namespace Unfair
             //DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
             
-            
+            UiManager.PFGFOGOILPA.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""), "Unfair loaded!" ));
+
         }
 
 	    public static PlayerController[] PlayerControllers;

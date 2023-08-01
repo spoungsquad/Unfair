@@ -801,6 +801,7 @@
         <Compile Include="Main.cs" />
         <Compile Include="Module\Module.cs" />
         <Compile Include="Module\ModuleManager.cs" />
+        <Compile Include="Module\Modules\Combat\InfiniteAmmo.cs" />
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />
         <Compile Include="Module\Modules\Movement\Spinbot.cs" />

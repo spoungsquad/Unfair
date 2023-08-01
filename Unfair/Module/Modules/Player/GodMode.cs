@@ -13,9 +13,12 @@ namespace Unfair.Module.Modules.Player
         {
         }
 
-        public override void OnEnable()
+        public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetPlayerImmunity(true);
+            if (!PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.GDGOFAMHGPF)
+            {
+                PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetPlayerImmunity(true);
+            }
         }
 
         public override void OnDisable()

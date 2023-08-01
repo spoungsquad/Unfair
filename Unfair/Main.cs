@@ -55,7 +55,7 @@ namespace Unfair
 			if (method == null) return;
 			
 			var ptr = method.MethodHandle.Value;
-			GUI.Label(new Rect(50, 5, 1000, 20), ptr.ToString("X"));
+			//GUI.Label(new Rect(50, 5, 1000, 20), ptr.ToString("X"));
         }
     }
 }

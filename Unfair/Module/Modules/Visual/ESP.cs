@@ -22,18 +22,42 @@ namespace Unfair.Module.Modules.Visual
 
                 Transform headPos = animator.GetBoneTransform(HumanBodyBones.Head);
 
-                Vector3 pos = Camera.main.WorldToScreenPoint(headPos.transform.position);
+                var headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
+                var feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));
                 
-                if (pos.z < 0) continue;
-                Color color = Color.white;
+                if (headPos.z < 0) continue;
+                if (feetPos.z < 0) continue; 
+                var color = Color.red;
 
                 GUI.color = color;
                 
                 // Get name 
                 string name = player.photonView.Controller.NickName;
 
-                GUI.Label(new Rect(pos.x, Screen.height - pos.y, 100, 20), name);
-                //Render.DrawBoxGUI(new Rect(pos.x - 50, Screen.height - pos.y, 20, 100), color, 1f);
+                
+                // Get screen distance from head to feet
+                var yDistance = Vector3.Distance(headPos, feetPos);
+                var xDistance = yDistance / 2;
+                
+                // Get box rect
+                var rect = new Rect(headPos.x - (xDistance / 2), Screen.height - headPos.y, xDistance, yDistance);
+                
+                Render.DrawBoxGUI(rect, color, 2f);
+                // Draw name under the middle of the box
+                
+                float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
+                
+                // if player is bot then draw name as yellow
+                if (player.JPHLECKOAAN)
+                {
+                    GUI.color = Color.yellow;
+                }
+                else
+                {
+                    GUI.color = Color.red;
+                }
+                
+                GUI.Label(new Rect(rect.x + (rect.width / 2) - (textWidth / 2), rect.y + rect.height, 100, 20), name);
             }
         }
     }

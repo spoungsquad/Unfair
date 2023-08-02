@@ -8,7 +8,7 @@ namespace Unfair.Module.Modules.Movement
         {
         }
         
-        // test
+        
         int i = 0;
         public override void OnUpdate()
         {
@@ -20,7 +20,6 @@ namespace Unfair.Module.Modules.Movement
         
         public override void OnDisable()
         {
-            
             PlayerController.LHFJFKJJKCG.gameObject.transform.rotation = Quaternion.identity;
         }
     }

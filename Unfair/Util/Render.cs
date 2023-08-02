@@ -12,15 +12,21 @@ namespace Unfair.Util
 			set { GUI.color = value; }
 		}
 		
-		public static void DrawBox(Vector2 position, Vector2 size, Color color, bool centered = true)
+		public static void DrawBox(Vector2 position, Vector2 size, Color color)
 		{
 			Color = color;
-			DrawBox(position, size, centered);
+			DrawBox(position, size);
 		}
-		public static void DrawBox(Vector2 position, Vector2 size, bool centered = true)
+		
+		public static void DrawBox(float x, float y, float width, float height, Color color)
 		{
-			Vector2 upperLeft = centered ? position - size / 2f : position;
-			GUI.DrawTexture(new Rect(position, size), Texture2D.blackTexture, ScaleMode.StretchToFill);
+			Color = color;
+			DrawBox(new Vector2(x, y), new Vector2(width, height));
+		}
+		
+		public static void DrawBox(Vector2 position, Vector2 size)
+		{
+			GUI.DrawTexture(new Rect(position, size), Texture2D.whiteTexture, ScaleMode.StretchToFill);
 		}
 
 		public static void DrawString(Vector2 position, string label, Color color, bool centered)
@@ -28,6 +34,7 @@ namespace Unfair.Util
 			Color = color;
 			DrawString(position, label, centered);
 		}
+		
 		public static void DrawString(Vector2 position, string label, bool centered = true)
 		{
 			GUIContent content = new GUIContent(label);
@@ -90,14 +97,6 @@ namespace Unfair.Util
 			GUI.DrawTexture(new Rect(pointA.x, pointA.y, 1f, 1f), lineTex);
 			GUI.matrix = matrix;
 			GUI.color = color2;
-		}
-
-		public static void DrawBox(float x, float y, float w, float h, Color color, float thickness)
-		{
-			DrawLine(new Vector2(x, y), new Vector2(x + w, y), color, thickness);
-			DrawLine(new Vector2(x, y), new Vector2(x, y + h), color, thickness);
-			DrawLine(new Vector2(x + w, y), new Vector2(x + w, y + h), color, thickness);
-			DrawLine(new Vector2(x, y + h), new Vector2(x + w, y + h), color, thickness);
 		}
 
 		public static void DrawBoxOutline(Vector2 Point, float width, float height, Color color, float thickness)

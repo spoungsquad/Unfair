@@ -46,6 +46,17 @@ namespace Unfair.Module.Modules.Visual
                 // Draw name under the middle of the box
                 
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
+                
+                // if player is bot then draw name as yellow
+                if (player.JPHLECKOAAN)
+                {
+                    GUI.color = Color.yellow;
+                }
+                else
+                {
+                    GUI.color = Color.red;
+                }
+                
                 GUI.Label(new Rect(rect.x + (rect.width / 2) - (textWidth / 2), rect.y + rect.height, 100, 20), name);
             }
         }

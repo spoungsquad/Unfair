@@ -12,18 +12,20 @@ namespace Unfair.Module.Modules.Visual
 		{
 			_menu = new Menu
 			{
-				Camera = CameraManager.PFGFOGOILPA.TPCamera.GetComponent<Camera>(),
+				Camera = Camera.main,
 				Enabled = false
 			};
 
 			var text = _menu.AddComponent<Text>();
-			text.text = "test";
+			text.text = "HELLO CAN YOU SEE THIS";
 			text.font = GUIStyle.none.font;
+			text.fontSize = 72;
 			text.color = Color.red;
 		}
 
 		public override void OnEnable() => _menu.Enabled = true;
 		public override void OnDisable() => _menu.Enabled = false;
+		public override void OnUpdate() => _menu.Camera = Camera.current;
 
 		public override void OnGUI()
 		{

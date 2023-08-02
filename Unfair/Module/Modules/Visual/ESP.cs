@@ -20,7 +20,7 @@ namespace Unfair.Module.Modules.Visual
                     continue;
                 Animator animator = player.GetComponent<Animator>();
 
-                Transform headPos = animator.GetBoneTransform(HumanBodyBones.Head);
+                Transform head = animator.GetBoneTransform(HumanBodyBones.Head);
 
                 var headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
                 var feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));

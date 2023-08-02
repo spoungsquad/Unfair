@@ -813,6 +813,7 @@
         <Compile Include="Module\Modules\Misc\NameChanger.cs" />
         <Compile Include="Module\Modules\Misc\NutSucking.cs" />
         <Compile Include="Module\Modules\Misc\OpenUp.cs" />
+        <Compile Include="Module\Modules\Misc\Surround.cs" />
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />

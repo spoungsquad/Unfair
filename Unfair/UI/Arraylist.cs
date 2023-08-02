@@ -15,7 +15,7 @@ namespace Unfair.UI
         };
         public static void ArrayList()
         {
-            Module.Module[] modules = ModuleManager.Modules.Values.OrderByDescending(module => GetTextWidth(module.Name)
+            Module.Module[] modules = ModuleManager.Modules.OrderByDescending(module => GetTextWidth(module.Name)
             ).ToArray();
 
             for (int i = 0; i < modules.Length; i++)

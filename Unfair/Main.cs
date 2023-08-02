@@ -1,12 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using Invector.CharacterController;
 using JustPlay.Localization;
 using Unfair.Module;
-using Unfair.Module.Modules.Player;
-using Unfair.Util;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -33,7 +27,7 @@ namespace Unfair
 	        Pickupables = FindObjectsOfType<Pickupable>();
 	        Crates = FindObjectsOfType<SupplyCrate>();
 	        
-	        foreach (Module.Module module in ModuleManager.Modules.Values)
+	        foreach (Module.Module module in ModuleManager.Modules)
 	        {
 		        try
 		        {
@@ -53,11 +47,11 @@ namespace Unfair
 	        }
         }
 
-        private unsafe void OnGUI()
+        private void OnGUI()
         {
 	        UI.Arraylist.ArrayList();
 	        
-            foreach (Module.Module module in ModuleManager.Modules.Values)
+            foreach (Module.Module module in ModuleManager.Modules)
             {
 	            if (module.Enabled)
 		            module.OnGUI();

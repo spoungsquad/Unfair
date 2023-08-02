@@ -23,11 +23,13 @@ namespace Unfair
 
 	    public static PlayerController[] PlayerControllers;
 	    public static Pickupable[] Pickupables;
+	    public static SupplyCrate[] Crates;
 	    
         private void Update()
         {
 	        PlayerControllers = FindObjectsOfType<PlayerController>();
 	        Pickupables = FindObjectsOfType<Pickupable>();
+	        Crates = FindObjectsOfType<SupplyCrate>();
 	        
 	        foreach (var module in ModuleManager.Modules)
 	        {

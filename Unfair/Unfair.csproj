@@ -811,6 +811,7 @@
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />
+        <Compile Include="Module\Modules\Movement\RAutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Spinbot.cs" />
         <Compile Include="Module\Modules\Movement\VClip.cs" />
         <Compile Include="Module\Modules\Player\Aimbot.cs" />

@@ -14,6 +14,7 @@ namespace Unfair.Module.Modules.Visual
 
 			var text = _menu.AddComponent<Text>();
 			text.text = "test";
+			text.font = GUIStyle.none.font;
 			text.color = Color.red;
 		}
 

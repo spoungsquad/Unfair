@@ -1,4 +1,8 @@
+using System;
+using JustPlay.Equipment;
+using Unfair.Util;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Unfair.Module.Modules.Combat
 {
@@ -9,13 +13,8 @@ namespace Unfair.Module.Modules.Combat
             Enabled = true;
         }
 
-        public override void OnUpdate()
+        public override unsafe void OnGUI()
         {
-            // Doesn't work
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.AimingSpread = 0;
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.SpreadOutTime = 0;
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.DefaultSpread = 0;
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.StatsForLevel.SpreadSettings.IncreasePerShot = 0;
         }
     }
 }

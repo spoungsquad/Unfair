@@ -15,7 +15,7 @@ namespace Unfair.Module.Modules.Movement
         {
             
             var thirdPersonController =
-                PrivateAccess.GetProp<vThirdPersonController>(PlayerController.LHFJFKJJKCG, "_thirdPersonController");
+                PrivateAccess.GetField<vThirdPersonController>(PlayerController.LHFJFKJJKCG, "_thirdPersonController");
 
             
             thirdPersonController.isGrounded = true;

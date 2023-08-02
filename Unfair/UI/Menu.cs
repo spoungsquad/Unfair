@@ -31,6 +31,9 @@ namespace Unfair.UI
 			// using ScreenSpaceCamera here for LineRenderer
 			_canvas.renderMode = RenderMode.ScreenSpaceCamera;
 			_canvas.worldCamera = Camera.main;
+			
+			// render on top of everything
+			_canvas.sortingOrder = int.MaxValue;
 
 			_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 			_canvasScaler.referenceResolution = new Vector2(1280, 720);

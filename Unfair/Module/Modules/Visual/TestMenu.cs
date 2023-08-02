@@ -10,7 +10,11 @@ namespace Unfair.Module.Modules.Visual
 		
 		public TestMenu() : base("TestMenu", "TestMenu", Category.Visuals, KeyCode.Insert)
 		{
-			_menu = new Menu();
+			_menu = new Menu
+			{
+				Camera = CameraManager.PFGFOGOILPA.TPCamera.GetComponent<Camera>(),
+				Enabled = false
+			};
 
 			var text = _menu.AddComponent<Text>();
 			text.text = "test";

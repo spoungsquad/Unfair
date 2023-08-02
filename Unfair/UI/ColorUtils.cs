@@ -6,7 +6,15 @@ namespace Unfair.UI
     
 public static class ColorUtils
 {
-    
+    public static Color GetContrastingColor(this Color color)
+    {
+        float l = 0.2126f * (float)Math.Pow(color.r, 2.2 )
+                  + 0.7152f * (float)Math.Pow(color.g, 2.2 )
+                    + 0.0722f * (float)Math.Pow(color.b, 2.2 );
+
+        return l > 0.2176 ? Color.black : Color.white;
+    }
+
     public static Color GetRainbow(int speed, int offset)
     {
         float hue = (DateTimeOffset.Now.ToUnixTimeMilliseconds() + (int)(offset)) % speed;
@@ -78,9 +86,9 @@ public static class ColorUtils
     /// <returns>The RGB color.</returns>
     public static Color HsVtoRgb(float h, float s, float v)
     { // Thank you GitHub Copilot, very cool!
-        float r = 0.0f;
-        float g = 0.0f;
-        float b = 0.0f;
+        float r;
+        float g;
+        float b;
         if (s == 0.0f)
         {
             r = v;

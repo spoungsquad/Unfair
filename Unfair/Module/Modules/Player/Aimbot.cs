@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -17,18 +18,18 @@ namespace Unfair.Module.Modules.Player
             {
                 
                 // Sort players by distance
-                var players = Main.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
+                List<PlayerController> players = Main.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
 
                 players.Remove(PlayerController.LHFJFKJJKCG);
             
-                var player = players.FirstOrDefault();
-                var camera = Camera.main;
+                PlayerController player = players.FirstOrDefault();
+                Camera camera = Camera.main;
                 
                 // Get animator
-                var animator = player.GetComponent<Animator>();
+                Animator animator = player.GetComponent<Animator>();
                 
                 // Get head position
-                var headPos = animator.GetBoneTransform(HumanBodyBones.UpperChest);
+                Transform headPos = animator.GetBoneTransform(HumanBodyBones.UpperChest);
                 
                 // Look at player
                 camera.transform.LookAt(headPos);

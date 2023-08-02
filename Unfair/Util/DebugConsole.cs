@@ -24,7 +24,7 @@ namespace Unfair.Util
 		{
 			AllocConsole();
 
-			var stdout = Console.OpenStandardOutput();
+			Stream stdout = Console.OpenStandardOutput();
 			_writer = new StreamWriter(stdout)
 			{
 				AutoFlush = true

@@ -31,7 +31,7 @@ namespace Unfair
 	        PlayerControllers = FindObjectsOfType<PlayerController>();
 	        Pickupables = FindObjectsOfType<Pickupable>();
 	        
-	        foreach (var module in ModuleManager.Modules)
+	        foreach (Module.Module module in ModuleManager.Modules.Values)
 	        {
 		        try
 		        {
@@ -55,7 +55,7 @@ namespace Unfair
         {
 	        UI.Arraylist.ArrayList();
 	        
-            foreach (var module in ModuleManager.Modules)
+            foreach (Module.Module module in ModuleManager.Modules.Values)
             {
 	            if (module.Enabled)
 		            module.OnGUI();

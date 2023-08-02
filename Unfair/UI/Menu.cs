@@ -10,7 +10,7 @@ namespace Unfair.UI
 		{
 			public T Add<T>() where T : MenuComponent
 			{
-				var obj = new GameObject();
+				GameObject obj = new GameObject();
 				obj.AddComponent<T>();
 				obj.transform.SetParent(transform);
 				
@@ -45,7 +45,7 @@ namespace Unfair.UI
 		// add a component to the menu
 		public T Add<T>() where T : MenuComponent
 		{
-			var obj = new GameObject();
+			GameObject obj = new GameObject();
 			obj.AddComponent<T>();
 			obj.transform.SetParent(_gameObject.transform);
 			

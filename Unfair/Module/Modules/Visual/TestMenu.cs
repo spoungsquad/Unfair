@@ -12,14 +12,14 @@ namespace Unfair.Module.Modules.Visual
 		{
 			_menu = new Menu();
 
-			var panel = _menu.Add<Panel>();
+			Panel panel = _menu.Add<Panel>();
 			panel.color = new Color(0, 0, 0, 0.5f);
 			panel.rectTransform.sizeDelta = new Vector2(200, 200);
 			panel.rectTransform.anchoredPosition = new Vector2(100, 100);
 			panel.outlineColor = Color.white;
 			panel.outlineThickness = 5;
 			
-			var line = _menu.Add<Line>();
+			Line line = _menu.Add<Line>();
 			line.color = Color.white;
 			line.start = new Vector2(100, 100);
 			line.end = new Vector2(300, 300);

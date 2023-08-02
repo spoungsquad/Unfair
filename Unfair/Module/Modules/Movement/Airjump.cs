@@ -14,7 +14,7 @@ namespace Unfair.Module.Modules.Movement
         public override void OnUpdate()
         {
             
-            var thirdPersonController =
+            vThirdPersonController thirdPersonController =
                 PrivateAccess.GetField<vThirdPersonController>(PlayerController.LHFJFKJJKCG, "_thirdPersonController");
 
             

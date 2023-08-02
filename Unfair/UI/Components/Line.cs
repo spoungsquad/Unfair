@@ -28,7 +28,7 @@ namespace Unfair.UI.Components
 
 		private void AddVertsForPoint(Vector2 p, VertexHelper vh)
 		{
-			var vert = UIVertex.simpleVert;
+			UIVertex vert = UIVertex.simpleVert;
 			vert.color = color;
 			
 			vert.position = new Vector2(-thickness / 2, 0);

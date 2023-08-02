@@ -14,16 +14,16 @@ namespace Unfair.Module.Modules.Visual
         public override void OnGUI()
         {
             // Loop through all items
-            foreach (var item in Main.Pickupables)
+            foreach (Pickupable item in Main.Pickupables)
             {
                 // Get the item's position
-                var position = item.transform.position;
+                Vector3 position = item.transform.position;
                 
                 // Get the item's screen position
-                var pos = Camera.main.WorldToScreenPoint(position);
+                Vector3 pos = Camera.main.WorldToScreenPoint(position);
                 
                 if (pos.z < 0) continue;
-                var color = Color.white;
+                Color color = Color.white;
 
                 //item.PickUp(PlayerController.LHFJFKJJKCG, Pickupable.KDKHDANBCMA.Manual);
                 

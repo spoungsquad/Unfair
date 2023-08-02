@@ -13,11 +13,11 @@ namespace Unfair.UI.Components
 			vh.Clear();
 			
 			// i have to write vertices manually. my blood will be on the floor today
-			var rect = rectTransform.rect;
-			var w = rect.width;
-			var h = rect.height;
+			Rect rect = rectTransform.rect;
+			float w = rect.width;
+			float h = rect.height;
 
-			var vert = UIVertex.simpleVert;
+			UIVertex vert = UIVertex.simpleVert;
 			vert.color = color;
 			
 			vert.position = new Vector2(0, 0);
@@ -37,7 +37,7 @@ namespace Unfair.UI.Components
 			vh.AddTriangle(2, 3, 0);
 			
 			// outline
-			var distance = Mathf.Sqrt(outlineThickness * outlineThickness / 2);
+			float distance = Mathf.Sqrt(outlineThickness * outlineThickness / 2);
 			
 			vert.color = outlineColor;
 			

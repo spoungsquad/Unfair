@@ -19,7 +19,7 @@ namespace Unfair.Util
 		}
 		public static void DrawBox(Vector2 position, Vector2 size, bool centered = true)
 		{
-			var upperLeft = centered ? position - size / 2f : position;
+			Vector2 upperLeft = centered ? position - size / 2f : position;
 			GUI.DrawTexture(new Rect(position, size), Texture2D.blackTexture, ScaleMode.StretchToFill);
 		}
 
@@ -30,19 +30,19 @@ namespace Unfair.Util
 		}
 		public static void DrawString(Vector2 position, string label, bool centered = true)
 		{
-			var content = new GUIContent(label);
-			var size = StringStyle.CalcSize(content);
-			var upperLeft = centered ? position - size / 2f : position;
+			GUIContent content = new GUIContent(label);
+			Vector2 size = StringStyle.CalcSize(content);
+			Vector2 upperLeft = centered ? position - size / 2f : position;
 			GUI.Label(new Rect(upperLeft, size), label);
 		}
 
 		public static void DrawBoxGUI(Rect rect, Color color, float thickness)
 		{
-			var tex = new Texture2D(1, 1);
+			Texture2D tex = new Texture2D(1, 1);
 			tex.SetPixel(0, 0, color);
 			tex.Apply();
 
-			var originalColor = GUI.color;
+			Color originalColor = GUI.color;
                 
 			GUI.color = color;
                 
@@ -56,16 +56,16 @@ namespace Unfair.Util
 		
 		public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color)
 		{
-			var texture = new Texture2D(1, 1);
+			Texture2D texture = new Texture2D(1, 1);
 			texture.SetPixel(0, 0, color);
 			texture.Apply();
 			
-			var angle = Vector2.Angle(pointB - pointA, Vector2.right);
+			float angle = Vector2.Angle(pointB - pointA, Vector2.right);
 			
 			if (pointA.y > pointB.y)
 				angle = -angle;
 			
-			var length = (pointB - pointA).magnitude;
+			float length = (pointB - pointA).magnitude;
 			
 			GUI.DrawTexture(new Rect(pointA.x, pointA.y, length, 1f), texture);
 			
@@ -110,8 +110,8 @@ namespace Unfair.Util
 
 		public static float GetTextWidth(string text)
         {
-			var content = new GUIContent(text);
-			var size = StringStyle.CalcSize(content);
+			GUIContent content = new GUIContent(text);
+			Vector2 size = StringStyle.CalcSize(content);
 			return size.x;
 		}
 

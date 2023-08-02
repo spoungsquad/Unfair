@@ -22,7 +22,7 @@ namespace Unfair.Module.Modules.Misc
             }
             foreach (FirebaseManager building in buildings)
             {
-                building.GetField<ServerUser>("BDALMNICAAH").Nickname = "THIS USERNAME IS VERY LEGIT, I AM NOT CHEATING AT ALL NO SIRREE BOB";
+                building.GetField<ServerUser>("BDALMNICAAH").Nickname = "⛓⛓⛓⛓⛓⛓⛓⛓⛓⛓⛓⛓⛓⛓";
             }
         }
     }

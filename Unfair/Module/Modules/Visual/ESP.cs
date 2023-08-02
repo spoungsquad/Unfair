@@ -14,20 +14,21 @@ namespace Unfair.Module.Modules.Visual
         public override void OnGUI()
         {
             // Loop through all playerControllers
+            float yDistance;
             foreach (PlayerController player in Main.PlayerControllers)
             {
                 if (player.IsMine())
                     continue;
                 Animator animator = player.GetComponent<Animator>();
 
-                Transform headPos = animator.GetBoneTransform(HumanBodyBones.Head);
+                Transform head = animator.GetBoneTransform(HumanBodyBones.Head);
 
-                var headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
-                var feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));
+                Vector3 headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
+                Vector3 feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));
                 
                 if (headPos.z < 0) continue;
                 if (feetPos.z < 0) continue; 
-                var color = Color.red;
+                Color color = Color.red;
 
                 GUI.color = color;
                 
@@ -36,11 +37,11 @@ namespace Unfair.Module.Modules.Visual
 
                 
                 // Get screen distance from head to feet
-                var yDistance = Vector3.Distance(headPos, feetPos);
-                var xDistance = yDistance / 2;
+                yDistance = Vector3.Distance(headPos, feetPos);
+                float xDistance = yDistance / 2;
                 
                 // Get box rect
-                var rect = new Rect(headPos.x - (xDistance / 2), Screen.height - headPos.y, xDistance, yDistance);
+                Rect rect = new Rect(headPos.x - (xDistance / 2), Screen.height - headPos.y, xDistance, yDistance);
                 
                 Render.DrawBoxGUI(rect, color, 2f);
                 // Draw name under the middle of the box
@@ -48,14 +49,7 @@ namespace Unfair.Module.Modules.Visual
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
                 
                 // if player is bot then draw name as yellow
-                if (player.JPHLECKOAAN)
-                {
-                    GUI.color = Color.yellow;
-                }
-                else
-                {
-                    GUI.color = Color.red;
-                }
+                GUI.color = player.JPHLECKOAAN ? Color.yellow : Color.red;
                 
                 GUI.Label(new Rect(rect.x + (rect.width / 2) - (textWidth / 2), rect.y + rect.height, 100, 20), name);
             }

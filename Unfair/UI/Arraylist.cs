@@ -24,7 +24,7 @@ namespace Unfair.UI
 
                 ArrayListGUIStyle.normal.textColor = module.Enabled
                     ? ColorUtils.AlternateRainbow(i, modules.Length, 0, 3f, 0.7f, 1f)
-                    : ColorUtils.AlternateRainbow(i, modules.Length, 0, 3f, 0.3f, 0.5f);
+                    : ColorUtils.AlternateRainbow(i, modules.Length, 0, 3f, 0.3f, 0.7f);
                 
                 ArrayListGUIStyle.fontSize = 18;
                 float width = GetTextWidth(modules[0].Name);

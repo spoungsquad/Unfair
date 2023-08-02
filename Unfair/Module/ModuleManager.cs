@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Unfair.Module.Modules.Movement;
-using Unfair.Module.Modules.Visual;
 
 namespace Unfair.Module
 {
@@ -19,11 +17,6 @@ namespace Unfair.Module
                 Module m = (Module)Activator.CreateInstance(type);
                 Modules.Add(m.Name, m);
             }
-            
-            // Sort by keyid
-            Modules = Modules.OrderBy(x => x.Value.Key).ToDictionary(x => x.Key, x => x.Value);
         }
-        
-        
     }
 }

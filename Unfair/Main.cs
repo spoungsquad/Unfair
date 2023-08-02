@@ -23,36 +23,42 @@ namespace Unfair
                 "Unfair loaded!"));
         }
 
-        public static PlayerController[] PlayerControllers;
-
+	    public static PlayerController[] PlayerControllers;
+	    public static Pickupable[] Pickupables;
+	    
         private void Update()
         {
-            PlayerControllers = FindObjectsOfType<PlayerController>();
-
-            foreach (Module.Module module in ModuleManager.Modules.Values)
-            {
-                if (Input.GetKeyDown(module.Key))
-                {
-                    module.Toggle();
-                }
-
-                if (module.Enabled)
-                    module.OnUpdate();
-            }
+	        PlayerControllers = FindObjectsOfType<PlayerController>();
+	        Pickupables = FindObjectsOfType<Pickupable>();
+	        
+	        foreach (var module in ModuleManager.Modules)
+	        {
+		        try
+		        {
+			        
+			        if (Input.GetKeyDown(module.Key))
+			        {
+				        module.Toggle();
+			        }
+		        
+			        if (module.Enabled)
+				        module.OnUpdate();
+		        }
+		        catch (Exception e)
+		        {
+			        Debug.Log(e);
+		        }
+	        }
         }
 
         private unsafe void OnGUI()
         {
-            int index = 0;
-            foreach (Module.Module module in ModuleManager.Modules.Values)
+	        UI.Arraylist.ArrayList();
+	        
+            foreach (var module in ModuleManager.Modules)
             {
-                // Draw module info
-                GUI.Label(new Rect(5, 5 + index * 20, 1000, 20),
-                    $"{module.Name} ({module.Key}) : " + (module.Enabled ? "Enabled" : "Disabled"));
-
-                if (module.Enabled)
-                    module.OnGUI();
-                index++;
+	            if (module.Enabled)
+		            module.OnGUI();
             }
         }
     }

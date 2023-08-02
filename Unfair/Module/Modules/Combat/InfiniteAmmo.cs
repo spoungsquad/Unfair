@@ -13,7 +13,6 @@ namespace Unfair.Module.Modules.Combat
         public override void OnUpdate()
         {
             PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.SetCurrentMagazineAmount(10000);
-            PlayerBuildingManager.IsUnchangeableBuildings = false; 
         }
     }
 }

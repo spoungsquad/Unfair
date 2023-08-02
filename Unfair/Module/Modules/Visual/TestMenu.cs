@@ -10,11 +10,7 @@ namespace Unfair.Module.Modules.Visual
 		
 		public TestMenu() : base("TestMenu", "TestMenu", Category.Visuals, KeyCode.Insert)
 		{
-			_menu = new Menu
-			{
-				Camera = Camera.main,
-				Enabled = false
-			};
+			_menu = new Menu { Enabled = false };
 
 			var text = _menu.AddComponent<Text>();
 			text.text = "HELLO CAN YOU SEE THIS";
@@ -25,7 +21,6 @@ namespace Unfair.Module.Modules.Visual
 
 		public override void OnEnable() => _menu.Enabled = true;
 		public override void OnDisable() => _menu.Enabled = false;
-		public override void OnUpdate() => _menu.Camera = Camera.current;
 
 		public override void OnGUI()
 		{

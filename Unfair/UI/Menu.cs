@@ -17,12 +17,6 @@ namespace Unfair.UI
 			get => _gameObject.activeSelf;
 			set => _gameObject.SetActive(value);
 		}
-
-		public Camera Camera
-		{
-			get => _canvas.worldCamera;
-			set => _canvas.worldCamera = value;
-		}
 		
 		public Menu()
 		{
@@ -35,8 +29,7 @@ namespace Unfair.UI
 			_gameObject.AddComponent<GraphicRaycaster>();
 			
 			// using ScreenSpaceCamera here for LineRenderer
-			_canvas.renderMode = RenderMode.ScreenSpaceCamera;
-			_canvas.worldCamera = Camera.main;
+			_canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
 			_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 			_canvasScaler.referenceResolution = new Vector2(1920, 1080);

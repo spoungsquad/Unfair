@@ -1,4 +1,5 @@
 ﻿using Unfair.UI;
+using Unfair.Util;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ namespace Unfair.Module.Modules.Visual
 			text.font = GUIStyle.none.font;
 			text.fontSize = 72;
 			text.color = Color.red;
+			text.rectTransform.anchoredPosition = new Vector2(0, 0);
 		}
 
 		public override void OnEnable() => _menu.Enabled = true;
@@ -25,6 +27,8 @@ namespace Unfair.Module.Modules.Visual
 		public override void OnGUI()
 		{
 			_menu.DebugRender();
+			
+			Render.DrawBox(0, 0, 150, 500, new Color(0, 255, 0, 0.5f));
 		}
 	}
 }

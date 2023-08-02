@@ -1,6 +1,6 @@
 ﻿using Unfair.UI;
-using Unfair.UI.Components;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Unfair.Module.Modules.Visual
 {
@@ -12,21 +12,13 @@ namespace Unfair.Module.Modules.Visual
 		{
 			_menu = new Menu();
 
-			var panel = _menu.Add<Panel>();
-			panel.color = new Color(0, 0, 0, 0.5f);
-			panel.rectTransform.sizeDelta = new Vector2(200, 200);
-			panel.rectTransform.anchoredPosition = new Vector2(100, 100);
-			panel.outlineColor = Color.white;
-			panel.outlineThickness = 5;
-			
-			var line = _menu.Add<Line>();
-			line.color = Color.white;
-			line.start = new Vector2(100, 100);
-			line.end = new Vector2(300, 300);
+			var text = _menu.AddComponent<Text>();
+			text.text = "test";
+			text.color = Color.red;
 		}
 
-		public override void OnEnable() => _menu.Toggle();
-		public override void OnDisable() => _menu.Toggle();
+		public override void OnEnable() => _menu.Enabled = true;
+		public override void OnDisable() => _menu.Enabled = false;
 
 		public override void OnGUI()
 		{

@@ -822,8 +822,6 @@
         <Compile Include="Module\Modules\Visual\ItemESP.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UI\Arraylist.cs" />
-        <Compile Include="UI\Components\Line.cs" />
-        <Compile Include="UI\Components\Panel.cs" />
         <Compile Include="UI\Menu.cs" />
         <Compile Include="UI\ColorUtils.cs" />
         <Compile Include="Util\DebugConsole.cs" />

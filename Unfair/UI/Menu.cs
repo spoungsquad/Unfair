@@ -6,24 +6,17 @@ namespace Unfair.UI
 {
 	public class Menu
 	{
-		public class MenuComponent : Graphic
-		{
-			public T Add<T>() where T : MenuComponent
-			{
-				var obj = new GameObject();
-				obj.AddComponent<T>();
-				obj.transform.SetParent(transform);
-				
-				return obj.GetComponent<T>();
-			}
-		}
-		
 		private GameObject _gameObject;
 		
 		// components
 		private Canvas _canvas;
 		private CanvasScaler _canvasScaler;
-		private GraphicRaycaster _graphicRaycaster;
+
+		public bool Enabled
+		{
+			get => _gameObject.activeSelf;
+			set => _gameObject.SetActive(value);
+		}
 		
 		public Menu()
 		{
@@ -33,47 +26,34 @@ namespace Unfair.UI
 			// add components
 			_canvas = _gameObject.AddComponent<Canvas>(); // will also create a RectTransform
 			_canvasScaler = _gameObject.AddComponent<CanvasScaler>();
-			_graphicRaycaster = _gameObject.AddComponent<GraphicRaycaster>();
+			_gameObject.AddComponent<GraphicRaycaster>();
 			
-			// config stuff
-			_canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+			// using ScreenSpaceCamera here for LineRenderer
+			_canvas.renderMode = RenderMode.ScreenSpaceCamera;
+			_canvas.worldCamera = Camera.main;
+
 			_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-			
-			Toggle(); // hidden by default
+			_canvasScaler.referenceResolution = new Vector2(1280, 720);
+			_canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
 		}
-		
-		// add a component to the menu
-		public T Add<T>() where T : MenuComponent
+
+		public T AddComponent<T>() where T : Component
 		{
 			var obj = new GameObject();
-			obj.AddComponent<T>();
 			obj.transform.SetParent(_gameObject.transform);
-			
-			return obj.GetComponent<T>();
-		}
-		
-		// maybe you wanna add a regular component to the menu
-		public T Add<T>(T component) where T : Component
-		{
-			component.transform.SetParent(_gameObject.transform);
-			return component;
-		}
-		
-		public void Toggle()
-		{
-			_gameObject.SetActive(!_gameObject.activeSelf);
+			return obj.AddComponent<T>();
 		}
 
 		public void DebugRender()
 		{
-			Render.DrawString(new Vector2(0, 300), $"Menu active: {_gameObject.activeSelf}");
+			Render.DrawString(new Vector2(50, 300), $"Menu active: {Enabled}");
 			
 			if (!_gameObject.activeSelf) return;
 			
-			Render.DrawString(new Vector2(0, 320), $"Menu position: {_gameObject.transform.position}");
-			Render.DrawString(new Vector2(0, 340), $"Menu scale: {_gameObject.transform.localScale}");
-			Render.DrawString(new Vector2(0, 360), $"Canvas size: {_canvas.pixelRect.size}");
-			Render.DrawString(new Vector2(0, 380), $"Component count: {_gameObject.transform.childCount}");
+			Render.DrawString(new Vector2(50, 320), $"Menu position: {_gameObject.transform.position}");
+			Render.DrawString(new Vector2(50, 340), $"Menu scale: {_gameObject.transform.localScale}");
+			Render.DrawString(new Vector2(50, 360), $"Canvas size: {_canvas.pixelRect.size}");
+			Render.DrawString(new Vector2(50, 380), $"Component count: {_gameObject.transform.childCount}");
 		}
 	}
 }

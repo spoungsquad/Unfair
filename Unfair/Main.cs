@@ -21,24 +21,21 @@ namespace Unfair
 
         private void Update()
         {
-	        Task.Factory.StartNew(() =>
+	        foreach (Module.Module module in ModuleManager.Modules)
 	        {
-		        foreach (Module.Module module in ModuleManager.Modules)
+		        try
 		        {
-			        try
-			        {
-				        if (Input.GetKeyDown(module.Key))
-					        module.Toggle();
+			        if (Input.GetKeyDown(module.Key))
+				        module.Toggle();
 
-				        if (module.Enabled)
-					        module.OnUpdate();
-			        }
-			        catch (Exception e)
-			        {
-				        // we can't do anything about this until we have debugging
-			        }
+			        if (module.Enabled)
+				        module.OnUpdate();
 		        }
-	        });
+		        catch (Exception e)
+		        {
+			        // we can't do anything about this until we have debugging
+		        }
+	        }
         }
 
         private void OnGUI()

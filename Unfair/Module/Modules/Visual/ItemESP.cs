@@ -30,21 +30,21 @@ namespace Unfair.Module.Modules.Visual
                 
                 string name = item.name;
 
-                switch (item.KFALIJDJALB)
+                switch (item.GIJLLCDFMHL)
                 {
-                    case KICLMFPGIAI.BuildingAmmo:
+                    case CGKHFFFEOPG.BuildingAmmo:
                         color = Color.green;
                         name = "Mats";
                         break;
-                    case KICLMFPGIAI.WeaponAmmo:
+                    case CGKHFFFEOPG.WeaponAmmo:
                         color = Color.yellow;
                         name = "Ammo";
                         break;
-                    case KICLMFPGIAI.WeaponDrop:
+                    case CGKHFFFEOPG.WeaponDrop:
                         color = Color.blue;
                         name = "Weapon";
                         break;
-                    case KICLMFPGIAI.WeaponLevelBooster:
+                    case CGKHFFFEOPG.WeaponLevelBooster:
                         color = Color.magenta;
                         name = "Weapon Level Booster";
                         break;

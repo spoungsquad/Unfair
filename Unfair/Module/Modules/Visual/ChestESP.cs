@@ -21,7 +21,7 @@ namespace Unfair.Module.Modules.Visual
                 var position = crate.transform.position;
                 
                 // Get the item's screen position
-                var pos = Camera.main.WorldToScreenPoint(position);
+                var pos = GameData.MainCamera.WorldToScreenPoint(position);
                 
                 if (pos.z < 0) continue;
                 GUI.color = Color.yellow;

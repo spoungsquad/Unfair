@@ -24,7 +24,7 @@ namespace Unfair.Module.Modules.Player
                 players.Remove(GameData.LocalPlayer);
             
                 PlayerController player = players.FirstOrDefault();
-                Camera camera = Camera.main;
+                Camera camera = GameData.MainCamera;
                 
                 // Get animator
                 Animator animator = player.GetComponent<Animator>();

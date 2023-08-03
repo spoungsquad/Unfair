@@ -1,4 +1,4 @@
-using System;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Combat
@@ -12,10 +12,10 @@ namespace Unfair.Module.Modules.Combat
 
         public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.SetCurrentMagazineAmount(10000);
+            GameData.CurrentWeapon.SetCurrentMagazineAmount(10000);
             
             // Get building manager
-            PlayerController.LHFJFKJJKCG.PlayerBuildingManager.AddBuildingAmmo(10000);
+            GameData.LocalPlayer.PlayerBuildingManager.AddBuildingAmmo(10000);
             
             
         }

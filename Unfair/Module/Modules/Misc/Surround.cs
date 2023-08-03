@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
-using System.Threading;
-using Unity.Mathematics;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Misc
@@ -21,9 +20,9 @@ namespace Unfair.Module.Modules.Misc
 
             if (Math.Abs(_lastTime - currentMs) < ms) return;
 
-            var players = Main.PlayerControllers.OrderBy(x =>
-                Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
-            players.Remove(PlayerController.LHFJFKJJKCG);
+            var players = GameData.PlayerControllers.OrderBy(x =>
+                Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
+            players.Remove(GameData.LocalPlayer);
             var player = players.FirstOrDefault();
             
             Transform transform = player.transform;
@@ -34,25 +33,25 @@ namespace Unfair.Module.Modules.Misc
             var forward = transform.forward;
             var right = transform.right;
             
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Floor, pos - new Vector3(0, 0.5f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Floor, pos - new Vector3(0, 0.5f, 0),
                 rotation);
 
-            // BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Roof, pos + new Vector3(0, 0.5f, 0),
+            // GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Roof, pos + new Vector3(0, 0.5f, 0),
             //     rotation);
             
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Floor, pos + new Vector3(0, 1.7f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Floor, pos + new Vector3(0, 1.7f, 0),
                 rotation);
 
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Wall, pos + forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Wall, pos + forward * 2,
                 rotation);
 
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Wall, pos - forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Wall, pos - forward * 2,
                 rotation);
 
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Wall, pos + right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Wall, pos + right * 2,
                 rotation * Quaternion.Euler(0, 90, 0));
 
-            BuildingNetworkController.Instance.CreateBuilding(LGCCJMPPPPP.Wall, pos - right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Wall, pos - right * 2,
                 rotation * Quaternion.Euler(0, -90, 0));
 
 

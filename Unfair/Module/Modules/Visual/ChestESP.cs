@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Visual
@@ -9,15 +10,12 @@ namespace Unfair.Module.Modules.Visual
         {
             Enabled = true;
         }
-
         
-
         // Called every frame
         public override void OnGUI()
         {
-            
             // Loop through all items
-            foreach (var crate in Main.Crates)
+            foreach (var crate in GameData.Crates)
             {
                 // Get the item's position
                 var position = crate.transform.position;

@@ -1,6 +1,7 @@
 using System;
 using JustPlay.Localization;
 using Unfair.Module;
+using Unfair.Util;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -13,21 +14,13 @@ namespace Unfair
             //DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
 
-            UiManager.PFGFOGOILPA.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""),
+            GameData.UIManager.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""),
                 "Unfair loaded!"));
         }
 
-	    public static PlayerController[] PlayerControllers;
-	    public static Pickupable[] Pickupables;
-	    public static SupplyCrate[] Crates;
-	    
         private void Update()
         {
-	        PlayerControllers = FindObjectsOfType<PlayerController>();
-	        Pickupables = FindObjectsOfType<Pickupable>();
-	        Crates = FindObjectsOfType<SupplyCrate>();
-	        
-	        foreach (Module.Module module in ModuleManager.Modules)
+            foreach (Module.Module module in ModuleManager.Modules)
 	        {
 		        try
 		        {

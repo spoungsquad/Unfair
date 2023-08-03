@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Movement
@@ -11,12 +12,12 @@ namespace Unfair.Module.Modules.Movement
         
         public override void OnEnable()
         {
-            PlayerController.LHFJFKJJKCG.SetGodMode(true);
+            GameData.LocalPlayer.SetGodMode(true);
         }
         
         public override void OnDisable()
         {
-            PlayerController.LHFJFKJJKCG.SetGodMode(false);
+            GameData.LocalPlayer.SetGodMode(false);
         }
     }
 }

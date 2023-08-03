@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Misc
@@ -27,15 +28,15 @@ namespace Unfair.Module.Modules.Misc
         // Called when the module gets enabled
         public override void OnEnable()
         {
-            FirebaseManager.Instance.PEHEGEECHOL.Nickname = RandomString(10);
-            UiManager.PFGFOGOILPA.UpdateProfileInfo();
+            GameData.LocalProfile.Nickname = RandomString(10);
+            GameData.UIManager.UpdateProfileInfo();
         }
         
         // Called when the module gets disabled
         public override void OnDisable()
         {
-            FirebaseManager.Instance.PEHEGEECHOL.Nickname = name;
-            UiManager.PFGFOGOILPA.UpdateProfileInfo();
+            GameData.LocalProfile.Nickname = name;
+            GameData.UIManager.UpdateProfileInfo();
         }
     }
 }

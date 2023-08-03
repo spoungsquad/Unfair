@@ -14,25 +14,25 @@ namespace Unfair.Module.Modules.Misc
         
         public override void OnUpdate()
         {
-            FPGPJAODPFL.LLMMGEMHPOA.IsBuildingAmmoUnlimited = true;
-            if (PlayerController.LHFJFKJJKCG.PlayerBuildingManager.BuildingAmmo < 1000)
+            GameData.CurrentGameMode.IsBuildingAmmoUnlimited = true;
+            if (GameData.LocalPlayer.PlayerBuildingManager.BuildingAmmo < 1000)
             {
-                PlayerController.LHFJFKJJKCG.PlayerBuildingManager.BuildingAmmo = 1000;
+                GameData.LocalPlayer.PlayerBuildingManager.BuildingAmmo = 1000;
             }
-            if (PlayerController.LHFJFKJJKCG.PlayerBuildingManager.buildingManager.GetField<int>("OEOFDKOPCMN") < 1000)
+            if (GameData.LocalPlayer.PlayerBuildingManager.buildingManager.GetField<int>("OEOFDKOPCMN") < 1000)
             {
-                PlayerController.LHFJFKJJKCG.PlayerBuildingManager.buildingManager.SetField("OEOFDKOPCMN", 1000);
+                GameData.LocalPlayer.PlayerBuildingManager.buildingManager.SetField("OEOFDKOPCMN", 1000);
             }
         }
         
         public override void OnEnable()
         {
-            _prev = FPGPJAODPFL.LLMMGEMHPOA.IsBuildingAmmoUnlimited;
+            _prev = GameData.CurrentGameMode.IsBuildingAmmoUnlimited;
         }
         
         public override void OnDisable()
         {
-            FPGPJAODPFL.LLMMGEMHPOA.IsBuildingAmmoUnlimited = _prev;
+            GameData.CurrentGameMode.IsBuildingAmmoUnlimited = _prev;
         }
         
     }

@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Movement
@@ -10,9 +11,14 @@ namespace Unfair.Module.Modules.Movement
 
         public override void OnEnable()
         {
-            PlayerController.LHFJFKJJKCG.gameObject.transform.position = new Vector3(PlayerController.LHFJFKJJKCG.transform.position.x, PlayerController.LHFJFKJJKCG.transform.position.y - 5, PlayerController.LHFJFKJJKCG.transform.position.z);
-            this.Enabled = false;
-            OnDisable();
+            GameData.LocalPlayer.gameObject.transform.position = new Vector3(GameData.LocalPlayer.transform.position.x,
+                GameData.LocalPlayer.transform.position.y - 5, GameData.LocalPlayer.transform.position.z);
+            
+            // why
+            // this.Enabled = false;
+            // OnDisable();
+            
+            Toggle();
         }
     }
 }

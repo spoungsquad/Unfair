@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Combat
@@ -10,7 +11,7 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.Fire();
+            GameData.CurrentWeapon.Fire();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Unfair.Module.Modules.Visual
         public override void OnGUI()
         {
             // Loop through all playerControllers
-            foreach (PlayerController player in Main.PlayerControllers)
+            foreach (PlayerController player in GameData.PlayerControllers)
             {
                 if (player.IsMine())
                     continue;
@@ -33,7 +33,6 @@ namespace Unfair.Module.Modules.Visual
                 
                 // Get name 
                 string name = player.photonView.Controller.NickName;
-
                 
                 // Get screen distance from head to feet
                 var yDistance = Vector3.Distance(headPos, feetPos);

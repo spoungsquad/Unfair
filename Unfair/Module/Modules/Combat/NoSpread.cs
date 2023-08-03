@@ -1,8 +1,4 @@
-using System;
-using JustPlay.Equipment;
-using Unfair.Util;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Unfair.Module.Modules.Combat
 {
@@ -13,7 +9,7 @@ namespace Unfair.Module.Modules.Combat
             Enabled = true;
         }
 
-        public override unsafe void OnGUI()
+        public override void OnGUI()
         {
         }
     }

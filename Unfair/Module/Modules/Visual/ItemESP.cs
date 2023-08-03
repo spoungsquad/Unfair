@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Visual
@@ -14,7 +15,7 @@ namespace Unfair.Module.Modules.Visual
         public override void OnGUI()
         {
             // Loop through all items
-            foreach (Pickupable item in Main.Pickupables)
+            foreach (Pickupable item in GameData.Pickupables)
             {
                 // Get the item's position
                 Vector3 position = item.transform.position;
@@ -25,7 +26,7 @@ namespace Unfair.Module.Modules.Visual
                 if (pos.z < 0) continue;
                 Color color = Color.white;
 
-                //item.PickUp(PlayerController.LHFJFKJJKCG, Pickupable.KDKHDANBCMA.Manual);
+                //item.PickUp(GameData.LocalPlayer, Pickupable.KDKHDANBCMA.Manual);
                 
                 string name = item.name;
 

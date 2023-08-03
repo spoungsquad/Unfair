@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Player
@@ -15,12 +11,12 @@ namespace Unfair.Module.Modules.Player
 
         public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetPlayerImmunity(true);
+            GameData.LocalPlayerHealth.SetPlayerImmunity(true);
         }
 
         public override void OnDisable()
         {
-            PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetPlayerImmunity(false);
+            GameData.LocalPlayerHealth.SetPlayerImmunity(false);
         }
     }
 }

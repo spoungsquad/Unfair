@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Combat
@@ -11,7 +12,7 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.NLJCMEMPBLA.GBNMBOFAHAA.CFIBMJEFJFA.Stats.Range = 1000000;
+            GameData.CurrentWeaponData.Stats.Range = 1000000;
         }
     }
 }

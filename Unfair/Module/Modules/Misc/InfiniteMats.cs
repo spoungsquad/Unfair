@@ -19,9 +19,9 @@ namespace Unfair.Module.Modules.Misc
             {
                 GameData.LocalPlayer.PlayerBuildingManager.BuildingAmmo = 1000;
             }
-            if (GameData.LocalPlayer.PlayerBuildingManager.buildingManager.GetField<int>("OEOFDKOPCMN") < 1000)
+            if (GameData.LocalPlayer.PlayerBuildingManager.buildingManager.GetField<int>("PJELDKBINAK") < 1000)
             {
-                GameData.LocalPlayer.PlayerBuildingManager.buildingManager.SetField("OEOFDKOPCMN", 1000);
+                GameData.LocalPlayer.PlayerBuildingManager.buildingManager.SetField("PJELDKBINAK", 1000);
             }
         }
         

@@ -21,7 +21,7 @@ namespace Unfair.Module.Modules.Misc
             GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + GameData.BuildingIDs.Length);
             foreach (string buildingID in GameData.BuildingIDs)
             {
-                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, Building>>("FBCJOFJMLJA")[buildingID].Health, true);
+                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, Building>>("MHBIEHNOAEK")[buildingID].Health, true);
             }
         }
     }

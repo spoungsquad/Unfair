@@ -10,13 +10,17 @@ namespace Unfair.Module.Modules.Player
 		
 		public AntiKick() : base("AntiKick", "Prevents you from being kicked", Category.Player, KeyCode.F13)
 		{
-			Enabled = true;
+			Toggle();
+		}
+
+		public override void OnUpdate()
+		{
+			PhotonNetwork.LocalPlayer.SetProp("UserId", "Unfair");
 		}
 
 		public override void OnEnable()
 		{
 			_oldUserId = PhotonNetwork.LocalPlayer.UserId;
-			PhotonNetwork.LocalPlayer.SetProp("UserId", "Unfair");
 		}
 
 		public override void OnDisable()

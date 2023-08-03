@@ -23,11 +23,12 @@ namespace Unfair.Util
 		public static BuildingNetworkController BuildingNetworkController => BuildingNetworkController.Instance;
 		public static Building[] Buildings => Object.FindObjectsOfType<Building>();
 		public static string[] BuildingIDs => BuildingNetworkController
-			.GetField<Dictionary<string, Building>>("FBCJOFJMLJA").Keys.ToArray();
+			.GetField<Dictionary<string, Building>>("MHBIEHNOAEK").Keys.ToArray();
 		
 		// misc i guess
 		public static ModeInfo CurrentGameMode => DKEJFHJHCJN.CMIPDLBPIFK;
 		public static ServerUser LocalProfile => FirebaseManager.Instance.JLPGEKNJLMG;
 		public static UiManager UIManager => UiManager.IPAJKCLGNJF;
+		public static Camera MainCamera => CameraManager.IPAJKCLGNJF.MainCamera;
 	}
 }

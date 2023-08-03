@@ -36,7 +36,7 @@ namespace Unfair.Module.Modules.Misc
             GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Floor, pos - new Vector3(0, 0.5f, 0),
                 rotation);
 
-            // GameData.BuildingNetworkController.CreateBuilding(LGCCJMPPPPP.Roof, pos + new Vector3(0, 0.5f, 0),
+            // GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Roof, pos + new Vector3(0, 0.5f, 0),
             //     rotation);
             
             GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Floor, pos + new Vector3(0, 1.7f, 0),

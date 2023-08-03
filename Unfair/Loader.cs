@@ -11,7 +11,6 @@ namespace Unfair
             _gameObject = new GameObject();
             _gameObject.AddComponent<Main>();
             Object.DontDestroyOnLoad(_gameObject);
-            
         }
 
         public static void Unload()

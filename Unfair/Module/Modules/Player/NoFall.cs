@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Player
@@ -11,12 +12,12 @@ namespace Unfair.Module.Modules.Player
         
         public override void OnUpdate()
         {
-            PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetFallDamageEnabled(true);
+            GameData.LocalPlayerHealth.SetFallDamageEnabled(true);
         }
         
         public override void OnDisable()
         {
-            PlayerController.LHFJFKJJKCG.JDHLKGBHMAD.SetFallDamageEnabled(false);
+            GameData.LocalPlayerHealth.SetFallDamageEnabled(false);
         }
     }
 }

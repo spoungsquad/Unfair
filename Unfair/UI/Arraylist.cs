@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Unfair.Module;
-using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.UI
@@ -15,7 +12,7 @@ namespace Unfair.UI
         };
         public static void ArrayList()
         {
-            Module.Module[] modules = ModuleManager.Modules.Values.OrderByDescending(module => GetTextWidth(module.Name)
+            Module.Module[] modules = ModuleManager.Modules.OrderByDescending(module => GetTextWidth(module.Name)
             ).ToArray();
 
             for (int i = 0; i < modules.Length; i++)

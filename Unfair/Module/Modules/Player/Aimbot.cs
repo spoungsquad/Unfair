@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Player
@@ -18,9 +19,9 @@ namespace Unfair.Module.Modules.Player
             {
                 
                 // Sort players by distance
-                List<PlayerController> players = Main.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
+                List<PlayerController> players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
 
-                players.Remove(PlayerController.LHFJFKJJKCG);
+                players.Remove(GameData.LocalPlayer);
             
                 PlayerController player = players.FirstOrDefault();
                 Camera camera = Camera.main;

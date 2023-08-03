@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unfair.Util;
+using UnityEngine;
 
 namespace Unfair.Module.Modules.Misc
 {
@@ -11,16 +12,15 @@ namespace Unfair.Module.Modules.Misc
         public override void OnGUI()
         {
             GUI.Label(new Rect(50, 500, 1000, 20), "hello hi");
-            Building[] buildings = Object.FindObjectsOfType<Building>();
-            if (buildings.Length == 0)
+            if (GameData.Buildings.Length == 0)
             {
                 GUI.Label(new Rect(50, 400, 1000, 20), "No buildings found");
             }
             else
             {
-                GUI.Label(new Rect(50, 400, 1000, 20), "buildings found " + buildings.Length);
+                GUI.Label(new Rect(50, 400, 1000, 20), "buildings found " + GameData.Buildings.Length);
             }
-            foreach (Building building in buildings)
+            foreach (Building building in GameData.Buildings)
             {
                 building.OnDestroyReceived();
             }

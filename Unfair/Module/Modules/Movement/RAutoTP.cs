@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using Unfair.Util;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace Unfair.Module.Modules.Movement
 {
@@ -24,8 +21,8 @@ namespace Unfair.Module.Modules.Movement
             
             if (Math.Abs(_lastTime - currentMs) < tpms) return;
             // Stolen from falash aimbote
-            var players = Main.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, PlayerController.LHFJFKJJKCG.transform.position)).ToList();
-            players.Remove(PlayerController.LHFJFKJJKCG);
+            var players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
+            players.Remove(GameData.LocalPlayer);
             if (players.Count == 0)
                 return;
             if (players.Count < _currentTargetIndex)
@@ -42,7 +39,7 @@ namespace Unfair.Module.Modules.Movement
                 target.enabled = true;
             }).Start();
             
-            Vector3 pos = PlayerController.LHFJFKJJKCG.transform.position;
+            Vector3 pos = GameData.LocalPlayer.transform.position;
             pos += camera.transform.forward * 3;
             pos += camera.transform.right * 1f;
                 

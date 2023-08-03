@@ -7,7 +7,7 @@ namespace Unfair.Module
 {
     public class ModuleManager
     {
-        public static Dictionary<string, Module> Modules = new Dictionary<string, Module>();
+        public static List<Module> Modules = new List<Module>();
         
         public static void Init()
         {
@@ -15,7 +15,7 @@ namespace Unfair.Module
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsSubclassOf(typeof(Module))).OrderBy(x => x.Name))
             {
                 Module m = (Module)Activator.CreateInstance(type);
-                Modules.Add(m.Name, m);
+                Modules.Add(m);
             }
         }
     }

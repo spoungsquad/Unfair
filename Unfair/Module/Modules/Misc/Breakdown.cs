@@ -17,12 +17,11 @@ namespace Unfair.Module.Modules.Misc
             if (times++ % 20 != 0) return;
             times = 0;
             
-            string[] builstrings = BuildingNetworkController.Instance.GetField<Dictionary<string, Building>>("FBCJOFJMLJA").Keys.ToArray();
             GUI.Label(new Rect(50, 800, 1000, 20), "hello hi");
-            GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + builstrings.Length);
-            foreach (string builstring in builstrings)
+            GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + GameData.BuildingIDs.Length);
+            foreach (string buildingID in GameData.BuildingIDs)
             {
-                BuildingNetworkController.Instance.HitBuilding(builstring, BuildingNetworkController.Instance.GetField<Dictionary<string, Building>>("FBCJOFJMLJA")[builstring].Health, true);
+                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, Building>>("FBCJOFJMLJA")[buildingID].Health, true);
             }
         }
     }

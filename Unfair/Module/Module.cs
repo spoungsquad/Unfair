@@ -1,6 +1,4 @@
-using JustPlay.Localization;
 using UnityEngine;
-using UnityEngine.Localization;
 
 namespace Unfair.Module
 {

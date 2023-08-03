@@ -13,14 +13,9 @@ namespace Unfair.Module.Modules.Movement
         
         public override void OnUpdate()
         {
-            
-            vThirdPersonController thirdPersonController =
-                PrivateAccess.GetField<vThirdPersonController>(PlayerController.LHFJFKJJKCG, "_thirdPersonController");
-
-            
-            thirdPersonController.isGrounded = true;
-            thirdPersonController.isJumping = false;
-            thirdPersonController.IsCrawling = false;
+            GameData.ThirdPersonController.isGrounded = true;
+            GameData.ThirdPersonController.isJumping = false;
+            GameData.ThirdPersonController.IsCrawling = false;
         }
     }
 }

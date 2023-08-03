@@ -821,6 +821,7 @@
         <Compile Include="Module\Modules\Movement\Spinbot.cs" />
         <Compile Include="Module\Modules\Movement\VClip.cs" />
         <Compile Include="Module\Modules\Player\Aimbot.cs" />
+        <Compile Include="Module\Modules\Player\AntiKick.cs" />
         <Compile Include="Module\Modules\Player\GodMode.cs" />
         <Compile Include="Module\Modules\Player\NoFall.cs" />
         <Compile Include="Module\Modules\Visual\ChestESP.cs" />

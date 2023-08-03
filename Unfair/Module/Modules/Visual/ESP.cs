@@ -1,3 +1,5 @@
+using System;
+using Invector.CharacterController;
 using Unfair.Util;
 using UnityEngine;
 
@@ -5,6 +7,8 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
+        private PlayerController[] _players = Array.Empty<PlayerController>();
+        private int _count;
         // Constructor
         public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.F6)
         {
@@ -13,20 +17,25 @@ namespace Unfair.Module.Modules.Visual
 
         public override void OnGUI()
         {
+            if (_count++ % 60 == 0)
+            {
+                _players = GameData.PlayerControllers;
+                _count = 0;
+            }
             // Loop through all playerControllers
-            foreach (PlayerController player in GameData.PlayerControllers)
+            foreach (PlayerController player in _players)
             {
                 if (player.IsMine())
                     continue;
-                Animator animator = player.GetComponent<Animator>();
+                Animator animator = player.GetField<vThirdPersonController>("_thirdPersonController").animator; //player.GetComponent<Animator>();
 
-                Transform head = animator.GetBoneTransform(HumanBodyBones.Head);
+                Vector3 pos = animator.GetBoneTransform(HumanBodyBones.Head).transform.position;
 
-                Vector3 headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
-                Vector3 feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));
+                Vector3 headPos = GameData.MainCamera.WorldToScreenPoint(pos + new Vector3(0, 0.25f, 0));
+                Vector3 feetPos = GameData.MainCamera.WorldToScreenPoint(pos - new Vector3(0, 1.5f, 0));
                 
                 if (headPos.z < 0) continue;
-                if (feetPos.z < 0) continue; 
+                if (feetPos.z < 0) continue;
                 Color color = Color.red;
 
                 GUI.color = color;

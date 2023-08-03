@@ -43,7 +43,6 @@ namespace Unfair.Module
         {
             try
             {
-                
                 Enabled = !Enabled;
                 if (Enabled)
                     OnEnable();
@@ -52,9 +51,8 @@ namespace Unfair.Module
             }
             catch (System.Exception e)
             {
-                Debug.Log(e);
+                // ignored
             }
-            
         }
     }
 }

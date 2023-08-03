@@ -31,7 +31,7 @@ namespace Unfair.Module.Modules.Movement
                 _currentTargetIndex++;
             var target = players[_currentTargetIndex];
         
-            var camera = Camera.main;
+            var camera = GameData.MainCamera;
             new Thread(() =>
             {
                 target.enabled = false;

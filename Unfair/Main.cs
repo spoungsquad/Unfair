@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using JustPlay.Localization;
 using Unfair.Module;
 using Unfair.Util;
@@ -20,24 +21,24 @@ namespace Unfair
 
         private void Update()
         {
-            foreach (Module.Module module in ModuleManager.Modules)
+	        Task.Factory.StartNew(() =>
 	        {
-		        try
+		        foreach (Module.Module module in ModuleManager.Modules)
 		        {
-			        
-			        if (Input.GetKeyDown(module.Key))
+			        try
 			        {
-				        module.Toggle();
+				        if (Input.GetKeyDown(module.Key))
+					        module.Toggle();
+
+				        if (module.Enabled)
+					        module.OnUpdate();
 			        }
-		        
-			        if (module.Enabled)
-				        module.OnUpdate();
+			        catch (Exception e)
+			        {
+				        // we can't do anything about this until we have debugging
+			        }
 		        }
-		        catch (Exception e)
-		        {
-			        Debug.Log(e);
-		        }
-	        }
+	        });
         }
 
         private void OnGUI()

@@ -29,5 +29,7 @@ namespace Unfair.Util
 		public static ModeInfo CurrentGameMode => FPGPJAODPFL.LLMMGEMHPOA;
 		public static ServerUser LocalProfile => FirebaseManager.Instance.PEHEGEECHOL;
 		public static UiManager UIManager => UiManager.PFGFOGOILPA;
+		
+		public static Camera MainCamera => CameraManager.PFGFOGOILPA.MainCamera;
 	}
 }

@@ -1,11 +1,11 @@
 using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class InfiniteMats : Module
     {
-        public InfiniteMats() : base("InfiniteMats", "r u dumb mate", Category.Misc, KeyCode.Minus)
+        public InfiniteMats() : base("InfiniteMats", "r u dumb mate", Category.Building, KeyCode.Minus)
         {
             Enabled = false;
         }

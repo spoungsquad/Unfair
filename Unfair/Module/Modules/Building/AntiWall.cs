@@ -1,11 +1,11 @@
 ﻿using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class AntiWall : Module
     {
-        public AntiWall() : base("Anti-wall", "Removes walls lol", Category.Misc, KeyCode.Semicolon)
+        public AntiWall() : base("AntiWall", "Removes all walls", Category.Building, KeyCode.Semicolon)
         {
         }
         
@@ -20,7 +20,7 @@ namespace Unfair.Module.Modules.Misc
             {
                 GUI.Label(new Rect(50, 400, 1000, 20), "buildings found " + GameData.Buildings.Length);
             }
-            foreach (Building building in GameData.Buildings)
+            foreach (global::Building building in GameData.Buildings)
             {
                 building.OnDestroyReceived();
             }

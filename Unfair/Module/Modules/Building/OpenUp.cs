@@ -1,11 +1,11 @@
 ﻿using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class OpenUp : Module
     {
-        public OpenUp() : base("OpenUp", "Opens all the chests", Category.Misc, KeyCode.Quote)
+        public OpenUp() : base("OpenUp", "Opens all the chests", Category.Building, KeyCode.Quote)
         {
         }
         

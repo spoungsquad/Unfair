@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class Instabreak : Module
     {
-        public Instabreak() : base("Instabreak", "Breaks player built buildings instantly", Category.Misc, KeyCode.L)
+        public Instabreak() : base("Instabreak", "Breaks player built buildings instantly", Category.Building, KeyCode.L)
         {
             Enabled = true;
         }

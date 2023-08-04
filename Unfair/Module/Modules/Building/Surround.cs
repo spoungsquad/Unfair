@@ -3,11 +3,11 @@ using System.Linq;
 using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class Surround : Module
     {
-        public Surround() : base("Surround", "Surrounds other players with builds and boxes them in", Category.Misc, KeyCode.J)
+        public Surround() : base("Surround", "Surrounds other players with builds and boxes them in", Category.Building, KeyCode.J)
         {
         }
 

@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Misc
+namespace Unfair.Module.Modules.Building
 {
     public class Breakdown : Module
     {
-        public Breakdown() : base("Breakdown", "Breaks everything down as fast as it can", Category.Misc, KeyCode.F10)
+        public Breakdown() : base("Breakdown", "Breaks everything down as fast as it can", Category.Building, KeyCode.F10)
         {
         }
         
@@ -21,7 +20,7 @@ namespace Unfair.Module.Modules.Misc
             GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + GameData.BuildingIDs.Length);
             foreach (string buildingID in GameData.BuildingIDs)
             {
-                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, Building>>("MHBIEHNOAEK")[buildingID].Health, true);
+                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, global::Building>>("MHBIEHNOAEK")[buildingID].Health, true);
             }
         }
     }

@@ -8,6 +8,7 @@ namespace Unfair.Module
         Movement,
         Combat,
         Visuals,
+        Building,
         Misc
     }
     

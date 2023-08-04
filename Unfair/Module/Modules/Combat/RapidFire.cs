@@ -11,6 +11,8 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer == null || GameData.CurrentWeapon == null) return;
+
             GameData.CurrentWeapon.Fire();
         }
     }

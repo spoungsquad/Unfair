@@ -12,6 +12,8 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer == null || GameData.CurrentWeapon == null) return;
+
             // Doesn't work?
             GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilForce = 0;
             GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilDuration = 0;

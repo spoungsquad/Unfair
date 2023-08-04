@@ -7,13 +7,15 @@ namespace Unfair.Module.Modules.Misc
     {
         public InfiniteMats() : base("InfiniteMats", "r u dumb mate", Category.Misc, KeyCode.Minus)
         {
-            Enabled = true;
+            Enabled = false;
         }
 
         private bool _prev;
         
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer == null) return;
+
             GameData.CurrentGameMode.IsBuildingAmmoUnlimited = true;
             if (GameData.LocalPlayer.PlayerBuildingManager.BuildingAmmo < 1000)
             {

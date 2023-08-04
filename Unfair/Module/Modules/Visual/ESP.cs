@@ -6,7 +6,7 @@ namespace Unfair.Module.Modules.Visual
     public class ESP : Module
     {
         // Constructor
-        public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.F6)
+        public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
         {
             Enabled = true;
         }

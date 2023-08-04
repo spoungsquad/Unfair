@@ -14,6 +14,10 @@ namespace Unfair.Module
             // I stole this straight from Prax
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsSubclassOf(typeof(Module))).OrderBy(x => x.Name))
             {
+                // Check for the DebugOnly attribute
+                #if !DEBUG
+                if (type.GetCustomAttribute<Attributes.DebugOnlyAttribute>() != null)continue;
+                #endif    
                 Module m = (Module)Activator.CreateInstance(type);
                 Modules.Add(m);
             }

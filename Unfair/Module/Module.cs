@@ -41,18 +41,11 @@ namespace Unfair.Module
 
         public void Toggle()
         {
-            try
-            {
-                Enabled = !Enabled;
-                if (Enabled)
-                    OnEnable();
-                else
-                    OnDisable();
-            }
-            catch (System.Exception e)
-            {
-                // ignored
-            }
+            Enabled = !Enabled;
+            if (Enabled)
+                OnEnable();
+            else
+                OnDisable();
         }
     }
 }

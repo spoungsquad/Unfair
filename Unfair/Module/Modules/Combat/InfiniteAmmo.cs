@@ -12,12 +12,11 @@ namespace Unfair.Module.Modules.Combat
 
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer == null || GameData.CurrentWeapon == null) return;
+
             GameData.CurrentWeapon.SetCurrentMagazineAmount(10000);
-            
             // Get building manager
             GameData.LocalPlayer.PlayerBuildingManager.AddBuildingAmmo(10000);
-            
-            
         }
     }
 }

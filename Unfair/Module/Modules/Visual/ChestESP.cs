@@ -6,7 +6,7 @@ namespace Unfair.Module.Modules.Visual
     public class ChestESP : Module
     {
         // Constructor
-        public ChestESP() : base("ChestESP", "Allows you to see chests through walls", Category.Visuals, KeyCode.L)
+        public ChestESP() : base("ChestESP", "Allows you to see chests through walls", Category.Visuals, KeyCode.K)
         {
             Enabled = true;
         }

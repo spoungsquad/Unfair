@@ -7,7 +7,7 @@ namespace Unfair.Module
 {
 	public static class KeybindManager
 	{
-		public static void SaveKeybinds()
+		private static void CreateKeybinds()
 		{
 			var keycodes = ModuleManager.Modules.Select(x => x.Key).ToList();
 			var str = string.Empty;
@@ -26,7 +26,7 @@ namespace Unfair.Module
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			var path = Path.Combine(documents, "UnfairKeybinds.txt");
 			
-			if (!File.Exists(path)) SaveKeybinds(); // developer keybinds are kinda bad tbh
+			if (!File.Exists(path)) CreateKeybinds(); // developer keybinds are kinda bad tbh
 			
 			var str = File.ReadAllLines(path);
 

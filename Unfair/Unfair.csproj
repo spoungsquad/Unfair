@@ -820,7 +820,6 @@
         <Compile Include="Module\Modules\Misc\DiscordPresence.cs" />
         <Compile Include="Module\Modules\Misc\NameChanger.cs" />
         <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />
-        <Compile Include="Module\Modules\Misc\SaveKeybinds.cs" />
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />

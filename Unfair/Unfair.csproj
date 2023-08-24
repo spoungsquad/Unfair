@@ -803,6 +803,7 @@
         <Compile Include="Attributes\DebugOnlyAttribute.cs" />
         <Compile Include="Loader.cs" />
         <Compile Include="Main.cs" />
+        <Compile Include="Module\KeybindManager.cs" />
         <Compile Include="Module\Module.cs" />
         <Compile Include="Module\ModuleManager.cs" />
         <Compile Include="Module\Modules\Building\AntiWall.cs" />
@@ -819,6 +820,7 @@
         <Compile Include="Module\Modules\Misc\DiscordPresence.cs" />
         <Compile Include="Module\Modules\Misc\NameChanger.cs" />
         <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />
+        <Compile Include="Module\Modules\Misc\SaveKeybinds.cs" />
         <Compile Include="Module\Modules\Movement\Airjump.cs" />
         <Compile Include="Module\Modules\Movement\AutoTP.cs" />
         <Compile Include="Module\Modules\Movement\Fly.cs" />

@@ -14,14 +14,16 @@ namespace Unfair
         {
             //DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
+            KeybindManager.LoadKeybinds();
 
-            GameData.UIManager.ShowToast(new DefaultedLocalizedString(new LocalizedString("", ""),
+            GameData.UIManager.ShowToast(new DefaultedLocalizedString(
+	            new LocalizedString("", ""),
                 "Unfair loaded!"));
         }
 
         private void Update()
         {
-	        foreach (Module.Module module in ModuleManager.Modules)
+	        foreach (var module in ModuleManager.Modules)
 	        {
 		        try
 		        {

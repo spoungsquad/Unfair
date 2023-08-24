@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using JustPlay.Localization;
+using Unfair.Util;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Unfair.Module
 {
@@ -37,7 +40,17 @@ namespace Unfair.Module
 				if (line == null) continue;
 				
 				var keycode = line.Split(':')[1].Trim();
-				module.Key = (KeyCode)Enum.Parse(typeof(KeyCode), keycode);
+				var result = Enum.TryParse<KeyCode>(keycode, true, out var parsed);
+				if (!result)
+				{
+					GameData.UIManager.ShowToast(new DefaultedLocalizedString(
+						new LocalizedString("", ""),
+						"fucked up keybinds"));
+					
+					continue;
+				}
+
+				module.Key = parsed;
 			}
 		}
 	}

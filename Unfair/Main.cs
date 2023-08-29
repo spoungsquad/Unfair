@@ -14,7 +14,6 @@ namespace Unfair
         {
             //DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
-            KeybindManager.LoadKeybinds();
 
             GameData.UIManager.ShowToast(new DefaultedLocalizedString(
 	            new LocalizedString("", ""),

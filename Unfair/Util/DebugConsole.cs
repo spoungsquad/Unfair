@@ -1,36 +1,21 @@
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 
 namespace Unfair.Util
 {
 	public static class DebugConsole
 	{
-		// native imports
-		[DllImport("kernel32.dll")]
-		private static extern bool AttachConsole(int dwProcessId);
-
-		[DllImport("kernel32.dll", SetLastError = true)]
-		[return: MarshalAs(UnmanagedType.Bool)]
-		private static extern bool AllocConsole();
-		
-		private const int ATTACH_PARENT_PROCESS = -1;
-
-		// the meat
 		private static bool _init;
-		private static StreamWriter _writer;
+		private static Socket _socket;
 
-		private static void Allocate()
+		private static void Prepare()
 		{
-			AllocConsole();
-
-			Stream stdout = Console.OpenStandardOutput();
-			_writer = new StreamWriter(stdout)
-			{
-				AutoFlush = true
-			};
-
-			AttachConsole(ATTACH_PARENT_PROCESS);
+			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+			_socket.Connect(new IPEndPoint(IPAddress.Loopback, 17568));
+			
 			_init = true;
 		}
 
@@ -39,12 +24,11 @@ namespace Unfair.Util
 #if DEBUG
 			if (!_init)
 			{
-				Allocate();
-			} // only allocates a console if visual studio is found
+				Prepare();
+			}
 #endif
 			
-			_writer.WriteLine(text);
-			Console.WriteLine(text);
+			_socket.Send(Encoding.ASCII.GetBytes(text));
 		}
 	}
 }

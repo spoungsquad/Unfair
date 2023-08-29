@@ -12,7 +12,7 @@ namespace Unfair
     {
         private void Start()
         {
-            //DebugConsole.Write("Hello, world!");
+            DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
 
             GameData.UIManager.ShowToast(new DefaultedLocalizedString(

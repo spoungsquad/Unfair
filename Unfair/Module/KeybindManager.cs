@@ -46,7 +46,7 @@ namespace Unfair.Module
 				var result = Enum.TryParse<KeyCode>(keycode, true, out var parsed);
 
 				Keybinds.Add(name, result ? parsed : KeyCode.None);
-				DebugConsole.Write($"{name} is bound to {keycode}");
+				DebugConsole.Write($"{name} is bound to {parsed}");
 			}
 		}
 	}

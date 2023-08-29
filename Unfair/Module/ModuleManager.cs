@@ -19,6 +19,7 @@ namespace Unfair.Module
                 if (type.GetCustomAttribute<Attributes.DebugOnlyAttribute>() != null)continue;
                 #endif    
                 Module m = (Module)Activator.CreateInstance(type);
+                m.Key = KeybindManager.Keybinds[m.Name];
                 Modules.Add(m);
             }
         }

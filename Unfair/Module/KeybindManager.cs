@@ -11,9 +11,8 @@ namespace Unfair.Module
 {
 	public static class KeybindManager
 	{
-        // stupid workaround
-        private static readonly Dictionary<string, KeyCode> _keyCodes = new Dictionary<string, KeyCode>();
-        
+		public static Dictionary<string, KeyCode> Keybinds = new Dictionary<string, KeyCode>();
+		
 		private static void CreateKeybinds()
 		{
 			var keycodes = ModuleManager.Modules.Select(x => x.Key).ToList();
@@ -30,11 +29,6 @@ namespace Unfair.Module
 
 		public static void LoadKeybinds()
 		{
-			foreach (var key in Enum.GetValues(KeyCode.None.GetType()))
-			{
-				_keyCodes.Add(key.ToString(), (KeyCode)key);
-			}
-			
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			var path = Path.Combine(documents, "UnfairKeybinds.txt");
 			
@@ -49,7 +43,9 @@ namespace Unfair.Module
 				if (line == null) continue;
 				
 				var keycode = line.Split(':')[1].Trim();
-				module.Key = _keyCodes[keycode];
+				var result = Enum.TryParse<KeyCode>(keycode, true, out var parsed);
+
+				Keybinds.Add(name, result ? parsed : KeyCode.None);
 			}
 		}
 	}

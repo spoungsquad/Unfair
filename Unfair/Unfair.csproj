@@ -1,867 +1,865 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2381479E-D5F2-4EE9-8934-D29AD1181157}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Unfair</RootNamespace>
+    <AssemblyName>Unfair</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="1v1">
+      <HintPath>dlls\1v1.dll</HintPath>
+    </Reference>
+    <Reference Include="1v1.DevSettings">
+      <HintPath>dlls\1v1.DevSettings.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyAsync">
+      <HintPath>dlls\AnyAsync.dll</HintPath>
+    </Reference>
+    <Reference Include="AppsFlyer">
+      <HintPath>dlls\AppsFlyer.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>dlls\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>dlls\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="AssetsService">
+      <HintPath>dlls\AssetsService.dll</HintPath>
+    </Reference>
+    <Reference Include="AssetsService.Bootstrapping.Explicit">
+      <HintPath>dlls\AssetsService.Bootstrapping.Explicit.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoPool">
+      <HintPath>dlls\AutoPool.dll</HintPath>
+    </Reference>
+    <Reference Include="BakeryRuntimeAssembly">
+      <HintPath>dlls\BakeryRuntimeAssembly.dll</HintPath>
+    </Reference>
+    <Reference Include="Beedbyte">
+      <HintPath>dlls\Beedbyte.dll</HintPath>
+    </Reference>
+    <Reference Include="BidirHorizontalLayoutGroup-Runtime">
+      <HintPath>dlls\BidirHorizontalLayoutGroup-Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BugsnagUnity.Windows">
+      <HintPath>dlls\BugsnagUnity.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientLibraries.Common">
+      <HintPath>dlls\ClientLibraries.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Coffee.UIParticle">
+      <HintPath>dlls\Coffee.UIParticle.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>dlls\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="DebugDrawingExtension">
+      <HintPath>dlls\DebugDrawingExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="DiscordRPC, Version=1.2.1.24, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DiscordRichPresence.1.2.1.24\lib\net45\DiscordRPC.dll</HintPath>
+    </Reference>
+    <Reference Include="Encrypt">
+      <HintPath>dlls\Encrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="EnhancedScroller_asmdef">
+      <HintPath>dlls\EnhancedScroller_asmdef.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStream">
+      <HintPath>dlls\EventStream.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStream.Api">
+      <HintPath>dlls\EventStream.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStream.ConfigurationParser">
+      <HintPath>dlls\EventStream.ConfigurationParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Examples">
+      <HintPath>dlls\Examples.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity">
+      <HintPath>dlls\Facebook.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>dlls\Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>dlls\Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Crashlytics">
+      <HintPath>dlls\Firebase.Crashlytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>dlls\Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="GooglePlayGames">
+      <HintPath>dlls\GooglePlayGames.dll</HintPath>
+    </Reference>
+    <Reference Include="IronSource">
+      <HintPath>dlls\IronSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Lofelt.NiceVibrations">
+      <HintPath>dlls\Lofelt.NiceVibrations.dll</HintPath>
+    </Reference>
+    <Reference Include="Lol.OneVsOne.Helpers">
+      <HintPath>dlls\Lol.OneVsOne.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="MAScripts">
+      <HintPath>dlls\MAScripts.dll</HintPath>
+    </Reference>
+    <Reference Include="Messaging">
+      <HintPath>dlls\Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>dlls\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NativeShare.Runtime">
+      <HintPath>dlls\NativeShare.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus">
+      <HintPath>dlls\Nucleus.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Api">
+      <HintPath>dlls\Nucleus.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Channels">
+      <HintPath>dlls\Nucleus.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Compression">
+      <HintPath>dlls\Nucleus.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Logging">
+      <HintPath>dlls\Nucleus.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Protocols.Stomp">
+      <HintPath>dlls\Nucleus.Protocols.Stomp.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.Utils">
+      <HintPath>dlls\Nucleus.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.WebSockets">
+      <HintPath>dlls\Nucleus.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.WebSockets.ClientWebSocketCustom">
+      <HintPath>dlls\Nucleus.WebSockets.ClientWebSocketCustom.dll</HintPath>
+    </Reference>
+    <Reference Include="Nucleus.WebSockets.Connectors.Standard">
+      <HintPath>dlls\Nucleus.WebSockets.Connectors.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="OmniSARTechnologies">
+      <HintPath>dlls\OmniSARTechnologies.dll</HintPath>
+    </Reference>
+    <Reference Include="PathCreator">
+      <HintPath>dlls\PathCreator.dll</HintPath>
+    </Reference>
+    <Reference Include="PerfectCulling">
+      <HintPath>dlls\PerfectCulling.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>dlls\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonChat">
+      <HintPath>dlls\PhotonChat.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonRealtime">
+      <HintPath>dlls\PhotonRealtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonSerializer.Runtime">
+      <HintPath>dlls\PhotonSerializer.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>dlls\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking.Utilities">
+      <HintPath>dlls\PhotonUnityNetworking.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonWebSocket">
+      <HintPath>dlls\PhotonWebSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Http">
+      <HintPath>dlls\Playtika.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Http.Unity.Uwr">
+      <HintPath>dlls\Playtika.Http.Unity.Uwr.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.IoC">
+      <HintPath>dlls\Playtika.IoC.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Serialization">
+      <HintPath>dlls\Playtika.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.AmazonSns">
+      <HintPath>dlls\Playtika.Unity.AmazonSns.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.AmazonSns.API">
+      <HintPath>dlls\Playtika.Unity.AmazonSns.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.AmazonSns.Unity">
+      <HintPath>dlls\Playtika.Unity.AmazonSns.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.AmazonSnsEvents">
+      <HintPath>dlls\Playtika.Unity.AmazonSnsEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Analytics">
+      <HintPath>dlls\Playtika.Unity.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Assets">
+      <HintPath>dlls\Playtika.Unity.Assets.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Common">
+      <HintPath>dlls\Playtika.Unity.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Common.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Common.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Configuration">
+      <HintPath>dlls\Playtika.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Dev">
+      <HintPath>dlls\Playtika.Unity.Dev.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.DeviceInfo">
+      <HintPath>dlls\Playtika.Unity.DeviceInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Disposables">
+      <HintPath>dlls\Playtika.Unity.Disposables.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.EventRegistry">
+      <HintPath>dlls\Playtika.Unity.EventRegistry.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.EventStream.PsfLight">
+      <HintPath>dlls\Playtika.Unity.EventStream.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Http.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Http.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Identity">
+      <HintPath>dlls\Playtika.Unity.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Identity.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Identity.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.IonicZlib">
+      <HintPath>dlls\Playtika.Unity.IonicZlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.LocationRegistry">
+      <HintPath>dlls\Playtika.Unity.LocationRegistry.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Logger">
+      <HintPath>dlls\Playtika.Unity.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Logger.Ces">
+      <HintPath>dlls\Playtika.Unity.Logger.Ces.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Messaging.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Messaging.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Metronome.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Metronome.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Notifications">
+      <HintPath>dlls\Playtika.Unity.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Notifications.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Notifications.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Popup.V2">
+      <HintPath>dlls\Playtika.Unity.Popup.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Serialization.PsfLight">
+      <HintPath>dlls\Playtika.Unity.Serialization.PsfLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Storage">
+      <HintPath>dlls\Playtika.Unity.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Common">
+      <HintPath>dlls\Playtika.Unity.TheBox.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.Common">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.Edm">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.EventRegistry">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.EventRegistry.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.Identity">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.Notifications">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Features.Popup.V2">
+      <HintPath>dlls\Playtika.Unity.TheBox.Features.Popup.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.TheBox.Runtime">
+      <HintPath>dlls\Playtika.Unity.TheBox.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Playtika.Unity.Tools.Common">
+      <HintPath>dlls\Playtika.Unity.Tools.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PolygonArsenal">
+      <HintPath>dlls\PolygonArsenal.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Analytics">
+      <HintPath>dlls\Psf.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Api.Common">
+      <HintPath>dlls\Psf.Api.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Bonuses">
+      <HintPath>dlls\Psf.Bonuses.dll</HintPath>
+    </Reference>
+    <Reference Include="PSF.EventStream">
+      <HintPath>dlls\PSF.EventStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PSF.EventStream.Unity">
+      <HintPath>dlls\PSF.EventStream.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.FileSystem">
+      <HintPath>dlls\Psf.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.FileSystem.Abstractions">
+      <HintPath>dlls\Psf.FileSystem.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.FileSystem.Unity">
+      <HintPath>dlls\Psf.FileSystem.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.InApps">
+      <HintPath>dlls\Psf.InApps.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.MessagingAdapter">
+      <HintPath>dlls\Psf.MessagingAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.MessagingAdapter.Abstraction">
+      <HintPath>dlls\Psf.MessagingAdapter.Abstraction.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Metronome">
+      <HintPath>dlls\Psf.Metronome.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Metronome.Abstractions">
+      <HintPath>dlls\Psf.Metronome.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Popups">
+      <HintPath>dlls\Psf.Popups.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.Threading">
+      <HintPath>dlls\Psf.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.WebSockets">
+      <HintPath>dlls\Psf.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="Psf.XlogCesTarget">
+      <HintPath>dlls\Psf.XlogCesTarget.dll</HintPath>
+    </Reference>
+    <Reference Include="PsfLight.Newtonsoft.Json.Aot">
+      <HintPath>dlls\PsfLight.Newtonsoft.Json.Aot.dll</HintPath>
+    </Reference>
+    <Reference Include="Purchasing.Common">
+      <HintPath>dlls\Purchasing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RestClient">
+      <HintPath>dlls\RestClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired">
+      <HintPath>dlls\Rewired.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>dlls\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows">
+      <HintPath>dlls\Rewired_Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Functions">
+      <HintPath>dlls\Rewired_Windows_Functions.dll</HintPath>
+    </Reference>
+    <Reference Include="RIEditor">
+      <HintPath>dlls\RIEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="SecureStorage">
+      <HintPath>dlls\SecureStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="SecureStorage.Unity">
+      <HintPath>dlls\SecureStorage.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="SerializableDictionaries">
+      <HintPath>dlls\SerializableDictionaries.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleTooltip">
+      <HintPath>dlls\SimpleTooltip.dll</HintPath>
+    </Reference>
+    <Reference Include="SoftMask">
+      <HintPath>dlls\SoftMask.dll</HintPath>
+    </Reference>
+    <Reference Include="Stomp">
+      <HintPath>dlls\Stomp.dll</HintPath>
+    </Reference>
+    <Reference Include="StompyRobot.SRDebugger">
+      <HintPath>dlls\StompyRobot.SRDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="StompyRobot.SRF">
+      <HintPath>dlls\StompyRobot.SRF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration">
+      <HintPath>dlls\System.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>dlls\System.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>dlls\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Internals">
+      <HintPath>dlls\System.ServiceModel.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <HintPath>dlls\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Technie.PhysicsCreator">
+      <HintPath>dlls\Technie.PhysicsCreator.dll</HintPath>
+    </Reference>
+    <Reference Include="ToonyColorsPro.Runtime">
+      <HintPath>dlls\ToonyColorsPro.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+      <HintPath>dlls\UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>dlls\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>dlls\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>dlls\Unity.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>dlls\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>dlls\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>dlls\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>dlls\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>dlls\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>dlls\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Configuration">
+      <HintPath>dlls\Unity.Services.Core.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Device">
+      <HintPath>dlls\Unity.Services.Core.Device.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments.Internal">
+      <HintPath>dlls\Unity.Services.Core.Environments.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Internal">
+      <HintPath>dlls\Unity.Services.Core.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Registration">
+      <HintPath>dlls\Unity.Services.Core.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Scheduler">
+      <HintPath>dlls\Unity.Services.Core.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Telemetry">
+      <HintPath>dlls\Unity.Services.Core.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Threading">
+      <HintPath>dlls\Unity.Services.Core.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>dlls\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>dlls\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>dlls\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>dlls\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>dlls\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>dlls\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>dlls\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>dlls\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>dlls\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>dlls\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>dlls\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>dlls\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>dlls\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>dlls\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>dlls\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>dlls\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>dlls\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>dlls\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>dlls\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>dlls\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleCore">
+      <HintPath>dlls\UnityEngine.Purchasing.AppleCore.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleMacosStub">
+      <HintPath>dlls\UnityEngine.Purchasing.AppleMacosStub.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleStub">
+      <HintPath>dlls\UnityEngine.Purchasing.AppleStub.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>dlls\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+      <HintPath>dlls\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityStub">
+      <HintPath>dlls\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Stores">
+      <HintPath>dlls\UnityEngine.Purchasing.Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.WinRTCore">
+      <HintPath>dlls\UnityEngine.Purchasing.WinRTCore.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.WinRTStub">
+      <HintPath>dlls\UnityEngine.Purchasing.WinRTStub.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>dlls\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>dlls\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>dlls\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>dlls\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>dlls\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>dlls\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>dlls\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>dlls\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>dlls\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>dlls\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>dlls\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsNativeModule">
+      <HintPath>dlls\UnityEngine.UIElementsNativeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>dlls\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>dlls\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>dlls\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>dlls\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>dlls\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>dlls\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>dlls\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>dlls\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>dlls\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityTechnologies.SignInWithApple">
+      <HintPath>dlls\UnityTechnologies.SignInWithApple.dll</HintPath>
+    </Reference>
+    <Reference Include="UserService">
+      <HintPath>dlls\UserService.dll</HintPath>
+    </Reference>
+    <Reference Include="UserService.API">
+      <HintPath>dlls\UserService.API.dll</HintPath>
+    </Reference>
+    <Reference Include="UserService.Builder">
+      <HintPath>dlls\UserService.Builder.dll</HintPath>
+    </Reference>
+    <Reference Include="UserService.Builder.Unity">
+      <HintPath>dlls\UserService.Builder.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="UserService.Unity">
+      <HintPath>dlls\UserService.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="XInject">
+      <HintPath>dlls\XInject.dll</HintPath>
+    </Reference>
+    <Reference Include="XLog">
+      <HintPath>dlls\XLog.dll</HintPath>
+    </Reference>
+    <Reference Include="ZFBrowser">
+      <HintPath>dlls\ZFBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="_Toolset">
+      <HintPath>dlls\_Toolset.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\DebugOnlyAttribute.cs" />
+    <Compile Include="Loader.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Module\KeybindManager.cs" />
+    <Compile Include="Module\Module.cs" />
+    <Compile Include="Module\ModuleManager.cs" />
+    <Compile Include="Module\Modules\Building\AntiWall.cs" />
+    <Compile Include="Module\Modules\Building\Breakdown.cs" />
+    <Compile Include="Module\Modules\Building\InfiniteMats.cs" />
+    <Compile Include="Module\Modules\Building\Instabreak.cs" />
+    <Compile Include="Module\Modules\Building\OpenUp.cs" />
+    <Compile Include="Module\Modules\Building\Surround.cs" />
+    <Compile Include="Module\Modules\Combat\InfiniteAmmo.cs" />
+    <Compile Include="Module\Modules\Combat\InfiniteRange.cs" />
+    <Compile Include="Module\Modules\Combat\NoRecoil.cs" />
+    <Compile Include="Module\Modules\Combat\NoSpread.cs" />
+    <Compile Include="Module\Modules\Combat\RapidFire.cs" />
+    <Compile Include="Module\Modules\Misc\NameChanger.cs" />
+    <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />
+    <Compile Include="Module\Modules\Movement\Airjump.cs" />
+    <Compile Include="Module\Modules\Movement\AutoTP.cs" />
+    <Compile Include="Module\Modules\Movement\Fly.cs" />
+    <Compile Include="Module\Modules\Movement\RAutoTP.cs" />
+    <Compile Include="Module\Modules\Movement\Spinbot.cs" />
+    <Compile Include="Module\Modules\Movement\VClip.cs" />
+    <Compile Include="Module\Modules\Player\Aimbot.cs" />
+    <Compile Include="Module\Modules\Player\AntiKick.cs" />
+    <Compile Include="Module\Modules\Player\GodMode.cs" />
+    <Compile Include="Module\Modules\Player\NoFall.cs" />
+    <Compile Include="Module\Modules\Visual\ChestESP.cs" />
+    <Compile Include="Module\Modules\Visual\ESP.cs" />
+    <Compile Include="Module\Modules\Visual\ItemESP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Arraylist.cs" />
+    <Compile Include="UI\ColorUtils.cs" />
+    <Compile Include="Util\DebugConsole.cs" />
+    <Compile Include="Util\GameData.cs" />
+    <Compile Include="Util\Memory.cs" />
+    <Compile Include="Util\PrivateAccess.cs" />
+    <Compile Include="Util\Render.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.8.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.8.0\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{2381479E-D5F2-4EE9-8934-D29AD1181157}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Unfair</RootNamespace>
-        <AssemblyName>Unfair</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-      <DebugSymbols>true</DebugSymbols>
-      <DebugType>full</DebugType>
-      <Optimize>false</Optimize>
-      <DefineConstants>DEBUG;TRACE</DefineConstants>
-      <ErrorReport>prompt</ErrorReport>
-      <WarningLevel>4</WarningLevel>
-      <OutputPath>bin\x64\Debug\</OutputPath>
-      <PlatformTarget>x64</PlatformTarget>
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-      <DebugType>pdbonly</DebugType>
-      <Optimize>true</Optimize>
-      <DefineConstants>TRACE</DefineConstants>
-      <ErrorReport>prompt</ErrorReport>
-      <WarningLevel>4</WarningLevel>
-      <OutputPath>bin\x64\Release\</OutputPath>
-      <PlatformTarget>x64</PlatformTarget>
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="1v1">
-          <HintPath>dlls\1v1.dll</HintPath>
-        </Reference>
-        <Reference Include="1v1.DevSettings">
-          <HintPath>dlls\1v1.DevSettings.dll</HintPath>
-        </Reference>
-        <Reference Include="AnyAsync">
-          <HintPath>dlls\AnyAsync.dll</HintPath>
-        </Reference>
-        <Reference Include="AppsFlyer">
-          <HintPath>dlls\AppsFlyer.dll</HintPath>
-        </Reference>
-        <Reference Include="Assembly-CSharp">
-          <HintPath>dlls\Assembly-CSharp.dll</HintPath>
-        </Reference>
-        <Reference Include="Assembly-CSharp-firstpass">
-          <HintPath>dlls\Assembly-CSharp-firstpass.dll</HintPath>
-        </Reference>
-        <Reference Include="AssetsService">
-          <HintPath>dlls\AssetsService.dll</HintPath>
-        </Reference>
-        <Reference Include="AssetsService.Bootstrapping.Explicit">
-          <HintPath>dlls\AssetsService.Bootstrapping.Explicit.dll</HintPath>
-        </Reference>
-        <Reference Include="AutoPool">
-          <HintPath>dlls\AutoPool.dll</HintPath>
-        </Reference>
-        <Reference Include="BakeryRuntimeAssembly">
-          <HintPath>dlls\BakeryRuntimeAssembly.dll</HintPath>
-        </Reference>
-        <Reference Include="Beedbyte">
-          <HintPath>dlls\Beedbyte.dll</HintPath>
-        </Reference>
-        <Reference Include="BidirHorizontalLayoutGroup-Runtime">
-          <HintPath>dlls\BidirHorizontalLayoutGroup-Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="BugsnagUnity.Windows">
-          <HintPath>dlls\BugsnagUnity.Windows.dll</HintPath>
-        </Reference>
-        <Reference Include="ClientLibraries.Common">
-          <HintPath>dlls\ClientLibraries.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Coffee.UIParticle">
-          <HintPath>dlls\Coffee.UIParticle.dll</HintPath>
-        </Reference>
-        <Reference Include="com.rlabrecque.steamworks.net">
-          <HintPath>dlls\com.rlabrecque.steamworks.net.dll</HintPath>
-        </Reference>
-        <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
-        </Reference>
-        <Reference Include="DebugDrawingExtension">
-          <HintPath>dlls\DebugDrawingExtension.dll</HintPath>
-        </Reference>
-        <Reference Include="DiscordRPC, Version=1.2.1.24, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DiscordRichPresence.1.2.1.24\lib\net45\DiscordRPC.dll</HintPath>
-        </Reference>
-        <Reference Include="Encrypt">
-          <HintPath>dlls\Encrypt.dll</HintPath>
-        </Reference>
-        <Reference Include="EnhancedScroller_asmdef">
-          <HintPath>dlls\EnhancedScroller_asmdef.dll</HintPath>
-        </Reference>
-        <Reference Include="EventStream">
-          <HintPath>dlls\EventStream.dll</HintPath>
-        </Reference>
-        <Reference Include="EventStream.Api">
-          <HintPath>dlls\EventStream.Api.dll</HintPath>
-        </Reference>
-        <Reference Include="EventStream.ConfigurationParser">
-          <HintPath>dlls\EventStream.ConfigurationParser.dll</HintPath>
-        </Reference>
-        <Reference Include="Examples">
-          <HintPath>dlls\Examples.dll</HintPath>
-        </Reference>
-        <Reference Include="Facebook.Unity">
-          <HintPath>dlls\Facebook.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="Facebook.Unity.Settings">
-          <HintPath>dlls\Facebook.Unity.Settings.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.App">
-          <HintPath>dlls\Firebase.App.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.Crashlytics">
-          <HintPath>dlls\Firebase.Crashlytics.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.Platform">
-          <HintPath>dlls\Firebase.Platform.dll</HintPath>
-        </Reference>
-        <Reference Include="GooglePlayGames">
-          <HintPath>dlls\GooglePlayGames.dll</HintPath>
-        </Reference>
-        <Reference Include="IronSource">
-          <HintPath>dlls\IronSource.dll</HintPath>
-        </Reference>
-        <Reference Include="Lofelt.NiceVibrations">
-          <HintPath>dlls\Lofelt.NiceVibrations.dll</HintPath>
-        </Reference>
-        <Reference Include="Lol.OneVsOne.Helpers">
-          <HintPath>dlls\Lol.OneVsOne.Helpers.dll</HintPath>
-        </Reference>
-        <Reference Include="MAScripts">
-          <HintPath>dlls\MAScripts.dll</HintPath>
-        </Reference>
-        <Reference Include="Messaging">
-          <HintPath>dlls\Messaging.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="Mono.Security">
-          <HintPath>dlls\Mono.Security.dll</HintPath>
-        </Reference>
-        <Reference Include="mscorlib" />
-        <Reference Include="NativeShare.Runtime">
-          <HintPath>dlls\NativeShare.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus">
-          <HintPath>dlls\Nucleus.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Api">
-          <HintPath>dlls\Nucleus.Api.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Channels">
-          <HintPath>dlls\Nucleus.Channels.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Compression">
-          <HintPath>dlls\Nucleus.Compression.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Logging">
-          <HintPath>dlls\Nucleus.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Protocols.Stomp">
-          <HintPath>dlls\Nucleus.Protocols.Stomp.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.Utils">
-          <HintPath>dlls\Nucleus.Utils.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.WebSockets">
-          <HintPath>dlls\Nucleus.WebSockets.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.WebSockets.ClientWebSocketCustom">
-          <HintPath>dlls\Nucleus.WebSockets.ClientWebSocketCustom.dll</HintPath>
-        </Reference>
-        <Reference Include="Nucleus.WebSockets.Connectors.Standard">
-          <HintPath>dlls\Nucleus.WebSockets.Connectors.Standard.dll</HintPath>
-        </Reference>
-        <Reference Include="OmniSARTechnologies">
-          <HintPath>dlls\OmniSARTechnologies.dll</HintPath>
-        </Reference>
-        <Reference Include="PathCreator">
-          <HintPath>dlls\PathCreator.dll</HintPath>
-        </Reference>
-        <Reference Include="PerfectCulling">
-          <HintPath>dlls\PerfectCulling.dll</HintPath>
-        </Reference>
-        <Reference Include="Photon3Unity3D">
-          <HintPath>dlls\Photon3Unity3D.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonChat">
-          <HintPath>dlls\PhotonChat.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonRealtime">
-          <HintPath>dlls\PhotonRealtime.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonSerializer.Runtime">
-          <HintPath>dlls\PhotonSerializer.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonUnityNetworking">
-          <HintPath>dlls\PhotonUnityNetworking.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonUnityNetworking.Utilities">
-          <HintPath>dlls\PhotonUnityNetworking.Utilities.dll</HintPath>
-        </Reference>
-        <Reference Include="PhotonWebSocket">
-          <HintPath>dlls\PhotonWebSocket.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Http">
-          <HintPath>dlls\Playtika.Http.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Http.Unity.Uwr">
-          <HintPath>dlls\Playtika.Http.Unity.Uwr.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.IoC">
-          <HintPath>dlls\Playtika.IoC.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Serialization">
-          <HintPath>dlls\Playtika.Serialization.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.AmazonSns">
-          <HintPath>dlls\Playtika.Unity.AmazonSns.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.AmazonSns.API">
-          <HintPath>dlls\Playtika.Unity.AmazonSns.API.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.AmazonSns.Unity">
-          <HintPath>dlls\Playtika.Unity.AmazonSns.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.AmazonSnsEvents">
-          <HintPath>dlls\Playtika.Unity.AmazonSnsEvents.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Analytics">
-          <HintPath>dlls\Playtika.Unity.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Assets">
-          <HintPath>dlls\Playtika.Unity.Assets.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Common">
-          <HintPath>dlls\Playtika.Unity.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Common.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Common.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Configuration">
-          <HintPath>dlls\Playtika.Unity.Configuration.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Dev">
-          <HintPath>dlls\Playtika.Unity.Dev.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.DeviceInfo">
-          <HintPath>dlls\Playtika.Unity.DeviceInfo.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Disposables">
-          <HintPath>dlls\Playtika.Unity.Disposables.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.EventRegistry">
-          <HintPath>dlls\Playtika.Unity.EventRegistry.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.EventStream.PsfLight">
-          <HintPath>dlls\Playtika.Unity.EventStream.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Http.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Http.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Identity">
-          <HintPath>dlls\Playtika.Unity.Identity.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Identity.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Identity.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.IonicZlib">
-          <HintPath>dlls\Playtika.Unity.IonicZlib.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.LocationRegistry">
-          <HintPath>dlls\Playtika.Unity.LocationRegistry.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Logger">
-          <HintPath>dlls\Playtika.Unity.Logger.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Logger.Ces">
-          <HintPath>dlls\Playtika.Unity.Logger.Ces.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Messaging.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Messaging.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Metronome.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Metronome.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Notifications">
-          <HintPath>dlls\Playtika.Unity.Notifications.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Notifications.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Notifications.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Popup.V2">
-          <HintPath>dlls\Playtika.Unity.Popup.V2.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Serialization.PsfLight">
-          <HintPath>dlls\Playtika.Unity.Serialization.PsfLight.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Storage">
-          <HintPath>dlls\Playtika.Unity.Storage.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Common">
-          <HintPath>dlls\Playtika.Unity.TheBox.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.Common">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.Edm">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.Edm.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.EventRegistry">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.EventRegistry.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.Identity">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.Identity.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.Notifications">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.Notifications.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Features.Popup.V2">
-          <HintPath>dlls\Playtika.Unity.TheBox.Features.Popup.V2.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.TheBox.Runtime">
-          <HintPath>dlls\Playtika.Unity.TheBox.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="Playtika.Unity.Tools.Common">
-          <HintPath>dlls\Playtika.Unity.Tools.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="PolygonArsenal">
-          <HintPath>dlls\PolygonArsenal.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Analytics">
-          <HintPath>dlls\Psf.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Api.Common">
-          <HintPath>dlls\Psf.Api.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Bonuses">
-          <HintPath>dlls\Psf.Bonuses.dll</HintPath>
-        </Reference>
-        <Reference Include="PSF.EventStream">
-          <HintPath>dlls\PSF.EventStream.dll</HintPath>
-        </Reference>
-        <Reference Include="PSF.EventStream.Unity">
-          <HintPath>dlls\PSF.EventStream.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.FileSystem">
-          <HintPath>dlls\Psf.FileSystem.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.FileSystem.Abstractions">
-          <HintPath>dlls\Psf.FileSystem.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.FileSystem.Unity">
-          <HintPath>dlls\Psf.FileSystem.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.InApps">
-          <HintPath>dlls\Psf.InApps.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.MessagingAdapter">
-          <HintPath>dlls\Psf.MessagingAdapter.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.MessagingAdapter.Abstraction">
-          <HintPath>dlls\Psf.MessagingAdapter.Abstraction.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Metronome">
-          <HintPath>dlls\Psf.Metronome.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Metronome.Abstractions">
-          <HintPath>dlls\Psf.Metronome.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Popups">
-          <HintPath>dlls\Psf.Popups.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.Threading">
-          <HintPath>dlls\Psf.Threading.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.WebSockets">
-          <HintPath>dlls\Psf.WebSockets.dll</HintPath>
-        </Reference>
-        <Reference Include="Psf.XlogCesTarget">
-          <HintPath>dlls\Psf.XlogCesTarget.dll</HintPath>
-        </Reference>
-        <Reference Include="PsfLight.Newtonsoft.Json.Aot">
-          <HintPath>dlls\PsfLight.Newtonsoft.Json.Aot.dll</HintPath>
-        </Reference>
-        <Reference Include="Purchasing.Common">
-          <HintPath>dlls\Purchasing.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="RestClient">
-          <HintPath>dlls\RestClient.dll</HintPath>
-        </Reference>
-        <Reference Include="Rewired">
-          <HintPath>dlls\Rewired.dll</HintPath>
-        </Reference>
-        <Reference Include="Rewired_Core">
-          <HintPath>dlls\Rewired_Core.dll</HintPath>
-        </Reference>
-        <Reference Include="Rewired_Windows">
-          <HintPath>dlls\Rewired_Windows.dll</HintPath>
-        </Reference>
-        <Reference Include="Rewired_Windows_Functions">
-          <HintPath>dlls\Rewired_Windows_Functions.dll</HintPath>
-        </Reference>
-        <Reference Include="RIEditor">
-          <HintPath>dlls\RIEditor.dll</HintPath>
-        </Reference>
-        <Reference Include="SecureStorage">
-          <HintPath>dlls\SecureStorage.dll</HintPath>
-        </Reference>
-        <Reference Include="SecureStorage.Unity">
-          <HintPath>dlls\SecureStorage.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="SerializableDictionaries">
-          <HintPath>dlls\SerializableDictionaries.dll</HintPath>
-        </Reference>
-        <Reference Include="SimpleTooltip">
-          <HintPath>dlls\SimpleTooltip.dll</HintPath>
-        </Reference>
-        <Reference Include="SoftMask">
-          <HintPath>dlls\SoftMask.dll</HintPath>
-        </Reference>
-        <Reference Include="Stomp">
-          <HintPath>dlls\Stomp.dll</HintPath>
-        </Reference>
-        <Reference Include="StompyRobot.SRDebugger">
-          <HintPath>dlls\StompyRobot.SRDebugger.dll</HintPath>
-        </Reference>
-        <Reference Include="StompyRobot.SRF">
-          <HintPath>dlls\StompyRobot.SRF.dll</HintPath>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
-        </Reference>
-        <Reference Include="System.ComponentModel.Composition" />
-        <Reference Include="System.Configuration">
-          <HintPath>dlls\System.Configuration.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.Compression.FileSystem" />
-        <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Numerics">
-          <HintPath>dlls\System.Numerics.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Serialization">
-          <HintPath>dlls\System.Runtime.Serialization.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-        </Reference>
-        <Reference Include="System.ServiceModel.Internals">
-          <HintPath>dlls\System.ServiceModel.Internals.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Xml" />
-        <Reference Include="System.Xml.Linq">
-          <HintPath>dlls\System.Xml.Linq.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
-        </Reference>
-        <Reference Include="Technie.PhysicsCreator">
-          <HintPath>dlls\Technie.PhysicsCreator.dll</HintPath>
-        </Reference>
-        <Reference Include="ToonyColorsPro.Runtime">
-          <HintPath>dlls\ToonyColorsPro.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="UniTask">
-          <HintPath>dlls\UniTask.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Addressables">
-          <HintPath>dlls\Unity.Addressables.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Burst">
-          <HintPath>dlls\Unity.Burst.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Localization">
-          <HintPath>dlls\Unity.Localization.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Mathematics">
-          <HintPath>dlls\Unity.Mathematics.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-          <HintPath>dlls\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.RenderPipelines.Core.Runtime">
-          <HintPath>dlls\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-          <HintPath>dlls\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.ResourceManager">
-          <HintPath>dlls\Unity.ResourceManager.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core">
-          <HintPath>dlls\Unity.Services.Core.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Configuration">
-          <HintPath>dlls\Unity.Services.Core.Configuration.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Device">
-          <HintPath>dlls\Unity.Services.Core.Device.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Environments.Internal">
-          <HintPath>dlls\Unity.Services.Core.Environments.Internal.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Internal">
-          <HintPath>dlls\Unity.Services.Core.Internal.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Registration">
-          <HintPath>dlls\Unity.Services.Core.Registration.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Scheduler">
-          <HintPath>dlls\Unity.Services.Core.Scheduler.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Telemetry">
-          <HintPath>dlls\Unity.Services.Core.Telemetry.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.Services.Core.Threading">
-          <HintPath>dlls\Unity.Services.Core.Threading.dll</HintPath>
-        </Reference>
-        <Reference Include="Unity.TextMeshPro">
-          <HintPath>dlls\Unity.TextMeshPro.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine">
-          <HintPath>dlls\UnityEngine.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AIModule">
-          <HintPath>dlls\UnityEngine.AIModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AndroidJNIModule">
-          <HintPath>dlls\UnityEngine.AndroidJNIModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AnimationModule">
-          <HintPath>dlls\UnityEngine.AnimationModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AssetBundleModule">
-          <HintPath>dlls\UnityEngine.AssetBundleModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.AudioModule">
-          <HintPath>dlls\UnityEngine.AudioModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule">
-          <HintPath>dlls\UnityEngine.CoreModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.DirectorModule">
-          <HintPath>dlls\UnityEngine.DirectorModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.GridModule">
-          <HintPath>dlls\UnityEngine.GridModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.ImageConversionModule">
-          <HintPath>dlls\UnityEngine.ImageConversionModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.IMGUIModule">
-          <HintPath>dlls\UnityEngine.IMGUIModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.InputLegacyModule">
-          <HintPath>dlls\UnityEngine.InputLegacyModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.InputModule">
-          <HintPath>dlls\UnityEngine.InputModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.JSONSerializeModule">
-          <HintPath>dlls\UnityEngine.JSONSerializeModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.ParticleSystemModule">
-          <HintPath>dlls\UnityEngine.ParticleSystemModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.PerformanceReportingModule">
-          <HintPath>dlls\UnityEngine.PerformanceReportingModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Physics2DModule">
-          <HintPath>dlls\UnityEngine.Physics2DModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.PhysicsModule">
-          <HintPath>dlls\UnityEngine.PhysicsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing">
-          <HintPath>dlls\UnityEngine.Purchasing.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.AppleCore">
-          <HintPath>dlls\UnityEngine.Purchasing.AppleCore.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.AppleMacosStub">
-          <HintPath>dlls\UnityEngine.Purchasing.AppleMacosStub.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.AppleStub">
-          <HintPath>dlls\UnityEngine.Purchasing.AppleStub.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.Codeless">
-          <HintPath>dlls\UnityEngine.Purchasing.Codeless.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.SecurityCore">
-          <HintPath>dlls\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.SecurityStub">
-          <HintPath>dlls\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.Stores">
-          <HintPath>dlls\UnityEngine.Purchasing.Stores.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.WinRTCore">
-          <HintPath>dlls\UnityEngine.Purchasing.WinRTCore.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.Purchasing.WinRTStub">
-          <HintPath>dlls\UnityEngine.Purchasing.WinRTStub.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.ScreenCaptureModule">
-          <HintPath>dlls\UnityEngine.ScreenCaptureModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.SharedInternalsModule">
-          <HintPath>dlls\UnityEngine.SharedInternalsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.SpriteShapeModule">
-          <HintPath>dlls\UnityEngine.SpriteShapeModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.SubsystemsModule">
-          <HintPath>dlls\UnityEngine.SubsystemsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.TerrainModule">
-          <HintPath>dlls\UnityEngine.TerrainModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.TextCoreFontEngineModule">
-          <HintPath>dlls\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.TextCoreTextEngineModule">
-          <HintPath>dlls\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.TextRenderingModule">
-          <HintPath>dlls\UnityEngine.TextRenderingModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.TilemapModule">
-          <HintPath>dlls\UnityEngine.TilemapModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UI">
-          <HintPath>dlls\UnityEngine.UI.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsModule">
-          <HintPath>dlls\UnityEngine.UIElementsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsNativeModule">
-          <HintPath>dlls\UnityEngine.UIElementsNativeModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UIModule">
-          <HintPath>dlls\UnityEngine.UIModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UnityAnalyticsModule">
-          <HintPath>dlls\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-          <HintPath>dlls\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestModule">
-          <HintPath>dlls\UnityEngine.UnityWebRequestModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-          <HintPath>dlls\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.VFXModule">
-          <HintPath>dlls\UnityEngine.VFXModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.VideoModule">
-          <HintPath>dlls\UnityEngine.VideoModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.VRModule">
-          <HintPath>dlls\UnityEngine.VRModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.XRModule">
-          <HintPath>dlls\UnityEngine.XRModule.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityTechnologies.SignInWithApple">
-          <HintPath>dlls\UnityTechnologies.SignInWithApple.dll</HintPath>
-        </Reference>
-        <Reference Include="UserService">
-          <HintPath>dlls\UserService.dll</HintPath>
-        </Reference>
-        <Reference Include="UserService.API">
-          <HintPath>dlls\UserService.API.dll</HintPath>
-        </Reference>
-        <Reference Include="UserService.Builder">
-          <HintPath>dlls\UserService.Builder.dll</HintPath>
-        </Reference>
-        <Reference Include="UserService.Builder.Unity">
-          <HintPath>dlls\UserService.Builder.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="UserService.Unity">
-          <HintPath>dlls\UserService.Unity.dll</HintPath>
-        </Reference>
-        <Reference Include="XInject">
-          <HintPath>dlls\XInject.dll</HintPath>
-        </Reference>
-        <Reference Include="XLog">
-          <HintPath>dlls\XLog.dll</HintPath>
-        </Reference>
-        <Reference Include="ZFBrowser">
-          <HintPath>dlls\ZFBrowser.dll</HintPath>
-        </Reference>
-        <Reference Include="_Toolset">
-          <HintPath>dlls\_Toolset.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Attributes\DebugOnlyAttribute.cs" />
-        <Compile Include="Loader.cs" />
-        <Compile Include="Main.cs" />
-        <Compile Include="Module\KeybindManager.cs" />
-        <Compile Include="Module\Module.cs" />
-        <Compile Include="Module\ModuleManager.cs" />
-        <Compile Include="Module\Modules\Building\AntiWall.cs" />
-        <Compile Include="Module\Modules\Building\Breakdown.cs" />
-        <Compile Include="Module\Modules\Building\InfiniteMats.cs" />
-        <Compile Include="Module\Modules\Building\Instabreak.cs" />
-        <Compile Include="Module\Modules\Building\OpenUp.cs" />
-        <Compile Include="Module\Modules\Building\Surround.cs" />
-        <Compile Include="Module\Modules\Combat\InfiniteAmmo.cs" />
-        <Compile Include="Module\Modules\Combat\InfiniteRange.cs" />
-        <Compile Include="Module\Modules\Combat\NoRecoil.cs" />
-        <Compile Include="Module\Modules\Combat\NoSpread.cs" />
-        <Compile Include="Module\Modules\Combat\RapidFire.cs" />
-        <Compile Include="Module\Modules\Misc\DiscordPresence.cs" />
-        <Compile Include="Module\Modules\Misc\NameChanger.cs" />
-        <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />
-        <Compile Include="Module\Modules\Movement\Airjump.cs" />
-        <Compile Include="Module\Modules\Movement\AutoTP.cs" />
-        <Compile Include="Module\Modules\Movement\Fly.cs" />
-        <Compile Include="Module\Modules\Movement\RAutoTP.cs" />
-        <Compile Include="Module\Modules\Movement\Spinbot.cs" />
-        <Compile Include="Module\Modules\Movement\VClip.cs" />
-        <Compile Include="Module\Modules\Player\Aimbot.cs" />
-        <Compile Include="Module\Modules\Player\AntiKick.cs" />
-        <Compile Include="Module\Modules\Player\GodMode.cs" />
-        <Compile Include="Module\Modules\Player\NoFall.cs" />
-        <Compile Include="Module\Modules\Visual\ChestESP.cs" />
-        <Compile Include="Module\Modules\Visual\ESP.cs" />
-        <Compile Include="Module\Modules\Visual\ItemESP.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="UI\Arraylist.cs" />
-        <Compile Include="UI\ColorUtils.cs" />
-        <Compile Include="Util\DebugConsole.cs" />
-        <Compile Include="Util\GameData.cs" />
-        <Compile Include="Util\Memory.cs" />
-        <Compile Include="Util\PrivateAccess.cs" />
-        <Compile Include="Util\Render.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Include="packages.config" />
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Import Project="..\packages\Fody.6.8.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.8.0\build\Fody.targets')" />
-    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-      <PropertyGroup>
-        <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
-      </PropertyGroup>
-      <Error Condition="!Exists('..\packages\Fody.6.8.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.8.0\build\Fody.targets'))" />
-      <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
-      <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
-    </Target>
-    <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+    <Error Condition="!Exists('..\packages\Fody.6.8.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.8.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
+  </Target>
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

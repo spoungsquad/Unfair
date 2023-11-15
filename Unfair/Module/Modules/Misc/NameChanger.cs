@@ -18,15 +18,15 @@ namespace Unfair.Module.Modules.Misc
         // Called when the module gets disabled
         public override void OnDisable()
         {
-            GameData.LocalProfile.Nickname = name;
+            GameData.LocalProfile.GeneralData.Nickname = name;
             GameData.UIManager.UpdateProfileInfo();
         }
 
         // Called when the module gets enabled
         public override void OnEnable()
         {
-            name = GameData.LocalProfile.Nickname;
-            GameData.LocalProfile.Nickname = RandomString(10);
+            name = GameData.LocalProfile.GeneralData.Nickname;
+            GameData.LocalProfile.GeneralData.Nickname = RandomString(10);
             GameData.UIManager.UpdateProfileInfo();
         }
 

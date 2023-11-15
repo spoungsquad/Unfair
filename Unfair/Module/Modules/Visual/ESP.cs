@@ -47,7 +47,7 @@ namespace Unfair.Module.Modules.Visual
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
                 
                 // if player is bot then draw name as yellow
-                GUI.color = player.JOKIENDPJBD ? Color.yellow : Color.red;
+                GUI.color = player.POJDIMMBOCO ? Color.yellow : Color.red;
                 
                 GUI.Label(new Rect(rect.x + (rect.width / 2) - (textWidth / 2), rect.y + rect.height, 100, 20), name);
             }

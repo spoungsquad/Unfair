@@ -33,25 +33,25 @@ namespace Unfair.Module.Modules.Building
             var forward = transform.forward;
             var right = transform.right;
             
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Floor, pos - new Vector3(0, 0.5f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Floor, pos - new Vector3(0, 0.5f, 0),
                 rotation);
 
-            // GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Roof, pos + new Vector3(0, 0.5f, 0),
+            // GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Roof, pos + new Vector3(0, 0.5f, 0),
             //     rotation);
             
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Floor, pos + new Vector3(0, 1.7f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Floor, pos + new Vector3(0, 1.7f, 0),
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Wall, pos + forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Wall, pos + forward * 2,
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Wall, pos - forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Wall, pos - forward * 2,
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Wall, pos + right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Wall, pos + right * 2,
                 rotation * Quaternion.Euler(0, 90, 0));
 
-            GameData.BuildingNetworkController.CreateBuilding(INJMFHKKEIF.Wall, pos - right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Wall, pos - right * 2,
                 rotation * Quaternion.Euler(0, -90, 0));
 
 

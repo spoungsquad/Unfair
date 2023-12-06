@@ -14,7 +14,7 @@ namespace Unfair.Util
 
 		public static void SetField<T>(this object obj, string fieldName, T newValue)
 		{
-			foreach (FieldInfo fi in obj.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
+			foreach (FieldInfo fi in obj.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
 			{
 				if (!fi.Name.ToLower().Contains(fieldName.ToLower())) continue;
 				

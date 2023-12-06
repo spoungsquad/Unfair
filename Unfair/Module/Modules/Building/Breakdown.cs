@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Photon.Pun;
 using Unfair.Util;
 using UnityEngine;
 
@@ -13,15 +14,11 @@ namespace Unfair.Module.Modules.Building
         int times = 0;
         public override void OnGUI()
         {
-            if (times++ % 20 != 0) return;
-            times = 0;
-            
             GUI.Label(new Rect(50, 800, 1000, 20), "hello hi");
             GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + GameData.BuildingIDs.Length);
-            foreach (string buildingID in GameData.BuildingIDs)
-            {
-                GameData.BuildingNetworkController.HitBuilding(buildingID, GameData.BuildingNetworkController.GetField<Dictionary<string, global::Building>>("MHBIEHNOAEK")[buildingID].Health, true);
-            }
+            
+            PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+            BuildingNetworkController.Instance.KillAllBuildings(true);
         }
     }
 }

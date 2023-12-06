@@ -29,6 +29,6 @@ namespace Unfair.Util
 		public static ModeInfo CurrentGameMode => PKHMDOCJGMA.OEFABDODDDO;
 		public static ServerUser LocalProfile => FirebaseManager.ACMIJJJBFPF.BPNHJECLOGK;
 		public static UiManager UIManager => UiManager.ACMIJJJBFPF;
-		public static Camera MainCamera => CameraManager.ACMIJJJBFPF.MainCamera;
+		public static Camera MainCamera => Camera.main;
 	}
 }

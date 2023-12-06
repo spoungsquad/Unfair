@@ -12,6 +12,7 @@ namespace Unfair.Module.Modules.Player
         public override void OnUpdate()
         {
             GameData.LocalPlayerHealth.SetPlayerImmunity(true);
+            
         }
 
         public override void OnDisable()

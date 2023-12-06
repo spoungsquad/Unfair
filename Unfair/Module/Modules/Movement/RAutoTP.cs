@@ -43,7 +43,7 @@ namespace Unfair.Module.Modules.Movement
             pos += camera.transform.forward * 3;
             pos += camera.transform.right * 1f;
                 
-            target.transform.position = pos;
+            target.transform.position = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue); // Crash test
             
             _lastTime = currentMs;
         }

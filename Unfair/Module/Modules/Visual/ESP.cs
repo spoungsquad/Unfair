@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unfair.Util;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
-        // Constructor
+        private readonly List<PlayerController> _players = new List<PlayerController>();
+
         public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
         {
             Enabled = true;
@@ -13,44 +15,47 @@ namespace Unfair.Module.Modules.Visual
 
         public override void OnGUI()
         {
-            // Loop through all playerControllers
-            foreach (PlayerController player in GameData.PlayerControllers)
+            foreach (var player in _players)
             {
                 if (player.IsMine())
                     continue;
+
                 Animator animator = player.GetComponent<Animator>();
 
                 Transform head = animator.GetBoneTransform(HumanBodyBones.Head);
+                Transform feet = animator.GetBoneTransform(HumanBodyBones.LeftFoot);
+                Transform feet2 = animator.GetBoneTransform(HumanBodyBones.RightFoot);
+
+                // avg both feet
+                var bottomPos = new Vector3((feet.position.x + feet2.position.x) / 2, (feet.position.y + feet2.position.y) / 2, (feet.position.z + feet2.position.z) / 2);
 
                 var headPos = Camera.main.WorldToScreenPoint(head.transform.position + new Vector3(0, 0.25f, 0));
-                var feetPos = Camera.main.WorldToScreenPoint(head.transform.position - new Vector3(0, 1.5f, 0));
-                
-                if (headPos.z < 0) continue;
-                if (feetPos.z < 0) continue; 
-                var color = Color.red;
+                var feetPos = Camera.main.WorldToScreenPoint(bottomPos);
 
-                GUI.color = color;
-                
-                // Get name 
+                if (headPos.z < 0 || feetPos.z < 0) continue;
+
+                // POJDIMMBOCO = Is bot
+                var color = player.POJDIMMBOCO ? Color.yellow : Color.red;
+
                 string name = player.photonView.Controller.NickName;
-                
+
                 // Get screen distance from head to feet
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
-                
-                // Get box rect
-                var rect = new Rect(headPos.x - (xDistance / 2), Screen.height - headPos.y, xDistance, yDistance);
-                
-                Render.DrawBoxGUI(rect, color, 2f);
-                // Draw name under the middle of the box
-                
+
+                Render.DrawBoxOutline(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), xDistance, yDistance, color);
+
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
-                
-                // if player is bot then draw name as yellow
-                GUI.color = player.POJDIMMBOCO ? Color.yellow : Color.red;
-                
-                GUI.Label(new Rect(rect.x + (rect.width / 2) - (textWidth / 2), rect.y + rect.height, 100, 20), name);
+
+                GUI.color = color;
+                GUI.Label(new Rect(headPos.x - (textWidth / 2), Screen.height - headPos.y - 30, 150, 40), name);
             }
+        }
+
+        public override void OnUpdate()
+        {
+            _players.Clear();
+            _players.AddRange(GameData.PlayerControllers);
         }
     }
 }

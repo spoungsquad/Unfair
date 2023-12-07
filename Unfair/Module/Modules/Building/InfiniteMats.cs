@@ -5,13 +5,23 @@ namespace Unfair.Module.Modules.Building
 {
     public class InfiniteMats : Module
     {
+        private bool _prev;
+
         public InfiniteMats() : base("InfiniteMats", "r u dumb mate", Category.Building, KeyCode.Minus)
         {
             Enabled = false;
         }
 
-        private bool _prev;
-        
+        public override void OnDisable()
+        {
+            GameData.CurrentGameMode.IsBuildingAmmoUnlimited = _prev;
+        }
+
+        public override void OnEnable()
+        {
+            _prev = GameData.CurrentGameMode.IsBuildingAmmoUnlimited;
+        }
+
         public override void OnUpdate()
         {
             if (GameData.LocalPlayer == null) return;
@@ -21,21 +31,10 @@ namespace Unfair.Module.Modules.Building
             {
                 GameData.LocalPlayer.PlayerBuildingManager.BuildingAmmo = 1000;
             }
-            if (GameData.LocalPlayer.PlayerBuildingManager.buildingManager.GetField<int>("PJELDKBINAK") < 1000)
+            if (GameData.LocalPlayer.PlayerBuildingManager.buildingManager.GetField<int>("KGANGDMMEAD") < 1000)
             {
-                GameData.LocalPlayer.PlayerBuildingManager.buildingManager.SetField("PJELDKBINAK", 1000);
+                GameData.LocalPlayer.PlayerBuildingManager.buildingManager.SetField("KGANGDMMEAD", 1000);
             }
         }
-        
-        public override void OnEnable()
-        {
-            _prev = GameData.CurrentGameMode.IsBuildingAmmoUnlimited;
-        }
-        
-        public override void OnDisable()
-        {
-            GameData.CurrentGameMode.IsBuildingAmmoUnlimited = _prev;
-        }
-        
     }
 }

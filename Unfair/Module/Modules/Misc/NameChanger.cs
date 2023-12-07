@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Unfair.Util;
 using UnityEngine;
 
@@ -6,9 +7,9 @@ namespace Unfair.Module.Modules.Misc
     public class NameChanger : Module
     {
         // Random string to make the game think we're a real player
-        private string _randomString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         private string name = "";
+        private int updateTicks = 0;
 
         // Constructor
         public NameChanger() : base("NameChanger", "Change your name", Category.Misc, KeyCode.N)
@@ -26,18 +27,21 @@ namespace Unfair.Module.Modules.Misc
         public override void OnEnable()
         {
             name = GameData.LocalProfile.GeneralData.Nickname;
-            GameData.LocalProfile.GeneralData.Nickname = RandomString(10);
-            GameData.UIManager.UpdateProfileInfo();
         }
 
-        public string RandomString(int length)
+        // Called every frame
+        public override void OnUpdate()
         {
-            string str = "";
-            for (int i = 0; i < length; i++)
-            {
-                str += _randomString[Random.Range(0, _randomString.Length)];
-            }
-            return str;
+            updateTicks++;
+            if (updateTicks < 5)
+                return;
+            updateTicks = 0;
+
+            var newName = RandomString(8);
+
+            PhotonNetwork.LocalPlayer.NickName = newName;
+            GameData.LocalProfile.GeneralData.Nickname = newName;
+            GameData.UIManager.UpdateProfileInfo();
         }
     }
 }

@@ -18,21 +18,15 @@ namespace Unfair.Module.Modules.Player
             if (Input.GetKey(KeyCode.Mouse1))
             {
                 // Sort players by distance
-                List<PlayerController> players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
-
+                var players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
                 players.Remove(GameData.LocalPlayer);
 
-                PlayerController player = players.FirstOrDefault();
-                Camera camera = GameData.MainCamera;
+                var player = players.First();
+                if (player == null) return;
 
-                // Get animator
                 Animator animator = player.GetComponent<Animator>();
-
-                // Get head position
-                Transform headPos = animator.GetBoneTransform(HumanBodyBones.UpperChest);
-
-                // Look at player
-                camera.transform.LookAt(headPos);
+                Transform bone = animator.GetBoneTransform(HumanBodyBones.Chest);
+                GameData.MainCamera.transform.LookAt(bone);
             }
         }
     }

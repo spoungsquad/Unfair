@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Linq;
 using System.Threading;
@@ -8,17 +9,21 @@ namespace Unfair.Module.Modules.Movement
 {
     public class RAutoTP : Module
     {
+        private int _currentTargetIndex = 0;
+
+        private long _lastTime = 0;
+
         public RAutoTP() : base("RAutoTP", "Teleports each player in the game to you client-sidedly", Category.Combat, KeyCode.O)
         {
         }
-        
-        private int _currentTargetIndex = 0;
-        private long _lastTime = 0;
+
         public override void OnUpdate()
         {
+            PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+
             int tpms = 250;
             long currentMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            
+
             if (Math.Abs(_lastTime - currentMs) < tpms) return;
             // Stolen from falash aimbote
             var players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
@@ -30,7 +35,7 @@ namespace Unfair.Module.Modules.Movement
             else
                 _currentTargetIndex++;
             var target = players[_currentTargetIndex];
-        
+
             var camera = GameData.MainCamera;
             new Thread(() =>
             {
@@ -38,13 +43,13 @@ namespace Unfair.Module.Modules.Movement
                 Thread.Sleep(tpms);
                 target.enabled = true;
             }).Start();
-            
+
             Vector3 pos = GameData.LocalPlayer.transform.position;
             pos += camera.transform.forward * 3;
             pos += camera.transform.right * 1f;
-                
-            target.transform.position = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue); // Crash test
-            
+
+            target.transform.position = pos;
+
             _lastTime = currentMs;
         }
     }

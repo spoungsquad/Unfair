@@ -9,15 +9,15 @@ namespace Unfair.Module.Modules.Player
         public NoFall() : base("NoFall", "No fall damage", Category.Player, KeyCode.None)
         {
         }
-        
-        public override void OnUpdate()
-        {
-            GameData.LocalPlayerHealth.SetFallDamageEnabled(true);
-        }
-        
+
         public override void OnDisable()
         {
             GameData.LocalPlayerHealth.SetFallDamageEnabled(false);
+        }
+
+        public override void OnUpdate()
+        {
+            GameData.LocalPlayerHealth.SetFallDamageEnabled(true);
         }
     }
 }

@@ -34,8 +34,8 @@ namespace Unfair.Module.Modules.Visual
 
                 if (headPos.z < 0 || feetPos.z < 0) continue;
 
-                // POJDIMMBOCO = Is bot
-                var color = player.POJDIMMBOCO ? Color.yellow : Color.red;
+                // FGOFLOEPNHI = Is bot
+                var color = player.FGOFLOEPNHI ? Color.yellow : Color.red;
 
                 string name = player.photonView.Controller.NickName;
 
@@ -48,7 +48,7 @@ namespace Unfair.Module.Modules.Visual
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
 
                 GUI.color = color;
-                GUI.Label(new Rect(headPos.x - (textWidth / 2), Screen.height - headPos.y - 30, 150, 40), name);
+                GUI.Label(new Rect(headPos.x - (textWidth / 2), Screen.height - headPos.y - 20, 150, 40), name);
             }
         }
 

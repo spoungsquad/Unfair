@@ -24,12 +24,12 @@ namespace Unfair.Util
         public static void Write(string text)
         {
 #if DEBUG
-			if (!_init)
-			{
-				Prepare();
-			}
+            if (!_init)
+            {
+                Prepare();
+            }
 
-			_socket.Send(Encoding.ASCII.GetBytes(text));
+            _socket.Send(Encoding.ASCII.GetBytes(text + "\n"));
 #endif
         }
     }

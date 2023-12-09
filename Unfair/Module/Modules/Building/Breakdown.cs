@@ -14,7 +14,6 @@ namespace Unfair.Module.Modules.Building
         public override void OnGUI()
         {
             GUI.Label(new Rect(50, 800, 1000, 20), "hello hi");
-            GUI.Label(new Rect(50, 830, 1000, 20), "buildings in network: " + GameData.BuildingIDs.Length);
 
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
             BuildingNetworkController.Instance.KillAllBuildings(true);

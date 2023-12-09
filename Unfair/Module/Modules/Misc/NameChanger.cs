@@ -1,4 +1,4 @@
-using Photon.Pun;
+﻿using Photon.Pun;
 using Unfair.Util;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace Unfair.Module.Modules.Misc
         private int updateTicks = 0;
 
         // Constructor
-        public NameChanger() : base("NameChanger", "Change your name", Category.Misc, KeyCode.N)
+        public NameChanger() : base("NameChanger", "Change your name", Category.Misc, KeyCode.UpArrow)
         {
         }
 
@@ -32,12 +32,12 @@ namespace Unfair.Module.Modules.Misc
         // Called every frame
         public override void OnUpdate()
         {
-            updateTicks++;
+            /*updateTicks++;
             if (updateTicks < 5)
                 return;
             updateTicks = 0;
-
-            var newName = RandomString(8);
+            */
+            var newName = "⛓⛓ discord.gg/W36ArNRb4Y ⛓⛓ Unfair on Top!!";//RandomString(8);
 
             PhotonNetwork.LocalPlayer.NickName = newName;
             GameData.LocalProfile.GeneralData.Nickname = newName;

@@ -12,9 +12,6 @@ namespace Unfair.Util
     {
         private static Camera _cacheCamera = null;
 
-        public static string[] BuildingIDs => BuildingNetworkController
-                    .GetField<Dictionary<string, Building>>("GGNDPANCELF").Keys.ToArray();
-
         public static BuildingNetworkController BuildingNetworkController => BuildingNetworkController.Instance;
 
         public static Building[] Buildings => Object.FindObjectsOfType<Building>();
@@ -22,17 +19,17 @@ namespace Unfair.Util
         public static SupplyCrate[] Crates => Object.FindObjectsOfType<SupplyCrate>();
 
         // misc i guess
-        public static ModeInfo CurrentGameMode => PKHMDOCJGMA.OEFABDODDDO;
+        public static ModeInfo CurrentGameMode => EOAHGMEBCEG.PBDDBPPEHAL;
 
-        public static WeaponModel CurrentWeapon => WeaponController.CKDFKAJOAGF;
+        public static WeaponModel CurrentWeapon => WeaponController.PIIMNHFPCBF;
 
-        public static WeaponBaseData CurrentWeaponData => CurrentWeapon.IGFOEIMJNML;
+        public static WeaponBaseData CurrentWeaponData => CurrentWeapon.EKDOLAIHPGP;
 
-        public static PlayerController LocalPlayer => PlayerController.PAGMKIHEDAK;
+        public static PlayerController LocalPlayer => PlayerController.IKIFDINMMKC;
 
-        public static PlayerHealth LocalPlayerHealth => LocalPlayer.KIKIGFOCCEM;
+        public static PlayerHealth LocalPlayerHealth => LocalPlayer.MECEACOMEMD;
 
-        public static ServerUser LocalProfile => FirebaseManager.ACMIJJJBFPF.BPNHJECLOGK;
+        public static ServerUser LocalProfile => FirebaseManager.OJICDNBLPIC.PKLGANDEHJB;
 
         public static Camera MainCamera
         {
@@ -48,11 +45,11 @@ namespace Unfair.Util
         //TODO: Cache all FindObjectsOfType calls
         public static PlayerController[] PlayerControllers => Object.FindObjectsOfType<PlayerController>();
 
-        public static vThirdPersonController ThirdPersonController => LocalPlayer.GetField<vThirdPersonController>("_thirdPersonController");
+        public static vThirdPersonController ThirdPersonController => LocalPlayer.JCEELPIJOML;
 
-        public static UiManager UIManager => UiManager.ACMIJJJBFPF;
+        public static UiManager UIManager => UiManager.OJICDNBLPIC;
 
-        public static WeaponsController WeaponController => LocalPlayer.PBFKLLIHCOA;
+        public static WeaponsController WeaponController => LocalPlayer.FFFJCDBAEBO;
 
         public static Camera InitCamera(Camera newMain)
         {

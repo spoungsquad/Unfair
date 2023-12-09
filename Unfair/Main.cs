@@ -13,6 +13,7 @@ namespace Unfair
         private void OnGUI()
         {
             UI.Arraylist.ArrayList();
+            UI.UnfairGUI.OnRender();
 
             foreach (Module.Module module in ModuleManager.Modules)
             {
@@ -23,6 +24,7 @@ namespace Unfair
 
         private void Start()
         {
+            UI.UnfairGUI.Init();
             DebugConsole.Write("Hello, world!");
             ModuleManager.Init();
             DebugConsole.Write("Initialized modules!");
@@ -34,6 +36,8 @@ namespace Unfair
 
         private void Update()
         {
+            UI.UnfairGUI.OnUpdate();
+            
             foreach (var module in ModuleManager.Modules)
             {
                 try

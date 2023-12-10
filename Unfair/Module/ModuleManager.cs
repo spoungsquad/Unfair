@@ -26,6 +26,9 @@ namespace Unfair.Module
 
                 Modules.Add(m);
             }
+            
+            // Sort all modules by category
+            Modules = Modules.OrderBy(x => x.Category).ToList();
 
             // KeybindManager.CreateKeybinds(); // ! USE THIS IF U ADD A MODULE !
         }

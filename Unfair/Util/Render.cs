@@ -2,105 +2,128 @@ using UnityEngine;
 
 namespace Unfair.Util
 {
+    public enum GLMode
+    {
+        Lines = 1,
+        Quads = 7
+    }
+    
     public class Render : MonoBehaviour
     {
         private static Material renderMat = null;
+        private static readonly int SrcBlend = Shader.PropertyToID("_SrcBlend");
+        private static readonly int DstBlend = Shader.PropertyToID("_DstBlend");
+        private static readonly int Cull = Shader.PropertyToID("_Cull");
+        private static readonly int ZTest = Shader.PropertyToID("_ZTest");
+        private static readonly int ZWrite = Shader.PropertyToID("_ZWrite");
+        private static readonly int Color1 = Shader.PropertyToID("_Color");
 
-        public static Color Color
-        {
-            get { return GUI.color; }
-            set { GUI.color = value; }
-        }
+        public static Color Color { get; set; } = Color.white;
 
         public static GUIStyle StringStyle { get; set; } = new GUIStyle(GUI.skin.label);
-
-        public static void DrawBox(Vector2 position, Vector2 size, Color color)
+        
+        
+        
+        public static void DrawLine(Vector2 start, Vector2 end, float width, Color color)
         {
-            Color = color;
-            DrawBox(position, size);
-        }
+            
+            InitMat();
+            renderMat.SetColor("_Color", color);
 
-        public static void DrawBox(float x, float y, float width, float height, Color color)
-        {
-            Color = color;
-            DrawBox(new Vector2(x, y), new Vector2(width, height));
-        }
+            // Calculate the perpendicular offset vector
+            Vector2 offset = (end - start).normalized * width / 2f;
 
-        public static void DrawBox(Vector2 position, Vector2 size)
-        {
-            GUI.DrawTexture(new Rect(position, size), Texture2D.whiteTexture, ScaleMode.StretchToFill);
-        }
-
-        public static void DrawBoxGUI(Rect rect, Color color, float thickness)
-        {
-            Texture2D tex = new Texture2D(1, 1);
-            tex.SetPixel(0, 0, color);
-            tex.Apply();
-
-            Color originalColor = GUI.color;
-
-            GUI.color = color;
-
-            GUI.DrawTexture(new Rect(rect.x, rect.y, rect.width, thickness), tex);
-            GUI.DrawTexture(new Rect(rect.x, rect.y, thickness, rect.height), tex);
-            GUI.DrawTexture(new Rect(rect.x + rect.width - thickness, rect.y, thickness, rect.height), tex);
-            GUI.DrawTexture(new Rect(rect.x, rect.y + rect.height - thickness, rect.width, thickness), tex);
-
-            GUI.color = originalColor;
-        }
-
-        public static void DrawBoxOutline(Vector2 origin, float width, float height, Color color)
-        {
-            DrawLine(origin, new Vector2(origin.x + width, origin.y), color);
-            DrawLine(origin, new Vector2(origin.x, origin.y + height), color);
-            DrawLine(new Vector2(origin.x + width, origin.y + height), new Vector2(origin.x + width, origin.y), color);
-            DrawLine(new Vector2(origin.x + width, origin.y + height), new Vector2(origin.x, origin.y + height), color);
-        }
-
-        public static bool DrawButton(Rect rect, string text, Color textColor, Color buttonColor)
-        {
-            DrawBoxOutline(rect.position, rect.width + 6, rect.height, buttonColor);
-            DrawString(rect.position + new Vector2(3, 0), text, textColor, false); // padding!
-
-            return GUI.Button(rect, new GUIContent(""), GUI.skin.label); // invis button
-        }
-
-        public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color)
-        {
-            var mat = InitMat();
-            mat.SetColor("_Color", color);
+            // Calculate the four corner points of the rectangle
+            Vector2 topLeft = start + new Vector2(-offset.y, offset.x);
+            Vector2 topRight = start + new Vector2(offset.y, -offset.x);
+            Vector2 bottomLeft = end + new Vector2(-offset.y, offset.x);
+            Vector2 bottomRight = end + new Vector2(offset.y, -offset.x);
 
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-            GL.Begin(1); // 1 = GL.LINES
+            GL.Begin((int)GLMode.Quads);  // Use GL.QUADS to draw a filled rectangle
 
             GL.Color(color);
-
-            GL.Vertex(pointA);
-            GL.Vertex(pointB);
+            GL.Vertex3(topLeft.x, topLeft.y, 0f);
+            GL.Vertex3(topRight.x, topRight.y, 0f);
+            GL.Vertex3(bottomRight.x, bottomRight.y, 0f);
+            GL.Vertex3(bottomLeft.x, bottomLeft.y, 0f);
 
             GL.End();
             GL.PopMatrix();
         }
-
-        public static void DrawRect(Rect rect, Color color)
+        
+        public static void DrawLine(Vector2 start, Vector2 end, Color color, float width = 1f)
         {
-            var mat = InitMat();
-            mat.SetColor("_Color", color);
-
+            DrawLine(start, end, width, color);
+        }
+        
+        public static void FillRect(Rect rect, Color color) // Filled btw
+        {
+            InitMat();
+            renderMat.SetColor("_Color", color);
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
             GL.Begin(7); // 7 = GL.QUADS
-
             GL.Color(color);
-
-            GL.Vertex(new Vector3(rect.x + rect.width, rect.y));
-            GL.Vertex(new Vector3(rect.x, rect.y));
-            GL.Vertex(new Vector3(rect.x, rect.y + rect.height));
-            GL.Vertex(new Vector3(rect.x + rect.width, rect.y + rect.height));
-
+            GL.Vertex3(rect.xMin, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMax, 0f);
             GL.End();
             GL.PopMatrix();
+        }
+        
+        public static void FillRect(Rect rect)
+        {
+            FillRect(rect, Color);
+        }
+        
+        public static void FillRect(Vector2 position, Vector2 size, Color color)
+        {
+            FillRect(new Rect(position, size), color);
+        }
+        
+        public static void FillRect(Vector2 position, Vector2 size)
+        {
+            FillRect(new Rect(position, size), Color);
+        }
+        
+        public static void DrawRect(Rect rect, Color color, float width = 1f)
+        {
+            InitMat();
+            renderMat.SetColor("_Color", color);
+            GL.PushMatrix();
+            GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
+            GL.Begin(1); // 1 = GL.LINES
+            GL.Color(color);
+            GL.Vertex3(rect.xMin, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMax, 0f);
+            GL.Vertex3(rect.xMax, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMin, 0f);
+            GL.End();
+            GL.PopMatrix();
+        }
+
+
+        
+        public static void DrawRect(Rect rect, float width = 1f)
+        {
+            DrawRect(rect, Color, width);
+        }
+        
+        public static void DrawRect(Vector2 position, Vector2 size, Color color, float width = 1f)
+        {
+            DrawRect(new Rect(position, size), color, width);
+        }
+        
+        public static void DrawRect(Vector2 position, Vector2 size, float width = 1f)
+        {
+            DrawRect(new Rect(position, size), Color, width);
         }
 
         public static void DrawString(Vector2 position, string label, Color color, bool centered)
@@ -116,6 +139,8 @@ namespace Unfair.Util
             Vector2 upperLeft = centered ? position - size / 2f : position;
             GUI.Label(new Rect(upperLeft, size), label);
         }
+        
+        
 
         public static float GetTextWidth(string text)
         {
@@ -128,18 +153,30 @@ namespace Unfair.Util
         {
             if (renderMat != null) return renderMat;
 
-            renderMat = new Material(Shader.Find("Hidden/Internal-Colored"))
+            renderMat = new Material(Shader.Find($"Hidden/Internal-Colored"))
             {
                 hideFlags = HideFlags.DontSaveInEditor | HideFlags.HideInHierarchy
             };
-            renderMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            renderMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            renderMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
-            renderMat.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
-            renderMat.SetInt("_ZWrite", 0);
-            renderMat.SetColor("_Color", Color.clear);
+            renderMat.SetInt(SrcBlend, (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            renderMat.SetInt(DstBlend, (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            renderMat.SetInt(Cull, (int)UnityEngine.Rendering.CullMode.Off);
+            renderMat.SetInt(ZTest, (int)UnityEngine.Rendering.CompareFunction.Always);
+            renderMat.SetInt(ZWrite, 0);
+            renderMat.SetColor(Color1, Color.clear);
 
             return renderMat;
+        }
+
+        public static bool DrawButton(Rect rect, string text, Color textColor, Color boxColor)
+        {
+            FillRect(rect, boxColor);
+            DrawString(new Vector2(rect.position.x + rect.size.x / 2, rect.position.y + rect.size.y / 2), text, textColor, true);
+            return GUI.Button(rect, new GUIContent(""), StringStyle);
+        }
+
+        public static void DrawTexture(Rect rect, Texture2D texture)
+        {
+            GUI.DrawTexture(rect, texture);
         }
     }
 }

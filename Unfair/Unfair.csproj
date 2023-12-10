@@ -812,6 +812,7 @@
     <Compile Include="Module\Modules\Building\Instabreak.cs" />
     <Compile Include="Module\Modules\Building\OpenUp.cs" />
     <Compile Include="Module\Modules\Building\Surround.cs" />
+    <Compile Include="Module\Modules\Combat\AimAssist.cs" />
     <Compile Include="Module\Modules\Combat\InfiniteAmmo.cs" />
     <Compile Include="Module\Modules\Combat\InfiniteRange.cs" />
     <Compile Include="Module\Modules\Combat\NoRecoil.cs" />

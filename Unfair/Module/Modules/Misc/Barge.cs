@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Scripts.Network;
 using Photon.Pun;
 using Unfair.Util;
@@ -36,8 +37,17 @@ namespace Unfair.Module.Modules.Misc
                     return;
                 }
                 DebugConsole.Write(x.NickName);
+
+                FriendsManager.Instance.SendFriendInvite(x.UserId);
+                FriendsManager.Instance.AcceptInvite(x.UserId);
+                DebugConsole.Write("Added friend");
                 
+                FirebaseManager.OJICDNBLPIC.PKLGANDEHJB.Friends.Friends.Add(new FriendEntry(x.UserId));
                 
+                FriendsManager.Instance.FetchFriendsData();
+                PhotonChatManager.OJICDNBLPIC.AddFriends(x.UserId);
+                PhotonChatManager.OJICDNBLPIC.SendPrivateMessage(x.UserId, new PhotonChatMessage(LEMFLKDJENG.FriendInviteAccept));
+
                 
                 Connector.OJICDNBLPIC.EnterParty(x.Party);
 

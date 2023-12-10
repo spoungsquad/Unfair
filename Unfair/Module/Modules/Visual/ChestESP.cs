@@ -27,7 +27,7 @@ namespace Unfair.Module.Modules.Visual
                 var pos = GameData.MainCamera.WorldToScreenPoint(position);
                 if (pos.z < 0) continue;
 
-                Render.DrawBoxOutline(new Vector2(pos.x - 10, Screen.height - pos.y - 10), 20, 20, Color.blue);
+                Render.DrawRect(new Vector2(pos.x - 10, Screen.height - pos.y - 10), new Vector2(20, 20), Color.blue);
             }
         }
 

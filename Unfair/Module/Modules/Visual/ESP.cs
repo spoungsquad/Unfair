@@ -43,7 +43,7 @@ namespace Unfair.Module.Modules.Visual
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
 
-                Render.DrawBoxOutline(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), xDistance, yDistance, color);
+                Render.DrawRect(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), new Vector2(xDistance, yDistance), color);
 
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
 

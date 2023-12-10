@@ -9,7 +9,8 @@ namespace Unfair.Module
         Combat,
         Visuals,
         Building,
-        Misc
+        Misc,
+        None
     }
 
     public class Module

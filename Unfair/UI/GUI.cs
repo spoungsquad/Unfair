@@ -1,4 +1,5 @@
-﻿using Unfair.Module;
+﻿using System.Collections.Generic;
+using Unfair.Module;
 using Unfair.Util;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Unfair.UI
         static Vector2 _oldMousePosition;
         static bool _isDragging;
         static CursorLockMode _oldCursorLockMode;
+        const int padding = 5;
 
 
         public static void Init()
@@ -26,7 +28,7 @@ namespace Unfair.UI
             _oldMousePosition = Input.mousePosition;
 
             _window.Position = new Vector2(100, 100);
-            _window.Size = new Vector2(Display.main.renderingWidth / 3f, Display.main.renderingHeight / 2f);
+            _window.Size = new Vector2(Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f);
             _window.Title = "Unfair";
             _window.IsOpen = true;
             _window.IsDraggable = true;
@@ -60,10 +62,10 @@ namespace Unfair.UI
             // Free mouse
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            
-            Render.DrawBox(_window.Position, _window.Size, new Color(0.1f, 0.1f, 0.1f));
-            Render.DrawBoxOutline(_window.Position, _window.Size.x, _window.Size.y, new Color(0.2f, 0.2f, 0.2f));
-            
+
+            Render.DrawRect(_window.Position, _window.Size, new Color(0.2f, 0.2f, 0.2f));
+            Render.FillRect(_window.Position, _window.Size, new Color(0.1f, 0.1f, 0.1f));
+
             // Render centered title
             
             Vector2 titlePosition = _window.Position + new Vector2(_window.Size.x / 2, 4);
@@ -71,14 +73,26 @@ namespace Unfair.UI
             Render.DrawString(titlePosition, "Unfair", Color.white, true);
 
             int i = 0;
+            Category lastCategory = Category.None;
+            int categoryCount = -1;
             foreach (var module in ModuleManager.Modules)
             {
-                
-                Rect toggleRect = new Rect(_window.Position.x + 5, _window.Position.y + 20 + (i * 20), 15, 15);
-                
-                if (Render.DrawButton(toggleRect, (module.Enabled ? "X" : " ") + " " + module.Name, Color.white, module.Enabled ? Color.red : Color.green))
+                if (lastCategory != module.Category)
                 {
-                    module.Enabled = !module.Enabled;
+                    // Render category text
+                    Vector2 categoryPosition = new Vector2(_window.Position.x + 5 + ((categoryCount + 1) * ((_window.Size.x / 10) + padding)), _window.Position.y + 20);
+                    Render.DrawString(categoryPosition, module.Category + ":", Color.white, false);
+                    
+                    lastCategory = module.Category;
+                    i = 0;
+                    categoryCount++;
+                }
+                
+                Rect toggleRect = new Rect(_window.Position.x + 5 + (categoryCount * ((_window.Size.x / 10) + padding)), _window.Position.y + 35 + (i * (20 + padding / 2f)), _window.Size.x / 10, 20);
+                
+                if (Render.DrawButton(toggleRect, module.Name, Color.white, module.Enabled ? new Color(30f / 255f,215f / 255f,96f / 255f ) : new Color(20f / 255f,20f / 255f,20f / 255f )))
+                {
+                    module.Toggle();
                 }
                 
                 i++;
@@ -101,6 +115,8 @@ namespace Unfair.UI
                 }
                 else
                 {
+                    _window.Position = new Vector2(100, 100);
+                    
                     Cursor.lockState = _oldCursorLockMode;
                     Cursor.visible = _oldCursorLockMode == CursorLockMode.None;
                 }

@@ -8,7 +8,7 @@ namespace Unfair.Module.Modules.Player
     public class Aimbot : Module
     {
         // Constructor
-        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Player, KeyCode.None)
+        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Combat, KeyCode.None)
         {
             Enabled = true;
         }

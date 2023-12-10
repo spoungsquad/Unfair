@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Unfair.Util;
 using UnityEngine;
 
@@ -6,13 +7,26 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
-        private readonly List<PlayerController> _players = new List<PlayerController>();
+        private List<PlayerController> _players = new List<PlayerController>();
 
         public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
         {
             Enabled = true;
         }
 
+        public void RenderBoneFromTransform(Transform bone)
+        {
+            Vector2 boneStartPos = Camera.main.WorldToScreenPoint(bone.position);
+            Vector2 boneEndPos = Camera.main.WorldToScreenPoint(bone.parent.position);
+                
+            
+            // Subtract y pos from screen height to flip the y axis
+            boneStartPos.y = Screen.height - boneStartPos.y;
+            boneEndPos.y = Screen.height - boneEndPos.y;
+                
+            Render.DrawLine(boneEndPos, boneStartPos, Color.white);
+        }
+        
         public override void OnGUI()
         {
             foreach (var player in _players)
@@ -43,8 +57,35 @@ namespace Unfair.Module.Modules.Visual
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
 
-                Render.DrawRect(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), new Vector2(xDistance, yDistance), color);
+                
+                Rect rect = new Rect(headPos.x - xDistance / 2, Screen.height - headPos.y, xDistance, yDistance);
+                
+                // Draw box
+                Render.FillRect(rect, new Color(30 / 255f, 30/ 255f, 30/ 255f, 30/ 255f));
+                Render.DrawRect(rect, color);
 
+
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.UpperChest));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.Chest));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.Spine));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.Head));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftUpperArm));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftLowerArm));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftHand));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightUpperArm));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightLowerArm));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightHand));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftUpperLeg));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftLowerLeg));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.LeftFoot));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightUpperLeg));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightLowerLeg));
+                RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightFoot));
+                
+                
+                
+                
+                
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
 
                 GUI.color = color;
@@ -54,8 +95,7 @@ namespace Unfair.Module.Modules.Visual
 
         public override void OnUpdate()
         {
-            _players.Clear();
-            _players.AddRange(GameData.PlayerControllers);
+            _players = GameData.PlayerControllers.ToList();
         }
     }
 }

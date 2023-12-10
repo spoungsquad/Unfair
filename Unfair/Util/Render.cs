@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace Unfair.Util
 {
+    public enum GLMode
+    {
+        Lines = 1,
+        Quads = 7
+    }
+    
     public class Render : MonoBehaviour
     {
         private static Material renderMat = null;
@@ -16,16 +22,33 @@ namespace Unfair.Util
 
         public static GUIStyle StringStyle { get; set; } = new GUIStyle(GUI.skin.label);
         
+        
+        
         public static void DrawLine(Vector2 start, Vector2 end, float width, Color color)
         {
+            
             InitMat();
             renderMat.SetColor("_Color", color);
+
+            // Calculate the perpendicular offset vector
+            Vector2 offset = (end - start).normalized * width / 2f;
+
+            // Calculate the four corner points of the rectangle
+            Vector2 topLeft = start + new Vector2(-offset.y, offset.x);
+            Vector2 topRight = start + new Vector2(offset.y, -offset.x);
+            Vector2 bottomLeft = end + new Vector2(-offset.y, offset.x);
+            Vector2 bottomRight = end + new Vector2(offset.y, -offset.x);
+
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-            GL.Begin(1);
+            GL.Begin((int)GLMode.Quads);  // Use GL.QUADS to draw a filled rectangle
+
             GL.Color(color);
-            GL.Vertex3(start.x, start.y, 0f);
-            GL.Vertex3(end.x, end.y, 0f);
+            GL.Vertex3(topLeft.x, topLeft.y, 0f);
+            GL.Vertex3(topRight.x, topRight.y, 0f);
+            GL.Vertex3(bottomRight.x, bottomRight.y, 0f);
+            GL.Vertex3(bottomLeft.x, bottomLeft.y, 0f);
+
             GL.End();
             GL.PopMatrix();
         }
@@ -72,15 +95,21 @@ namespace Unfair.Util
             renderMat.SetColor("_Color", color);
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-            GL.Begin(1);
+            GL.Begin(1); // 1 = GL.LINES
             GL.Color(color);
             GL.Vertex3(rect.xMin, rect.yMin, 0f);
             GL.Vertex3(rect.xMax, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMin, 0f);
+            GL.Vertex3(rect.xMax, rect.yMax, 0f);
             GL.Vertex3(rect.xMax, rect.yMax, 0f);
             GL.Vertex3(rect.xMin, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMax, 0f);
+            GL.Vertex3(rect.xMin, rect.yMin, 0f);
             GL.End();
             GL.PopMatrix();
         }
+
+
         
         public static void DrawRect(Rect rect, float width = 1f)
         {
@@ -110,6 +139,8 @@ namespace Unfair.Util
             Vector2 upperLeft = centered ? position - size / 2f : position;
             GUI.Label(new Rect(upperLeft, size), label);
         }
+        
+        
 
         public static float GetTextWidth(string text)
         {
@@ -141,6 +172,11 @@ namespace Unfair.Util
             FillRect(rect, boxColor);
             DrawString(new Vector2(rect.position.x + rect.size.x / 2, rect.position.y + rect.size.y / 2), text, textColor, true);
             return GUI.Button(rect, new GUIContent(""), StringStyle);
+        }
+
+        public static void DrawTexture(Rect rect, Texture2D texture)
+        {
+            GUI.DrawTexture(rect, texture);
         }
     }
 }

@@ -40,13 +40,11 @@ namespace Unfair.Module.Modules.Visual
                 // FGOFLOEPNHI = Is bot
                 var color = player.FGOFLOEPNHI ? Color.yellow : Color.red;
 
-                string name = player.photonView.Controller.NickName;
-
                 // Get screen distance from head to feet
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
                 
-                Render.DrawLine(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), new Vector2(0, 0), color);
+                Render.DrawLine(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), new Vector2(Screen.width / 2f, Screen.height), color);
             }
         }
         

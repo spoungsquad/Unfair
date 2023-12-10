@@ -20,11 +20,12 @@ namespace Unfair.UI
         static Vector2 _oldMousePosition;
         static bool _isDragging;
         static CursorLockMode _oldCursorLockMode;
+        public static Texture2D spongTexture;
         const int padding = 5;
-
 
         public static void Init()
         {
+            spongTexture = Spoung.DeployTheSpoung();
             _oldMousePosition = Input.mousePosition;
 
             _window.Position = new Vector2(100, 100);
@@ -69,8 +70,13 @@ namespace Unfair.UI
             // Render centered title
             
             Vector2 titlePosition = _window.Position + new Vector2(_window.Size.x / 2, 4);
-            
             Render.DrawString(titlePosition, "Unfair", Color.white, true);
+
+
+            Vector2 spongSize = new Vector2(spongTexture.width, spongTexture.height) / 2;
+            Vector2 spongPosition = _window.Position + _window.Size - spongSize - new Vector2(padding, padding);
+
+            Render.DrawTexture(new Rect(spongPosition, spongSize), spongTexture);
 
             int i = 0;
             Category lastCategory = Category.None;

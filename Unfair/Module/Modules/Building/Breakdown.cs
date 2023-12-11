@@ -15,7 +15,6 @@ namespace Unfair.Module.Modules.Building
         {
             GUI.Label(new Rect(50, 800, 1000, 20), "hello hi");
 
-            PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
             BuildingNetworkController.Instance.KillAllBuildings(true);
         }
     }

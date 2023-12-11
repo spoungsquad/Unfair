@@ -9,11 +9,6 @@ namespace Unfair.Module.Modules.Combat
         {
             Enabled = false;
         }
-
-        public override void OnGUI()
-        {
-            
-        }   
         
         public override void OnUpdate()
         {

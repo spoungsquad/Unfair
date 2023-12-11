@@ -820,6 +820,7 @@
     <Compile Include="Module\Modules\Combat\RapidFire.cs" />
     <Compile Include="Module\Modules\Combat\TestLol.cs" />
     <Compile Include="Module\Modules\Combat\Triggerbot.cs" />
+    <Compile Include="Module\Modules\Combat\AimAssist.cs" />
     <Compile Include="Module\Modules\Misc\Barge.cs" />
     <Compile Include="Module\Modules\Misc\NameChanger.cs" />
     <Compile Include="Module\Modules\Misc\NewHost.cs" />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Photon.Realtime;
 using Unfair.Util;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Unfair.Module.Modules.Combat
         public override void OnUpdate()
         {
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+            
 
             int ms = 2000;
             long currentMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();

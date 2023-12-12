@@ -13,8 +13,11 @@ namespace Unfair.UI.Elements
             ToggleButton button = new ToggleButton
             {
                 Text = tab,
-                Color = new Color(0, 0, 0 ,0),
-                StrokeColor = Color.white,
+                Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
+                ToggleColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                TextColor = new Color(104 / 255f, 104 / 255f, 104 / 255f),
+                ToggleTextColor = Color.white,
                 StrokeWidth = 1f,
                 Rect = new Rect(0, 0, 100, 20),
                 OnClick = btn =>

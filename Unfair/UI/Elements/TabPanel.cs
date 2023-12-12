@@ -7,9 +7,12 @@ namespace Unfair.UI.Elements
     public class TabPanel : Panel
     {
         private readonly Dictionary<ToggleButton, Panel> _tabs = new Dictionary<ToggleButton, Panel>();
-        
+        private int _nextX;
+
         public void AddTab(string tab, Panel panel)
         {
+            panel.PositionOffset = new Vector2(0, 65);
+            
             ToggleButton button = new ToggleButton
             {
                 Text = tab,
@@ -20,16 +23,21 @@ namespace Unfair.UI.Elements
                 ToggleTextColor = Color.white,
                 StrokeWidth = 1f,
                 Rect = new Rect(0, 0, 100, 25),
+                PositionOffset = new Vector2(_nextX, 10),
                 OnClick = btn =>
                 {
                     foreach (var pair in _tabs)
                     {
                         pair.Key.IsToggled = false;
+                        pair.Value.IsVisible = false;
                     }
 
                     btn.IsToggled = true;
+                    _tabs[btn].IsVisible = true;
                 }
             };
+            
+            _nextX += (int)button.Rect.size.x;
 
             if (Children == null)
             {
@@ -46,16 +54,6 @@ namespace Unfair.UI.Elements
         
         public override void Draw()
         {
-            int nextX = 0;
-            foreach (var tab in _tabs)
-            {
-                tab.Key.PositionOffset = new Vector2(nextX, 10);
-                
-                nextX += (int)tab.Key.Rect.size.x;
-                tab.Value.IsVisible = tab.Key.IsToggled;
-                tab.Value.PositionOffset = new Vector2(0, tab.Key.Rect.size.y + 40);   
-            }
-
             base.Draw();
         }
     }

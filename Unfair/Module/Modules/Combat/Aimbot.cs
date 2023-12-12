@@ -12,7 +12,8 @@ namespace Unfair.Module.Modules.Player
         {
             Enabled = true;
         }
-
+        
+        private Vector3 oldPos = Vector3.zero;
         public override void OnUpdate()
         {
             if (Input.GetKey(KeyCode.Mouse1))
@@ -25,8 +26,13 @@ namespace Unfair.Module.Modules.Player
                 if (player == null) return;
 
                 Animator animator = player.GetComponent<Animator>();
-                Transform bone = animator.GetBoneTransform(HumanBodyBones.Chest);
-                GameData.MainCamera.transform.LookAt(bone);
+                Transform bone = animator.GetBoneTransform(HumanBodyBones.Head);
+
+                Vector3 targetPos = bone.position;
+                Vector3 extrapolatedPos = targetPos + (targetPos - oldPos) * 2f;
+                
+                GameData.MainCamera.transform.LookAt(extrapolatedPos);
+                oldPos = targetPos;
             }
         }
     }

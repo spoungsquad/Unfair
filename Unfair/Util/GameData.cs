@@ -51,6 +51,8 @@ namespace Unfair.Util
 
         public static WeaponsController WeaponController => LocalPlayer.FFFJCDBAEBO;
 
+        public static CameraManager CameraManager => CameraManager.OJICDNBLPIC;
+
         public static Camera InitCamera(Camera newMain)
         {
             return _cacheCamera = newMain;

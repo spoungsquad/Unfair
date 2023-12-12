@@ -5,7 +5,7 @@ namespace Unfair.Module.Modules.Misc
 {
     public class RenameToChainsEmoji : Module
     {
-        public RenameToChainsEmoji() : base("ChainsName", "make ur name ⛓⛓⛓⛓⛓⛓...", Category.Misc, KeyCode.Comma)
+        public RenameToChainsEmoji() : base("ChainsName", "make ur name ⛓⛓⛓⛓⛓⛓...", Category.Misc, KeyCode.None)
         {
         }
 

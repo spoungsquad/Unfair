@@ -824,6 +824,7 @@
     <Compile Include="Module\Modules\Misc\Barge.cs" />
     <Compile Include="Module\Modules\Misc\Crasher.cs" />
     <Compile Include="Module\Modules\Misc\NameChanger.cs" />
+    <Compile Include="Module\Modules\Misc\NewHost.cs" />
     <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />
     <Compile Include="Module\Modules\Misc\WeaponSpawn.cs" />
     <Compile Include="Module\Modules\Movement\Airjump.cs" />

@@ -13,6 +13,7 @@ namespace Unfair.Module.Modules.Movement
         
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer is null) return;
             GameData.ThirdPersonController.isGrounded = true;
             GameData.ThirdPersonController.isJumping = false;
             GameData.ThirdPersonController.IsCrawling = false;

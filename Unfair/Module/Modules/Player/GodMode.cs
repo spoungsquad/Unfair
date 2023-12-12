@@ -12,11 +12,13 @@ namespace Unfair.Module.Modules.Player
 
         public override void OnDisable()
         {
+            if (GameData.LocalPlayer is null) return;
             GameData.LocalPlayerHealth.SetPlayerImmunity(false);
         }
 
         public override void OnUpdate()
         {
+            if (GameData.LocalPlayer is null) return;
             GameData.LocalPlayerHealth.SetPlayerImmunity(true);
         }
     }

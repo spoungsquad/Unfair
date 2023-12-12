@@ -141,8 +141,6 @@ namespace Unfair.Util
             GUI.Label(new Rect(upperLeft, size), label);
         }
 
-
-
         public static float GetTextWidth(string text)
         {
             GUIContent content = new GUIContent(text);

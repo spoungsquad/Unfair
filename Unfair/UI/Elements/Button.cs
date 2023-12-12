@@ -12,7 +12,6 @@ namespace Unfair.UI.Elements
         public float StrokeWidth;
         public string Text;
         public bool IsPressed;
-        public bool IsCentered;
         public Action<Button> OnClick;
 
         public override void Draw()
@@ -21,7 +20,7 @@ namespace Unfair.UI.Elements
             
             Render.FillRect(position, Rect.size, Color);
             Render.DrawRect(position, Rect.size, StrokeColor, StrokeWidth);
-            Render.DrawString(position, Text, TextColor, IsCentered);
+            Render.DrawString(position, Text, TextColor, true);
             
             IsPressed = GUI.Button(new Rect(position, Rect.size), new GUIContent(""), GUI.skin.label);
             if (IsPressed && OnClick != null)

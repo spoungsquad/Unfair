@@ -19,7 +19,7 @@ namespace Unfair.UI.Elements
                 TextColor = new Color(104 / 255f, 104 / 255f, 104 / 255f),
                 ToggleTextColor = Color.white,
                 StrokeWidth = 1f,
-                Rect = new Rect(0, 0, 100, 20),
+                Rect = new Rect(0, 0, 100, 25),
                 OnClick = btn =>
                 {
                     foreach (var pair in _tabs)

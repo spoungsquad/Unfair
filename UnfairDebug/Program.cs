@@ -22,8 +22,14 @@ namespace UnfairDebug
                 {
                     var buffer = new byte[ushort.MaxValue];
                     var bytesReceived = client.Receive(buffer);
-
+                    
                     var data = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
+                    if (bytesReceived == 0) // Client disconnected
+                    {
+                        Console.WriteLine("[UnfairDebug] Client disconnected");
+                        client.Close();
+                        goto reconnect;
+                    }
                     Console.WriteLine(data);
                 }
             }

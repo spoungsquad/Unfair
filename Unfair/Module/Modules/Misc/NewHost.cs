@@ -5,7 +5,7 @@ namespace Unfair.Module.Modules.Misc
 {
     public class NewHost : Module
     {
-        NewHost() : base("NewHost", "Makes you the host", Category.Misc, KeyCode.None)
+        public NewHost() : base("NewHost", "Makes you the host", Category.Misc, KeyCode.None)
         {
         }
         

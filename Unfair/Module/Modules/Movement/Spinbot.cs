@@ -19,9 +19,6 @@ namespace Unfair.Module.Modules.Movement
 
         public override void OnUpdate()
         {
-            var roomCode = JDILHEGGEEL.EIAABADOFKB(JDILHEGGEEL.MIBGNMNHLCP());
-            DebugConsole.Write("Joining room -> " + roomCode);
-            PhotonNetwork.JoinRoom(roomCode);
 
             if (GameData.LocalPlayer is null) return;
 

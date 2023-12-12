@@ -17,6 +17,9 @@ namespace Unfair.Module.Modules.Combat
             // Doesn't work?
             GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilForce = 0;
             GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilDuration = 0;
+            GameData.CameraManager.TPCamera.AddRecoil(Vector2.zero, 0, 0);
+            
+            
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Unfair.Util
@@ -7,7 +8,7 @@ namespace Unfair.Util
         Lines = 1,
         Quads = 7
     }
-    
+
     public class Render : MonoBehaviour
     {
         private static Material renderMat = null;
@@ -21,12 +22,12 @@ namespace Unfair.Util
         public static Color Color { get; set; } = Color.white;
 
         public static GUIStyle StringStyle { get; set; } = new GUIStyle(GUI.skin.label);
-        
-        
-        
+
+
+
         public static void DrawLine(Vector2 start, Vector2 end, float width, Color color)
         {
-            
+
             InitMat();
             renderMat.SetColor("_Color", color);
 
@@ -41,7 +42,7 @@ namespace Unfair.Util
 
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-            GL.Begin((int)GLMode.Quads);  // Use GL.QUADS to draw a filled rectangle
+            GL.Begin((int)GLMode.Quads); // Use GL.QUADS to draw a filled rectangle
 
             GL.Color(color);
             GL.Vertex3(topLeft.x, topLeft.y, 0f);
@@ -52,12 +53,12 @@ namespace Unfair.Util
             GL.End();
             GL.PopMatrix();
         }
-        
+
         public static void DrawLine(Vector2 start, Vector2 end, Color color, float width = 1f)
         {
             DrawLine(start, end, width, color);
         }
-        
+
         public static void FillRect(Rect rect, Color color) // Filled btw
         {
             InitMat();
@@ -73,22 +74,22 @@ namespace Unfair.Util
             GL.End();
             GL.PopMatrix();
         }
-        
+
         public static void FillRect(Rect rect)
         {
             FillRect(rect, Color);
         }
-        
+
         public static void FillRect(Vector2 position, Vector2 size, Color color)
         {
             FillRect(new Rect(position, size), color);
         }
-        
+
         public static void FillRect(Vector2 position, Vector2 size)
         {
             FillRect(new Rect(position, size), Color);
         }
-        
+
         public static void DrawRect(Rect rect, Color color, float width = 1f)
         {
             InitMat();
@@ -110,17 +111,17 @@ namespace Unfair.Util
         }
 
 
-        
+
         public static void DrawRect(Rect rect, float width = 1f)
         {
             DrawRect(rect, Color, width);
         }
-        
+
         public static void DrawRect(Vector2 position, Vector2 size, Color color, float width = 1f)
         {
             DrawRect(new Rect(position, size), color, width);
         }
-        
+
         public static void DrawRect(Vector2 position, Vector2 size, float width = 1f)
         {
             DrawRect(new Rect(position, size), Color, width);
@@ -139,8 +140,8 @@ namespace Unfair.Util
             Vector2 upperLeft = centered ? position - size / 2f : position;
             GUI.Label(new Rect(upperLeft, size), label);
         }
-        
-        
+
+
 
         public static float GetTextWidth(string text)
         {
@@ -170,13 +171,36 @@ namespace Unfair.Util
         public static bool DrawButton(Rect rect, string text, Color textColor, Color boxColor)
         {
             FillRect(rect, boxColor);
-            DrawString(new Vector2(rect.position.x + rect.size.x / 2, rect.position.y + rect.size.y / 2), text, textColor, true);
+            DrawString(new Vector2(rect.position.x + rect.size.x / 2, rect.position.y + rect.size.y / 2), text,
+                textColor, true);
             return GUI.Button(rect, new GUIContent(""), StringStyle);
         }
 
         public static void DrawTexture(Rect rect, Texture2D texture)
         {
             GUI.DrawTexture(rect, texture);
+        }
+
+        private static readonly float Deg2Rad = (float)Math.PI / 180f;
+
+        public static void DrawCircle(Vector2 vector2, float maxDistanceFromCenter, Color red)
+        {
+            InitMat();
+            renderMat.SetColor("_Color", red);
+            GL.PushMatrix();
+            GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
+            GL.Begin(1);
+            GL.Color(red);
+            // be sure to connect these with lines
+            for (int i = 0; i < 360; i++)
+            {
+                float degInRad = i * Deg2Rad;
+                GL.Vertex3(vector2.x + Mathf.Cos(degInRad) * maxDistanceFromCenter,
+                    vector2.y + Mathf.Sin(degInRad) * maxDistanceFromCenter, 0);
+            }
+
+            GL.End();
+            GL.PopMatrix();
         }
     }
 }

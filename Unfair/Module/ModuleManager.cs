@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Unfair.Util;
 
 namespace Unfair.Module
 {
@@ -25,6 +26,7 @@ namespace Unfair.Module
                     m.Key = KeybindManager.Keybinds[m.Name];
 
                 Modules.Add(m);
+                DebugConsole.Write("Added module " + m.Name);
             }
             
             // Sort all modules by category

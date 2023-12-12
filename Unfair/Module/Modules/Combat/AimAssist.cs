@@ -11,6 +11,8 @@ namespace Unfair.Module.Modules.Combat
         {
         }
 
+        private const float maxDistanceFromCenter = 200f;
+        
         public List<PlayerController> GetPlayersInFov()
         {
             var players = GameData.PlayerControllers
@@ -27,28 +29,55 @@ namespace Unfair.Module.Modules.Combat
                 
                 var playerHead = player.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
                 var playerHeadScreenPos = localPlayerCamera.WorldToScreenPoint(playerHead.transform.position);
-                if (playerHeadScreenPos.z < 0) continue;
                 var playerHeadScreenPos2 = new Vector2(playerHeadScreenPos.x, Screen.height - playerHeadScreenPos.y);
-                var distance = Vector2.Distance(new Vector2(Screen.width / 2f, Screen.height / 2f), playerHeadScreenPos2);
-                if (distance < 200f)
-                {
-                    playersInFov.Add(player);
-                }
+                var centerScreenPos = new Vector2(Screen.width / 2f, Screen.height / 2f);
+                var distanceFromCenter = Vector2.Distance(playerHeadScreenPos2, centerScreenPos);
+                if (distanceFromCenter > maxDistanceFromCenter) continue;
+                
+                playersInFov.Add(player);
             }
 
             return playersInFov;
         }
-        
+
+        private bool _isPlayerInFov = false;
+        private Vector3 oldPos = Vector3.zero;
+        // ReSharper disable Unity.PerformanceAnalysis
         public override void OnUpdate()
         {
-            if (!Input.GetKey(KeyCode.Mouse1)) return;
             var playersInFov = GetPlayersInFov();
+            _isPlayerInFov = playersInFov.Count > 0;
+            if (!Input.GetKey(KeyCode.Mouse0)) return;
             if (playersInFov.Count == 0) return;
+            
             var player = playersInFov.First();
-            if (player == null) return;
+            
+            // Make the player's camera look at the player
             Animator animator = player.GetComponent<Animator>();
-            Transform bone = animator.GetBoneTransform(HumanBodyBones.Chest);
-            GameData.MainCamera.transform.LookAt(bone);
+            Transform bone = animator.GetBoneTransform(HumanBodyBones.Head);
+            
+            
+            Vector3 pos = GameData.CameraManager.TPCamera.transform.position;
+            Vector3 targetPos = bone.position;
+            Vector3 extrapolatedPos = targetPos + (targetPos - oldPos) * 2f;
+
+            // Calculate the new rotation
+            var newRotation = Quaternion.LookRotation(extrapolatedPos - pos);
+            var oldRotation = GameData.CameraManager.TPCamera.transform.rotation;
+            var rotation = Quaternion.Lerp(oldRotation, newRotation, Time.deltaTime * 100f);
+            
+            // Set the rotation of TP Camera
+            GameData.CameraManager.SetCameraRotation(rotation.eulerAngles);
+            
+            this.oldPos = targetPos;
+        }
+        
+        public override void OnGUI()
+        {
+            // Draw a circle in the center of the screen
+            Color color = _isPlayerInFov ? Color.green : Color.red;
+            Render.DrawCircle(new Vector2(Screen.width / 2f, Screen.height / 2f), maxDistanceFromCenter, color);
+            
         }
     }
 }

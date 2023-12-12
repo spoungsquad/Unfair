@@ -130,8 +130,13 @@ namespace Unfair.Util
         public static void DrawString(Rect rect, string label, Color color, bool centered = false)
         {
             GUI.color = color;
-            Vector2 upperLeft = centered ? rect.position + rect.size / 2 : rect.position;
-            GUI.Label(new Rect(upperLeft, rect.size), label);
+
+            var textSize = MeasureString(label);
+            var textPosition = centered ? 
+                new Vector2(rect.x + (rect.width / 2f - textSize.x / 2f), rect.y + (rect.height / 2f - textSize.y / 2f)) 
+                : rect.position;
+            
+            GUI.Label(new Rect(textPosition, textSize), label);
         }
         
         public static void DrawString(Vector2 position, string label, Color color, bool centered = false)

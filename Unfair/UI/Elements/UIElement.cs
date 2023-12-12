@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Unfair.UI.Elements
 {
@@ -14,9 +15,8 @@ namespace Unfair.UI.Elements
 
         public virtual void Draw()
         {
-            if (!IsVisible) return;
             if (Children == null || Children.Length == 0) return;
-            foreach (var child in Children)
+            foreach (var child in Children.Where(x => x.IsVisible))
             {
                 child.Parent = this;
                 child.Draw();

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.UI.Elements
@@ -26,14 +27,21 @@ namespace Unfair.UI.Elements
                 PositionOffset = new Vector2(_nextX, 10),
                 OnClick = btn =>
                 {
+                    DebugConsole.Write("Clicked tab: " + btn.Text);
                     foreach (var pair in _tabs)
                     {
+                        if (pair.Key.Text == btn.Text)
+                        {
+                            pair.Key.IsToggled = true;
+                            pair.Value.IsVisible = true;
+                            
+                            DebugConsole.Write($"Tab shown: {pair.Key.Text} {pair.Key.IsToggled} {pair.Value.IsVisible}");
+                            continue;
+                        }
+                        
                         pair.Key.IsToggled = false;
                         pair.Value.IsVisible = false;
                     }
-
-                    btn.IsToggled = true;
-                    _tabs[btn].IsVisible = true;
                 }
             };
             

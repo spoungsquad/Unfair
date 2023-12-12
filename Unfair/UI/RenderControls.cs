@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Unfair.UI.Elements;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Unfair.UI
         
         public static void Draw()
         {
-            foreach (var element in _elements)
+            foreach (var element in _elements.Where(element => element.IsVisible))
             {
                 element.Draw();
             }

@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks.CompilerServices;
 using UnityEngine;
 
 namespace Unfair.UI.Elements
 {
     public class TabPanel : Panel
     {
-        Dictionary<ToggleButton, Panel> _tabs = new Dictionary<ToggleButton, Panel>();
+        private readonly Dictionary<ToggleButton, Panel> _tabs = new Dictionary<ToggleButton, Panel>();
         
         public void AddTab(string tab, Panel panel)
         {
@@ -17,7 +16,16 @@ namespace Unfair.UI.Elements
                 Color = new Color(0, 0, 0 ,0),
                 StrokeColor = Color.white,
                 StrokeWidth = 1f,
-                Rect = new UnityEngine.Rect(0, 0, 100, 20)
+                Rect = new Rect(0, 0, 100, 20),
+                OnClick = btn =>
+                {
+                    foreach (var pair in _tabs)
+                    {
+                        pair.Key.IsToggled = false;
+                    }
+
+                    ((ToggleButton)btn).IsToggled = true;
+                }
             };
 
             if (Children == null)
@@ -38,11 +46,11 @@ namespace Unfair.UI.Elements
             int nextX = 0;
             foreach (var tab in _tabs)
             {
-                tab.Key.PositionOffset = new UnityEngine.Vector2(nextX, 10);
+                tab.Key.PositionOffset = new Vector2(nextX, 10);
                 
                 nextX += (int)tab.Key.Rect.size.x;
                 tab.Value.IsVisible = tab.Key.IsToggled;
-                tab.Value.PositionOffset = new UnityEngine.Vector2(0, tab.Key.Rect.size.y + 40);   
+                tab.Value.PositionOffset = new Vector2(0, tab.Key.Rect.size.y + 40);   
             }
 
             base.Draw();

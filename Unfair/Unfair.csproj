@@ -848,12 +848,12 @@
     <Compile Include="UI\Elements\KeybindButton.cs" />
     <Compile Include="UI\Elements\Label.cs" />
     <Compile Include="UI\Elements\Panel.cs" />
-    <Compile Include="UI\Elements\RenderControls.cs" />
     <Compile Include="UI\Elements\TabPanel.cs" />
     <Compile Include="UI\Elements\ToggleButton.cs" />
     <Compile Include="UI\Elements\UIElement.cs" />
     <Compile Include="UI\Elements\Window.cs" />
-    <Compile Include="UI\GUI.cs" />
+    <Compile Include="UI\RenderControls.cs" />
+    <Compile Include="UI\UnfairGUI.cs" />
     <Compile Include="Util\DebugConsole.cs" />
     <Compile Include="Util\GameData.cs" />
     <Compile Include="Util\Memory.cs" />

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Unfair.Util;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Unfair.UI.Elements
 {
@@ -14,7 +11,6 @@ namespace Unfair.UI.Elements
         public UIElement Parent;
         public UIElement[] Children;
         public bool IsVisible = true;
-        
 
         public virtual void Draw()
         {
@@ -27,9 +23,9 @@ namespace Unfair.UI.Elements
             }
         }
         
-        public Vector2 AdjustedPosition()
+        protected Vector2 AdjustedPosition()
         {
-            var parentPosition = Parent != null ? Parent.AdjustedPosition() : Vector2.zero;
+            var parentPosition = Parent?.AdjustedPosition() ?? Vector2.zero;
             var scaledPosition = Parent != null ? Rect.position * Parent.Rect.size : Vector2.zero;
 
             return parentPosition + scaledPosition + PositionOffset;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Unfair.Module;
 using Unfair.UI.Elements;
 using Unfair.Util;
@@ -8,16 +6,14 @@ using UnityEngine;
 
 namespace Unfair.UI
 {
-    
-    public class UnfairGUI
+    public static class UnfairGUI
     {
-        static Window _window ;
+        private static Window _window;
         public static Vector2 OldMousePosition;
         public static CursorLockMode OldCursorLockMode;
 
         public static void Init() 
         {
-
             OldMousePosition = Input.mousePosition;
 
             TabPanel tabPanel;
@@ -25,7 +21,7 @@ namespace Unfair.UI
             {
                 Rect = new Rect(0, 0, Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f),
                 PositionOffset = new Vector2(100, 100),
-                Title = "Spongebob",
+                Title = "Unfair - a spoung squad production",
                 IsOpen = true,
                 IsDraggable = true,
                 Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
@@ -45,7 +41,6 @@ namespace Unfair.UI
                 }
             };
 
-
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
                 tabPanel.AddTab(category.ToString(), new Panel
@@ -63,16 +58,15 @@ namespace Unfair.UI
                             StrokeWidth = 1f,
                             Rect = new Rect(0, 0, 100, 20),
                             PositionOffset = new Vector2(100, 100),
-                            OnClick = () =>
+                            OnClick = btn =>
                             {
-                                DebugConsole.Write("Test");
+                                DebugConsole.Write($"{btn.Text} was clicked!");
                             }
                         }
                     }
                 });
             }
             
-            // Draw panel
             RenderControls.AddElement(_window);
         }
 

@@ -13,7 +13,7 @@ namespace Unfair.UI.Elements
         public string Text;
         public bool IsPressed;
         public bool IsCentered;
-        public Action OnClick;
+        public Action<Button> OnClick;
 
         public override void Draw()
         {
@@ -26,7 +26,7 @@ namespace Unfair.UI.Elements
             IsPressed = GUI.Button(new Rect(position, Rect.size), new GUIContent(""), GUI.skin.label);
             if (IsPressed && OnClick != null)
             {
-                OnClick();
+                OnClick(this);
             }
             
             base.Draw();

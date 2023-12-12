@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
+using Unfair.UI.Elements;
 using UnityEngine;
 
-namespace Unfair.UI.Elements
+namespace Unfair.UI
 {
     public static class RenderControls
     {
-        
-        public static Vector2 CursorPos = Vector2.zero;
-        
-        private static List<UIElement> _elements = new List<UIElement>();
-        
+        private static readonly List<UIElement> _elements = new List<UIElement>();
         
         public static void AddElement(UIElement element)
         {

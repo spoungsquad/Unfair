@@ -24,7 +24,7 @@ namespace Unfair.UI.Elements
                         pair.Key.IsToggled = false;
                     }
 
-                    ((ToggleButton)btn).IsToggled = true;
+                    btn.IsToggled = true;
                 }
             };
 

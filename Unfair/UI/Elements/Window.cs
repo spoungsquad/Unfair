@@ -48,7 +48,7 @@ namespace Unfair.UI.Elements
             base.Draw();
             // Handle drawing the title bar text
             Vector2 titlePosition = new Vector2(adjustedPosition.x + Rect.size.x / 2f, adjustedPosition.y + 10f);
-            Render.DrawString(titlePosition, Title, Color.white, true);
+            Render.DrawString(titlePosition, new Vector2(Rect.width, 20), Title, Color.white, true);
         }
     }
 }

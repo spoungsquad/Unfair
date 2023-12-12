@@ -126,31 +126,37 @@ namespace Unfair.Util
         {
             DrawRect(new Rect(position, size), Color, width);
         }
-
-        public static void DrawString(Vector2 position, string label, Color color, bool centered)
+        
+        public static void DrawString(Rect rect, string label, Color color, bool centered = false)
         {
-            Color = color;
-            DrawString(position, label, centered);
+            GUI.color = color;
+            Vector2 upperLeft = centered ? rect.position + rect.size / 2 : rect.position;
+            GUI.Label(new Rect(upperLeft, rect.size), label);
+        }
+        
+        public static void DrawString(Vector2 position, string label, Color color, bool centered = false)
+        {
+            DrawString(new Rect(position, MeasureString(label)), label, color, centered);
+        }
+        
+        public static void DrawString(Vector2 position, string label, bool centered = false)
+        {
+            DrawString(new Rect(position, MeasureString(label)), label, Color, centered);
+        }
+        
+        public static void DrawString(Vector2 position, Vector2 size, string label, Color color, bool centered = false)
+        {
+            DrawString(new Rect(position, size), label, color, centered);
         }
 
-        public static void DrawString(Vector2 position, string label, bool centered = true)
+        public static Vector2 MeasureString(string label)
         {
-            GUIContent content = new GUIContent(label);
-            Vector2 size = StringStyle.CalcSize(content);
-            Vector2 upperLeft = centered ? position - size / 2f : position;
-            GUI.Label(new Rect(upperLeft, size), label);
+            return StringStyle.CalcSize(new GUIContent(label));
         }
 
-        public static float GetTextWidth(string text)
+        private static void InitMat()
         {
-            GUIContent content = new GUIContent(text);
-            Vector2 size = StringStyle.CalcSize(content);
-            return size.x;
-        }
-
-        private static Material InitMat()
-        {
-            if (renderMat != null) return renderMat;
+            if (renderMat != null) return;
 
             renderMat = new Material(Shader.Find($"Hidden/Internal-Colored"))
             {
@@ -162,21 +168,6 @@ namespace Unfair.Util
             renderMat.SetInt(ZTest, (int)UnityEngine.Rendering.CompareFunction.Always);
             renderMat.SetInt(ZWrite, 0);
             renderMat.SetColor(Color1, Color.clear);
-
-            return renderMat;
-        }
-
-        public static bool DrawButton(Rect rect, string text, Color textColor, Color boxColor)
-        {
-            FillRect(rect, boxColor);
-            DrawString(new Vector2(rect.position.x + rect.size.x / 2, rect.position.y + rect.size.y / 2), text,
-                textColor, true);
-            return GUI.Button(rect, new GUIContent(""), StringStyle);
-        }
-
-        public static void DrawTexture(Rect rect, Texture2D texture)
-        {
-            GUI.DrawTexture(rect, texture);
         }
 
         private static readonly float Deg2Rad = (float)Math.PI / 180f;

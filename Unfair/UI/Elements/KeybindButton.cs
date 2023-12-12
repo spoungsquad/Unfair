@@ -16,8 +16,6 @@ namespace Unfair.UI.Elements
 
             if (IsBinding && Input.anyKey) 
             {
-                
-                
                 // Get the first key down
                 foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) // TODO: Un-aids this
                 {

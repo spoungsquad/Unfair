@@ -11,7 +11,7 @@ namespace Unfair.UI.Elements
         
         public override void Draw()
         {
-            Render.DrawString(AdjustedPosition(), Text, Color, IsCentered);
+            Render.DrawString(AdjustedPosition(), Rect.size, Text, Color, IsCentered);
             base.Draw();
         }
     }

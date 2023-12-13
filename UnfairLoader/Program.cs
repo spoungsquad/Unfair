@@ -36,7 +36,7 @@ namespace UnfairLoader
             Console.Title = "Unfair - spoung squad creation";
             Console.Clear();
 
-        injectType:
+            injectType:
             LogLine("\n /$$   /$$            /$$$$$$          /$$          \n" +
                     "| $$  | $$           /$$__  $$        |__/          \n" +
                     "| $$  | $$ /$$$$$$$ | $$  \\__//$$$$$$  /$$  /$$$$$$ \n" +
@@ -52,7 +52,11 @@ namespace UnfairLoader
                     "[1] Online injection\n" +
                     "[2] Local file injection\n", ConsoleColor.Yellow);
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Select an option: ");
             var typeSelect = Console.ReadKey();
+            Console.WriteLine();
+
             switch (typeSelect.Key)
             {
                 case ConsoleKey.D1: // ONLINE INJECTION (from build server or something)
@@ -71,11 +75,12 @@ namespace UnfairLoader
                         var stream = response.Content.ReadAsStreamAsync().Result;
                         injectionBytes = new byte[stream.Length];
                         var read = stream.Read(injectionBytes, 0, (int)stream.Length);
-                        
+
                         if (read != stream.Length)
                         {
                             Console.Clear();
-                            LogLine("Failed to read from Unfair.dll. Could be antivirus interference.", ConsoleColor.Red);
+                            LogLine("Failed to read from Unfair.dll. Could be antivirus interference.",
+                                ConsoleColor.Red);
                             goto injectType;
                         }
                     }
@@ -89,7 +94,7 @@ namespace UnfairLoader
                         break;
                     }
 
-                filechoose:
+                    filechoose:
                     var dialog = new OpenFileDialog
                     {
                         Filter = "Unfair.dll|Unfair.dll",
@@ -130,41 +135,21 @@ namespace UnfairLoader
             }
 
             // open game
-            LogLine("(*) Attempting to start 1v1.LOL (Steam). If this fails, start it manually.");
-            Process.Start("steam://rungameid/2305790");
-
-            Process gameProcess;
-
-            while (true)
-            {
-                var processes = Process.GetProcessesByName("1v1_LOL");
-                if (processes.Length > 0)
-                {
-                    LogLine("Found game, injecting...");
-                    gameProcess = processes[0];
-                    break;
-                }
-
-                LogLine("Waiting for game...");
-                Thread.Sleep(3000);
-            }
-            
-            // wait 4 game to load
-            Thread.Sleep(5000);
+            Process gameProcess = GetGameProcess();
 
             var handle = Native.OpenProcess(ProcessAccessRights.PROCESS_ALL_ACCESS, false, gameProcess.Id);
 
             if (handle == IntPtr.Zero)
             {
                 LogLine("Failed to inject - OpenProcess failed. Might be antivirus interference.", ConsoleColor.Red);
-                Console.ReadKey();
+                Console.ReadKey(true);
             }
 
             var result = ProcessUtils.GetMonoModule(handle, out var monoModule);
             if (!result)
             {
                 LogLine("Failed to inject - GetMonoModule failed. Possible antivirus interference.", ConsoleColor.Red);
-                Console.ReadKey();
+                Console.ReadKey(true);
             }
 
             using (var injector = new Injector.Injector(handle, monoModule))
@@ -187,6 +172,44 @@ namespace UnfairLoader
                     Console.ReadKey();
                 }
             }
+        }
+
+        private static Process GetGameProcess()
+        {
+            Process gameProcess;
+            bool started = false;
+            while (true)
+            {
+                var processes = Process.GetProcessesByName("1v1_LOL");
+                if (processes.Length > 0)
+                {
+                    gameProcess = processes[0];
+                    break;
+                }
+
+                if (!started && processes.Length == 0)
+                {
+                    // Open game
+                    LogLine("(*) Attempting to start 1v1.LOL (Steam). If this fails, start it manually.",
+                        ConsoleColor.Cyan);
+                    Process.Start("steam://rungameid/2305790");
+                    started = true;
+                }
+
+                LogLine("(*) Waiting for game to start...", ConsoleColor.Cyan);
+                Thread.Sleep(1000);
+            }
+
+            LogLine($"(*) Waiting for game to load...", ConsoleColor.Cyan);
+            
+            while (gameProcess.Modules.Count < 85 || gameProcess.MainWindowHandle == IntPtr.Zero)
+            {
+                gameProcess.Refresh();
+            }
+
+            LogLine($"Game found, injecting...");
+            gameProcess.Refresh();
+            return gameProcess;
         }
     }
 }

@@ -131,8 +131,6 @@ namespace Unfair.UI
                 }
                 else
                 {
-                    _window.Rect.position = new Vector2(100, 100);
-                    
                     Cursor.lockState = OldCursorLockMode;
                     Cursor.visible = OldCursorLockMode == CursorLockMode.None;
                 }

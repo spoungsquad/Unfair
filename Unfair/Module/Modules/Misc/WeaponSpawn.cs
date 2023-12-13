@@ -38,11 +38,6 @@ namespace Unfair.Module.Modules.Misc
 
                 Vector3 vector = player.FHAOJNEKKGD + player.transform.up;
                 PickupableSpawner.CreateWeaponDrop(GameData.CurrentWeaponData.Id, vector, default, null, 1);
-
-                foreach (var item in GameData.Pickupables)
-                {
-                    item.transform.SetPositionAndRotation(vector, Quaternion.identity);
-                }
             }
         }
     }

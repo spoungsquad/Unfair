@@ -10,15 +10,8 @@ using Microsoft.Win32;
 namespace UnfairLoader.Injector
 {
     public static class ProcessUtils
-    {        
-        [DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool IsWow64Process2([In] IntPtr hProcess, [Out] out ushort processMachine, [Out] out ushort nativeMachine);
-
+    {
         private static bool isTargetx64;
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern bool IsWow64Process(IntPtr hProcess, out bool wow64Process);
 
         public static IEnumerable<ExportedFunction> GetExportedFunctions(IntPtr handle, IntPtr mod)
         {
@@ -109,12 +102,11 @@ namespace UnfairLoader.Injector
                 if (!Environment.Is64BitOperatingSystem) { return false; }
 
                 string OSVer = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", "ProductName", null);
-                Console.WriteLine(OSVer);
 
-                if(OSVer.Contains("Windows 10"))
+                if (OSVer.Contains("Windows 10"))
                 {
                     #region[Win10]
-            
+
                     isTargetx64 = false;
 
                     if (handle != IntPtr.Zero)
@@ -136,14 +128,13 @@ namespace UnfairLoader.Injector
                             else
                             {
                                 isTargetx64 = true;
-
                             }
 
                             return isTargetx64;
                         }
                         catch { /* Will try the Win7 method */ }
                     }
-            
+
                     #endregion
                 }
 
@@ -155,22 +146,28 @@ namespace UnfairLoader.Injector
                 {
                     return false; // It is WOW64 so it's a 32-bit process
                 }
-                else 
+                else
                 {
                     return true; // It's not a WOW64 process so 64-bit process, and we already check if OS is 32 or 64 bit.
                 }
 
                 #endregion
 
-
                 //ORIG
                 //if (!IsWow64Process(handle, out bool is64bit))
                 //{
-                //    return IntPtr.Size == 8; // assume it's the same as the current process */ 
+                //    return IntPtr.Size == 8; // assume it's the same as the current process */
                 //}
             }
             catch (Exception ex) { File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", "[ProcessUtils] is64Bit - ERROR: " + ex.Message + "\r\n"); }
             return true;
         }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool IsWow64Process(IntPtr hProcess, out bool wow64Process);
+
+        [DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsWow64Process2([In] IntPtr hProcess, [Out] out ushort processMachine, [Out] out ushort nativeMachine);
     }
 }

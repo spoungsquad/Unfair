@@ -29,10 +29,14 @@ namespace Unfair.UI
                 StrokeWidth = 2f,
                 Children = new UIElement[]
                 {
-                    /*new Image()
+                    new Image
                     {
                         Texture = Spoung.DeployTheSpoung(),
-                    },*/
+                        AutoSize = true,
+                        Scale = 0.5f,
+                        Rect = new Rect(1f, 1f, 0, 0), // size is set in AutoSize
+                        Origin = OriginPoints.BottomRight
+                    },
                     tabPanel = new TabPanel
                     {
                         Rect = new Rect(0, 0, Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f - 20),

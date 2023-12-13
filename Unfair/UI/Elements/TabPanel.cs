@@ -12,7 +12,8 @@ namespace Unfair.UI.Elements
 
         public void AddTab(string tab, Panel panel)
         {
-            panel.PositionOffset = new Vector2(0, 65);
+            panel.PositionOffset = new Vector2(0, 25);
+            panel.Rect = new Rect(0, 0, Rect.size.x, Rect.size.y - 25);
             
             ToggleButton button = new ToggleButton
             {

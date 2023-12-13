@@ -844,6 +844,7 @@
     <Compile Include="UI\Arraylist.cs" />
     <Compile Include="UI\ColorUtils.cs" />
     <Compile Include="UI\Elements\Button.cs" />
+    <Compile Include="UI\Elements\Checkbox.cs" />
     <Compile Include="UI\Elements\GroupPanel.cs" />
     <Compile Include="UI\Elements\Image.cs" />
     <Compile Include="UI\Elements\KeybindButton.cs" />

@@ -23,9 +23,9 @@ namespace Unfair.UI.Elements
             Render.DrawString(position, Rect.size, Text, TextColor, true);
             
             IsPressed = GUI.Button(new Rect(position, Rect.size), new GUIContent(""), GUI.skin.label);
-            if (IsPressed && OnClick != null)
+            if (IsPressed)
             {
-                OnClick(this);
+                OnClick?.Invoke(this);
             }
             
             base.Draw();

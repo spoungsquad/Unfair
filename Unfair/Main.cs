@@ -25,8 +25,7 @@ namespace Unfair
             }
             catch (Exception e)
             {
-                DebugConsole.Write(e.Message);
-                DebugConsole.Write(e.StackTrace);
+                DebugConsole.Write("Exception in OnGUI: " + e);
             }
         }
 
@@ -47,8 +46,7 @@ namespace Unfair
             }
             catch (Exception e)
             {
-                DebugConsole.Write(e.Message);
-                DebugConsole.Write(e.StackTrace);
+                DebugConsole.Write("Exception in Start: " + e);
             }
         }
 
@@ -57,22 +55,28 @@ namespace Unfair
             try
             {
                 UI.UnfairGUI.OnUpdate();
+            }
+            catch (Exception e)
+            {
+                DebugConsole.Write("Exception in UnfairGUI: " + e);
+            }
 
-                foreach (var module in ModuleManager.Modules)
+            foreach (var module in ModuleManager.Modules)
+            {
+                try
                 {
-                    
                     if (Input.GetKeyDown(module.Key))
                         module.Toggle();
 
                     if (module.Enabled)
                         module.OnUpdate();
                 }
+                catch (Exception e)
+                {
+                    DebugConsole.Write("Exception in module " + module.Name + ": " + e);
+                }
             }
-            catch (Exception e)
-            {
-                DebugConsole.Write(e.Message);
-                DebugConsole.Write(e.StackTrace);
-            }
+
         }
     }
 }

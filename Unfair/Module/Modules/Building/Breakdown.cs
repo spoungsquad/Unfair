@@ -12,26 +12,9 @@ namespace Unfair.Module.Modules.Building
         {
         }
 
-        // public override void OnGUI()
-        // {
-        //     BuildingNetworkController.Instance.KillAllBuildings(true);
-        // }
-
         public override void OnUpdate()
         {
-            PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
-
-            var thread = new Thread(() =>
-            {
-                foreach (var id in GameData.BuildingIDs)
-                {
-                    GameData.BuildingNetworkController.KillBuilding(id);
-
-                    // lagspike mitigation
-                    Thread.Sleep(1);
-                }
-            });
-            thread.Start();
+            BuildingNetworkController.Instance.KillAllBuildings(true);
         }
     }
 }

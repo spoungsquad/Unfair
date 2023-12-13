@@ -1,26 +1,20 @@
-﻿using Unfair.Util;
+﻿using Unfair.Attributes;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Building
 {
+    // not sure what this is for when Breakdown exists so
+    [DebugOnly]
     public class AntiWall : Module
     {
-        public AntiWall() : base("AntiWall", "Removes all walls", Category.Building, KeyCode.Semicolon)
+        public AntiWall() : base("AntiWall", "Remove all walls", Category.Building, KeyCode.Semicolon)
         {
         }
         
-        public override void OnGUI()
+        public override void OnUpdate()
         {
-            GUI.Label(new Rect(50, 500, 1000, 20), "hello hi");
-            if (GameData.Buildings.Length == 0)
-            {
-                GUI.Label(new Rect(50, 400, 1000, 20), "No buildings found");
-            }
-            else
-            {
-                GUI.Label(new Rect(50, 400, 1000, 20), "buildings found " + GameData.Buildings.Length);
-            }
-            foreach (global::Building building in GameData.Buildings)
+            foreach (var building in GameData.Buildings)
             {
                 building.OnDestroyReceived();
             }

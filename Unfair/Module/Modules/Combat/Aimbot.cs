@@ -1,16 +1,14 @@
-using System.Collections.Generic;
 using System.Linq;
 using Unfair.Util;
 using UnityEngine;
 
-namespace Unfair.Module.Modules.Player
+namespace Unfair.Module.Modules.Combat
 {
     public class Aimbot : Module
     {
         // Constructor
-        public Aimbot() : base("Aimbot", "Automatically aims at the nearest player", Category.Combat, KeyCode.None)
+        public Aimbot() : base("Aimbot", "Automatically aim at the nearest player", Category.Combat, KeyCode.None)
         {
-            Enabled = true;
         }
         
         private Vector3 oldPos = Vector3.zero;

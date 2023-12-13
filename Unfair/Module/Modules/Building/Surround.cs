@@ -9,7 +9,7 @@ namespace Unfair.Module.Modules.Building
     {
         private long _lastTime = 0;
 
-        public Surround() : base("Surround", "Surrounds other players with builds and boxes them in", Category.Building, KeyCode.J)
+        public Surround() : base("Surround", "Surround other players", Category.Building, KeyCode.J)
         {
         }
 

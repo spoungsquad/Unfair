@@ -7,7 +7,7 @@ namespace Unfair.Module.Modules.Combat
 {
     public class AimAssist : Module
     {
-        public AimAssist() : base("AimAssist", "AimAssist", Category.Combat, KeyCode.I)
+        public AimAssist() : base("AimAssist", "Artificially improve your aim", Category.Combat, KeyCode.I)
         {
         }
 

@@ -4,9 +4,8 @@ namespace Unfair.Module.Modules.Building
 {
     public class Instabreak : Module
     {
-        public Instabreak() : base("Instabreak", "Breaks player built buildings instantly", Category.Building, KeyCode.L)
+        public Instabreak() : base("Instabreak", "Instant break speed", Category.Building, KeyCode.L)
         {
-            Enabled = true;
         }
         
         public override void OnUpdate()
@@ -14,5 +13,9 @@ namespace Unfair.Module.Modules.Building
             PlayerBuildingManager.IsOneHitBuildings = true; 
         }
         
+        public override void OnDisable()
+        {
+            PlayerBuildingManager.IsOneHitBuildings = false;
+        }
     }
 }

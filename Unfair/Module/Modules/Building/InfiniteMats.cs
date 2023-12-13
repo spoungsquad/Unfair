@@ -7,9 +7,8 @@ namespace Unfair.Module.Modules.Building
     {
         private bool _prev;
 
-        public InfiniteMats() : base("InfiniteMats", "r u dumb mate", Category.Building, KeyCode.Minus)
+        public InfiniteMats() : base("InfiniteMats", "Infinite building materials", Category.Building, KeyCode.Minus)
         {
-            Enabled = false;
         }
 
         public override void OnDisable()

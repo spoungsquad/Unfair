@@ -7,7 +7,6 @@ namespace Unfair.Module.Modules.Combat
     {
         public InfiniteAmmo() : base("InfiniteAmmo", "Infinite ammo", Category.Combat, KeyCode.L)
         {
-            Enabled = true;
         }
 
         public override void OnUpdate()

@@ -5,9 +5,8 @@ namespace Unfair.Module.Modules.Combat
 {
     public class InfiniteRange : Module
     {
-        public InfiniteRange() : base("InfiniteRange", "Infinite range", Category.Combat, KeyCode.L)
+        public InfiniteRange() : base("InfiniteRange", "Increase weapon range", Category.Combat, KeyCode.L)
         {
-            Enabled = true;
         }
         
         public override void OnUpdate()

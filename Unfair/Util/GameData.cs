@@ -16,9 +16,6 @@ namespace Unfair.Util
 
         public static Building[] Buildings => Object.FindObjectsOfType<Building>();
 
-        public static List<string> BuildingIDs = 
-            BuildingNetworkController.GetField<Dictionary<string, Building>>("MLLOJMNEOIL").Keys.ToList();
-
         public static SupplyCrate[] Crates => Object.FindObjectsOfType<SupplyCrate>();
 
         // misc i guess

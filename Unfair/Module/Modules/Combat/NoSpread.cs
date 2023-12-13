@@ -1,3 +1,4 @@
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Combat
@@ -9,8 +10,12 @@ namespace Unfair.Module.Modules.Combat
             Enabled = true;
         }
 
-        public override void OnGUI()
+        public override void OnUpdate()
         {
+            var crosshair = HudManager.Instance.currentCrosshair.GetField<RectTransform>("_crosshair");
+            
+            crosshair.sizeDelta = Vector2.zero;
+            HudManager.Instance.currentCrosshair.SetField("_minSpread", 0f);
         }
     }
 }

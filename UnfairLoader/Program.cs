@@ -68,7 +68,16 @@ namespace UnfairLoader
                             goto injectType;
                         }
 
-                        injectionBytes = response.Content.ReadAsByteArrayAsync().Result;
+                        var stream = response.Content.ReadAsStreamAsync().Result;
+                        injectionBytes = new byte[stream.Length];
+                        var read = stream.Read(injectionBytes, 0, (int)stream.Length);
+                        
+                        if (read != stream.Length)
+                        {
+                            Console.Clear();
+                            LogLine("Failed to read from Unfair.dll. Could be antivirus interference.", ConsoleColor.Red);
+                            goto injectType;
+                        }
                     }
 
                     break;
@@ -109,19 +118,19 @@ namespace UnfairLoader
 
                 default:
                     Console.Clear();
-                    LogLine("what- no, invalid option, choose 1 or 2\n", ConsoleColor.Red);
+                    LogLine("Invalid option\n", ConsoleColor.Red);
                     goto injectType;
             }
 
             if (injectionBytes == null)
             {
-                LogLine("(!) Critical error! data couldn't be read from the file!", ConsoleColor.Red);
+                LogLine("Failed to read from Unfair.dll. Maybe it's antivirus interference.", ConsoleColor.Red);
                 Console.ReadKey();
                 return;
             }
 
             // open game
-            LogLine("(­*) Attempting to start 1v1.LOL (Steam), if this fails start it manually.", ConsoleColor.Cyan);
+            LogLine("(*) Attempting to start 1v1.LOL (Steam). If this fails, start it manually.");
             Process.Start("steam://rungameid/2305790");
 
             Process gameProcess;
@@ -145,14 +154,14 @@ namespace UnfairLoader
             if (handle == IntPtr.Zero)
             {
                 LogLine("Failed to inject - OpenProcess failed. Might be antivirus interference.", ConsoleColor.Red);
-                return;
+                Console.ReadKey();
             }
 
             var result = ProcessUtils.GetMonoModule(handle, out var monoModule);
             if (!result)
             {
-                LogLine("Failed to inject - GetMonoModule failed. Might be antivirus interference.", ConsoleColor.Red);
-                return;
+                LogLine("Failed to inject - GetMonoModule failed. Possible antivirus interference.", ConsoleColor.Red);
+                Console.ReadKey();
             }
 
             using (var injector = new Injector.Injector(handle, monoModule))
@@ -161,7 +170,7 @@ namespace UnfairLoader
                 {
                     injector.Inject(injectionBytes, "Unfair", "Loader", "Load");
 
-                    LogLine("Unfair is now injected.", ConsoleColor.Cyan);
+                    LogLine("Unfair is now injected.");
                     Console.ReadKey();
                 }
                 catch (InjectorException ie)

@@ -24,25 +24,7 @@ namespace Unfair.UI.Elements
                 ToggleTextColor = Color.white,
                 StrokeWidth = 1f,
                 Rect = new Rect(0, 0, 100, 25),
-                PositionOffset = new Vector2(_nextX, 10),
-                OnClick = btn =>
-                {
-                    DebugConsole.Write("Clicked tab: " + btn.Text);
-                    foreach (var pair in _tabs)
-                    {
-                        if (pair.Key.Text == btn.Text)
-                        {
-                            pair.Key.IsToggled = true;
-                            pair.Value.IsVisible = true;
-                            
-                            DebugConsole.Write($"Tab shown: {pair.Key.Text} {pair.Key.IsToggled} {pair.Value.IsVisible}");
-                            continue;
-                        }
-                        
-                        pair.Key.IsToggled = false;
-                        pair.Value.IsVisible = false;
-                    }
-                }
+                PositionOffset = new Vector2(_nextX, 10)
             };
             
             _nextX += (int)button.Rect.size.x;
@@ -62,6 +44,24 @@ namespace Unfair.UI.Elements
         
         public override void Draw()
         {
+            foreach (var pair in _tabs)
+            {
+                var button = pair.Key;
+                var panel = pair.Value;
+                
+                if (button.IsPressed)
+                {
+                    foreach (var otherPair in _tabs.Where(x => x.Key != button))
+                    {
+                        otherPair.Key.IsToggled = false;
+                    }
+                    
+                    button.IsToggled = true;
+                }
+                
+                panel.IsVisible = button.IsToggled;
+            }
+            
             base.Draw();
         }
     }

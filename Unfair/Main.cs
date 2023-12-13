@@ -34,9 +34,11 @@ namespace Unfair
         {
             try
             {
-                UI.UnfairGUI.Init();
-                DebugConsole.Write("Hello, world!");
+                DebugConsole.Write("Unfair starting...");
+                
                 ModuleManager.Init();
+                UI.UnfairGUI.Init();
+                
                 DebugConsole.Write("Initialized modules!");
 
                 GameData.UIManager.ShowToast(new DefaultedLocalizedString(

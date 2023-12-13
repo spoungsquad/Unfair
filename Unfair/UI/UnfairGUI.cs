@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unfair.Module;
 using Unfair.UI.Elements;
 using Unfair.Util;
@@ -52,27 +54,40 @@ namespace Unfair.UI
 
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
+                var moduleGroups = new List<UIElement>();
+                var nextX = UIElement.Padding * 2f;
+                var nextY = UIElement.Padding * 2f;
+                
+                // TODO: separate modules with less than 2 options into a separate group
+                
+                foreach (var module in ModuleManager.Modules.Where(x => x.Category == (Category)category))
+                {
+                    moduleGroups.Add(new GroupPanel
+                    {
+                        Text = module.Name,
+                        TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                        Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
+                        StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                        StrokeWidth = 1f,
+                        Rect = new Rect(0, 0, 220, 230),
+                        PositionOffset = new Vector2(nextX, nextY),
+                    });
+                    
+                    nextX += 220f + UIElement.Padding * 2f;
+                    
+                    if (nextX + 220f + UIElement.Padding * 2f > tabPanel.Rect.size.x)
+                    {
+                        nextX = UIElement.Padding * 2f;
+                        nextY += 230f + UIElement.Padding * 2f;
+                    }
+                }
+                
                 tabPanel.AddTab(category.ToString(), new Panel
                 {
-                    Color = new Color(20 / 255f, 20 / 255f, 20 / 255f, 0.5f),
-                    StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f, 0.5f),
+                    Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
+                    StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
                     StrokeWidth = 2f,
-                    Children = new UIElement[]
-                    {
-                        new Button
-                        {
-                            Text = "Test",
-                            Color = Color.white,
-                            StrokeColor = Color.black,
-                            StrokeWidth = 1f,
-                            Rect = new Rect(0, 0, 100, 20),
-                            PositionOffset = new Vector2(100, 100),
-                            OnClick = btn =>
-                            {
-                                DebugConsole.Write($"{btn.Text} was clicked!");
-                            }
-                        }
-                    }
+                    Children = moduleGroups.ToArray()
                 });
             }
             

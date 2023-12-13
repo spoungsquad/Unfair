@@ -39,8 +39,13 @@ namespace Unfair.UI
                     },
                     tabPanel = new TabPanel
                     {
-                        Rect = new Rect(0, 0, Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f - 20),
-                        PositionOffset = new Vector2(0, 20)
+                        // Rect = new Rect(0, 0, Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f - 20),
+                        // PositionOffset = new Vector2(0, 20)
+                        
+                        // padding
+                        Rect = new Rect(0, 0, Display.main.renderingWidth / 2f - UIElement.Padding * 2f, 
+                            Display.main.renderingHeight / 2f - 20 - UIElement.Padding * 2f),
+                        PositionOffset = new Vector2(UIElement.Padding, 20 + UIElement.Padding)
                     }
                 }
             };

@@ -4,13 +4,12 @@ namespace Unfair.Module
 {
     public enum Category
     {
-        Player,
-        Movement,
-        Combat,
-        Visuals,
         Building,
-        Misc,
-        None
+        Combat,
+        Movement,
+        Player,
+        Visuals,
+        Misc
     }
 
     public class Module

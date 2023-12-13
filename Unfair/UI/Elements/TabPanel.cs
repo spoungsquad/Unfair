@@ -25,7 +25,7 @@ namespace Unfair.UI.Elements
                 ToggleTextColor = Color.white,
                 StrokeWidth = 1f,
                 Rect = new Rect(0, 0, 100, 25),
-                PositionOffset = new Vector2(_nextX, 10)
+                PositionOffset = new Vector2(_nextX, 0)
             };
             
             _nextX += (int)button.Rect.size.x;
@@ -33,6 +33,9 @@ namespace Unfair.UI.Elements
             if (Children == null)
             {
                 Children = new UIElement[] { button, panel };
+                
+                // toggle the first tab
+                button.IsToggled = true;
             } 
             else
             {

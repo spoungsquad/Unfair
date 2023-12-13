@@ -46,7 +46,7 @@ namespace UnfairLoader
                     "|  $$$$$$/| $$  | $$| $$    |  $$$$$$$| $$| $$      \n" +
                     " \\______/ |__/  |__/|__/     \\_______/|__/|__/      \n");
 
-            byte[] injectionBytes = null;
+            byte[] injectionBytes;
 
             LogLine("(x) Select an injection type, online for the updated version, or local for any other.\n" +
                     "[1] Online injection\n" +
@@ -148,6 +148,9 @@ namespace UnfairLoader
                 LogLine("Waiting for game...");
                 Thread.Sleep(3000);
             }
+            
+            // wait 4 game to load
+            Thread.Sleep(5000);
 
             var handle = Native.OpenProcess(ProcessAccessRights.PROCESS_ALL_ACCESS, false, gameProcess.Id);
 

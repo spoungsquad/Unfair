@@ -818,7 +818,7 @@
     <Compile Include="Module\Modules\Combat\NoRecoil.cs" />
     <Compile Include="Module\Modules\Combat\NoSpread.cs" />
     <Compile Include="Module\Modules\Combat\RapidFire.cs" />
-    <Compile Include="Module\Modules\Combat\TestLol.cs" />
+    <Compile Include="Module\Modules\Combat\KillAll.cs" />
     <Compile Include="Module\Modules\Combat\Triggerbot.cs" />
     <Compile Include="Module\Modules\Combat\AimAssist.cs" />
     <Compile Include="Module\Modules\Misc\Barge.cs" />

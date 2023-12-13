@@ -11,14 +11,12 @@ namespace Unfair.Module.Modules.Visual
 
         public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
         {
-            Enabled = true;
         }
 
         public void RenderBoneFromTransform(Transform bone)
         {
             Vector2 boneStartPos = Camera.main.WorldToScreenPoint(bone.position);
             Vector2 boneEndPos = Camera.main.WorldToScreenPoint(bone.parent.position);
-                
             
             // Subtract y pos from screen height to flip the y axis
             boneStartPos.y = Screen.height - boneStartPos.y;

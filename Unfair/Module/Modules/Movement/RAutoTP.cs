@@ -9,9 +9,9 @@ namespace Unfair.Module.Modules.Movement
 {
     public class RAutoTP : Module
     {
-        private int _currentTargetIndex = 0;
+        private int _currentTargetIndex;
 
-        private long _lastTime = 0;
+        private long _lastTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
         public RAutoTP() : base("RAutoTP", "Teleports each player in the game to you client-sidedly", Category.Combat, KeyCode.O)
         {

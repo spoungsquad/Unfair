@@ -12,12 +12,12 @@ namespace Unfair.Module.Modules.Player
 
         public override void OnDisable()
         {
-            GameData.LocalPlayerHealth.SetFallDamageEnabled(false);
+            GameData.LocalPlayerHealth.SetProp("BBKGOMEJMPJ", true);
         }
 
         public override void OnUpdate()
         {
-            GameData.LocalPlayerHealth.SetFallDamageEnabled(true);
+            GameData.LocalPlayerHealth.SetProp("BBKGOMEJMPJ", false);
         }
     }
 }

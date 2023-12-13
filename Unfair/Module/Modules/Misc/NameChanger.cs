@@ -6,10 +6,9 @@ namespace Unfair.Module.Modules.Misc
 {
     public class NameChanger : Module
     {
-        // Random string to make the game think we're a real player
-
-        private string name = "";
-        private int updateTicks = 0;
+        private string _oldName = "";
+        private string _scrollingText = "Unfair on Top!! "; // space is intentional
+        private int _updateTicks;
 
         // Constructor
         public NameChanger() : base("NameChanger", "Change your name", Category.Misc, KeyCode.UpArrow)
@@ -19,28 +18,28 @@ namespace Unfair.Module.Modules.Misc
         // Called when the module gets disabled
         public override void OnDisable()
         {
-            GameData.LocalProfile.GeneralData.Nickname = name;
+            GameData.LocalProfile.GeneralData.Nickname = _oldName;
             GameData.UIManager.UpdateProfileInfo();
         }
 
-        // Called when the module gets enabled
         public override void OnEnable()
         {
-            name = GameData.LocalProfile.GeneralData.Nickname;
+            _oldName = GameData.LocalProfile.GeneralData.Nickname;
         }
 
-        // Called every frame
         public override void OnUpdate()
         {
-            /*updateTicks++;
-            if (updateTicks < 5)
+            _updateTicks++;
+            if (_updateTicks < 10)
                 return;
-            updateTicks = 0;
-            */
-            var newName = "⛓⛓ discord.gg/W36ArNRb4Y ⛓⛓ Unfair on Top!!";//RandomString(8);
+            _updateTicks = 0;
+            
+            var lastChar = _scrollingText[_scrollingText.Length - 1];
+            _scrollingText = _scrollingText.Remove(_scrollingText.Length - 1);
+            _scrollingText = lastChar + _scrollingText;
 
-            PhotonNetwork.LocalPlayer.NickName = newName;
-            GameData.LocalProfile.GeneralData.Nickname = newName;
+            PhotonNetwork.LocalPlayer.NickName = _scrollingText;
+            GameData.LocalProfile.GeneralData.Nickname = _scrollingText;
             GameData.UIManager.UpdateProfileInfo();
         }
     }

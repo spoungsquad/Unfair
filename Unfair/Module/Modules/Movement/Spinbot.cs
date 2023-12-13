@@ -19,7 +19,6 @@ namespace Unfair.Module.Modules.Movement
 
         public override void OnUpdate()
         {
-
             if (GameData.LocalPlayer is null) return;
 
             i++;

@@ -21,7 +21,7 @@ namespace Unfair.Module.Modules.Movement
             if (localPlayer == null)
                 return;
 
-            localPlayer.gameObject?.SetActive(true);
+            localPlayer.gameObject.SetActive(true);
             GameData.LocalPlayer.SetGodMode(true);
         }
     }

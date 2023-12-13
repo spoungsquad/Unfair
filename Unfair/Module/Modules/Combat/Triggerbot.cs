@@ -5,9 +5,8 @@ namespace Unfair.Module.Modules.Combat
 {
     public class Triggerbot : Module
     {
-        public Triggerbot() : base("Triggerbot", "Automatically shoots at players", Category.Combat, KeyCode.None)
+        public Triggerbot() : base("Triggerbot", "Automatically shoot at players", Category.Combat, KeyCode.None)
         {
-            Enabled = false;
         }
         
         public override void OnUpdate()
@@ -15,7 +14,6 @@ namespace Unfair.Module.Modules.Combat
             var hit = GameData.WeaponController.LKGOODIEFCN;
             if (hit.collider == null)
                 return;
-                
                 
             if (hit.collider.gameObject == null)
                 return;
@@ -25,7 +23,6 @@ namespace Unfair.Module.Modules.Combat
                 
             if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "AutoAim")
                 return;
-                    
                     
             GameData.WeaponController.TryFireWeapon();
         }

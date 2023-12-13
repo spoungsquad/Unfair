@@ -5,7 +5,7 @@ namespace Unfair.Module.Modules.Combat
 {
     public class RapidFire : Module
     {
-        public RapidFire() : base("RapidFire", "Shoots faster", Category.Combat, KeyCode.Q)
+        public RapidFire() : base("RapidFire", "Increase fire rate", Category.Combat, KeyCode.Q)
         {
         }
         

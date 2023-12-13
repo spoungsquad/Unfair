@@ -13,7 +13,7 @@ namespace Unfair.Module.Modules.Misc
     {
         private readonly List<PlayerController> _players = new List<PlayerController>();
 
-        public WeaponSpawn() : base("WeaponSpawn", "Spawns a shit ton of weapons", Category.Misc, KeyCode.M)
+        public WeaponSpawn() : base("WeaponSpawn", "Spawn a shit ton of weapons", Category.Misc, KeyCode.M)
         {
         }
 
@@ -33,11 +33,11 @@ namespace Unfair.Module.Modules.Misc
 
             foreach (var player in _players)
             {
-                if (player is null || player.gameObject is null || player.IsMine())
+                if (player is null || player.IsMine())
                     continue;
 
                 Vector3 vector = player.FHAOJNEKKGD + player.transform.up;
-                PickupableSpawner.CreateWeaponDrop(GameData.CurrentWeaponData.Id, vector, default, null, 1);
+                PickupableSpawner.CreateWeaponDrop(GameData.CurrentWeaponData.Id, vector);
             }
         }
     }

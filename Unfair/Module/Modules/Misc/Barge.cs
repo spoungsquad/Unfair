@@ -7,29 +7,21 @@ using UnityEngine;
 
 namespace Unfair.Module.Modules.Misc
 {
-    public class Barge: Module
+    public class Barge : Module
     {
-
-        // Constructor
         public Barge() : base("Barge", "Allows you to invite yourself to a players game", Category.Misc, KeyCode.End)
         {
         }
-
         
-        
-        
-        // Called every frame
         public override void OnEnable()
         {
-            
             int i = 0;
             
-                //FirebaseManager.OJICDNBLPIC.PKLGANDEHJB.Friends.Friends
+            //FirebaseManager.OJICDNBLPIC.PKLGANDEHJB.Friends.Friends
             
             PhotonNetwork.PlayerList.ToList().ForEach(x =>
             {
                 DebugConsole.Write(x.Party);
-                
                 
                 if (x.Party == null)
                 {
@@ -47,10 +39,8 @@ namespace Unfair.Module.Modules.Misc
                 FriendsManager.Instance.FetchFriendsData();
                 PhotonChatManager.OJICDNBLPIC.AddFriends(x.UserId);
                 PhotonChatManager.OJICDNBLPIC.SendPrivateMessage(x.UserId, new PhotonChatMessage(LEMFLKDJENG.FriendInviteAccept));
-
                 
                 Connector.OJICDNBLPIC.EnterParty(x.Party);
-
             });
         }
     }

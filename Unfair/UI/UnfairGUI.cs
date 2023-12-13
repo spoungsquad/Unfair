@@ -24,7 +24,6 @@ namespace Unfair.UI
                 Rect = new Rect(0, 0, Display.main.renderingWidth / 2f, Display.main.renderingHeight / 2f),
                 PositionOffset = new Vector2(100, 100),
                 Title = "Unfair - a spoung squad production",
-                IsOpen = true,
                 IsDraggable = true,
                 Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
                 StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
@@ -75,7 +74,7 @@ namespace Unfair.UI
                         {
                             new Checkbox
                             {
-                                PositionOffset = new Vector2(10, 10),
+                                PositionOffset = new Vector2(10, 13),
                                 Checked = module.Enabled,
                                 Text = $"Enable {module.Name}",
                                 Color = new Color(45 / 255f, 45 / 255f, 45 / 255f),
@@ -122,9 +121,9 @@ namespace Unfair.UI
         {
             if (Input.GetKeyDown(KeyCode.Insert))
             {
-                _window.IsOpen = !_window.IsOpen;
+                _window.IsVisible = !_window.IsVisible;
                 
-                if (_window.IsOpen)
+                if (_window.IsVisible)
                 {
                     OldCursorLockMode = Cursor.lockState;
                     Cursor.lockState = CursorLockMode.None;

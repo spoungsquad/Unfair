@@ -8,7 +8,6 @@ namespace Unfair.UI.Elements
         public string Title;
         public bool IsDragging = false;
         public bool IsDraggable;
-        public bool IsOpen;
         
         
         public override void Draw()
@@ -33,10 +32,6 @@ namespace Unfair.UI.Elements
             {
                 IsDragging = false;
             }
-            
-            
-            if (!IsOpen)
-                return;
 
 
             // Free mouse

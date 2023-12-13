@@ -23,7 +23,7 @@ namespace Unfair.UI.Elements
 			
 			Render.FillRect(position, new Vector2(15, 15), color);
 			Render.DrawRect(position, new Vector2(15, 15), StrokeColor, StrokeWidth);
-			Render.DrawString(position + new Vector2(20, 0), new Vector2(15, 15), Text, TextColor, true);
+			Render.DrawString(position + new Vector2(20, -2), new Vector2(15, 15), Text, TextColor);
 			
 			var isPressed = GUI.Button(new Rect(position, new Vector2(15, 15)), new GUIContent(""), GUI.skin.label);
 			if (isPressed)

@@ -12,14 +12,11 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
-            if (GameData.LocalPlayer == null || GameData.CurrentWeapon == null) return;
-
-            // Doesn't work?
-            GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilForce = 0;
-            GameData.CurrentWeaponData.Stats.StatsForLevel.RecoilDuration = 0;
-            GameData.CameraManager.TPCamera.AddRecoil(Vector2.zero, 0, 0);
-            
-            
+            // 4 fields in vThirdPersonCamera.AddRecoil
+            GameData.CameraManager.TPCamera.SetField("NLHDAMDEIOK", 0f);
+            GameData.CameraManager.TPCamera.SetField("NAAICIOIOGN", 0f);
+            GameData.CameraManager.TPCamera.SetField("EMDGHAADDMO", 0f);
+            GameData.CameraManager.TPCamera.SetField("OMALGBDNEIF", Vector2.zero);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
+            if (GameData.CameraManager == null || GameData.CameraManager.TPCamera == null) return;
+            
             // 4 fields referenced in vThirdPersonCamera.AddRecoil
             GameData.CameraManager.TPCamera.SetField("NLHDAMDEIOK", 0f);
             GameData.CameraManager.TPCamera.SetField("NAAICIOIOGN", 0f);

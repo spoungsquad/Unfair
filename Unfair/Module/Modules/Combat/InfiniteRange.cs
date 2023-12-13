@@ -11,9 +11,9 @@ namespace Unfair.Module.Modules.Combat
         
         public override void OnUpdate()
         {
-            if (GameData.LocalPlayer == null || GameData.CurrentWeapon == null) return;
+            if (GameData.CurrentWeapon == null || GameData.CurrentWeaponData == null) return;
 
-            GameData.CurrentWeaponData.Stats.Range = 1000000;
+            GameData.CurrentWeaponData.Stats.Range = 1000000f;
         }
     }
 }

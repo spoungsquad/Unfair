@@ -12,6 +12,7 @@ namespace Unfair.Module.Modules.Combat
 
         public override void OnUpdate()
         {
+            if (HudManager.Instance == null || HudManager.Instance.currentCrosshair == null) return;
             var crosshair = HudManager.Instance.currentCrosshair.GetField<RectTransform>("_crosshair");
             
             crosshair.sizeDelta = Vector2.zero;

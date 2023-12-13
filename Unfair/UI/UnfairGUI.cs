@@ -71,6 +71,25 @@ namespace Unfair.UI
                         StrokeWidth = 1f,
                         Rect = new Rect(0, 0, 220, 230),
                         PositionOffset = new Vector2(nextX, nextY),
+                        Children = new UIElement[]
+                        {
+                            new Checkbox
+                            {
+                                PositionOffset = new Vector2(10, 10),
+                                Checked = module.Enabled,
+                                Text = $"Enable {module.Name}",
+                                Color = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                CheckedColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                StrokeWidth = 1f,
+                                OnClick = checkbox =>
+                                {
+                                    module.Toggle();
+                                    checkbox.Checked = module.Enabled;
+                                }
+                            }
+                        }
                     });
                     
                     nextX += 220f + UIElement.Padding * 2f;

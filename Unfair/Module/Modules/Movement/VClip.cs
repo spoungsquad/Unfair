@@ -1,3 +1,4 @@
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -5,8 +6,11 @@ namespace Unfair.Module.Modules.Movement
 {
     public class VClip : Module
     {
-        public VClip() : base("VClip", "Allows you to clip through blocks", Category.Movement, KeyCode.DownArrow)
+        private NumberSetting _distance = new NumberSetting("Distance", "How far you clip", 5f, -100f, 100f);
+        
+        public VClip() : base("VClip", "Vertical clip", Category.Movement, KeyCode.DownArrow)
         {
+            Settings.Add(_distance);
         }
 
         public override void OnEnable()

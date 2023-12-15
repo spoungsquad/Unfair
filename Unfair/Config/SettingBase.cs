@@ -4,9 +4,9 @@
 	{
 		public string Name;
 		public string Description;
-		public string Dependency;
+		public SettingBase Dependency;
 		
-		public SettingBase(string name, string description, string dependency = "")
+		public SettingBase(string name, string description, SettingBase dependency = null)
 		{
 			Name = name;
 			Description = description;

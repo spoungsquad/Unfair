@@ -1,12 +1,18 @@
-﻿using Unfair.Util;
+﻿using Unfair.Config.Settings;
+using Unfair.Util;
 using UnityEngine;
 
 namespace Unfair.Module.Modules.Combat
 {
     public class Triggerbot : Module
     {
+        private NumberSetting _reactionTime 
+            = new NumberSetting("Reaction time", "How long it takes to react to a player, in milliseconds", 
+                100f, 0f, 1000f);
+        
         public Triggerbot() : base("Triggerbot", "Automatically shoot at players", Category.Combat, KeyCode.None)
         {
+            Settings.Add(_reactionTime);
         }
         
         public override void OnUpdate()

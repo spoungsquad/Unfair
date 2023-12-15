@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -7,10 +8,30 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
+        // TODO: possible?
+        private enum Mode
+        {
+            Rectangle,
+            Box,
+            Outline,
+            Fill
+        }
+        
+        private ModeSetting<Mode> _mode = new ModeSetting<Mode>("Mode", "How to display ESP", Mode.Rectangle);
+        private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.red);
+        private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
+        private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);
+        private BoolSetting _showHealth = new BoolSetting("Show health", "Show player health (and shield)", true);
+        
         private List<PlayerController> _players = new List<PlayerController>();
 
         public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
         {
+            Settings.Add(_mode);
+            Settings.Add(_color);
+            Settings.Add(_showNames);
+            Settings.Add(_showBones);
+            Settings.Add(_showHealth);
         }
 
         public void RenderBoneFromTransform(Transform bone)

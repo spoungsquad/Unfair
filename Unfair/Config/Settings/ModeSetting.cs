@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Unfair.Config.Settings
 {
-	public class ModeSetting : SettingBase
+	public class ModeSetting<T> : SettingBase where T : Enum
 	{
-		public int Value;
+		public T Value;
 		
-		public ModeSetting(string name, string description, int value, string dependency = "") 
+		public ModeSetting(string name, string description, T value, SettingBase dependency = null) 
 			: base(name, description, dependency)
 		{
 			Value = value;

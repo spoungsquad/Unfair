@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -7,8 +8,37 @@ namespace Unfair.Module.Modules.Combat
 {
     public class AimAssist : Module
     {
+        private enum TargetHitbox
+        {
+            Head,
+            Chest,
+            Pelvis,
+            Nearest
+        }
+        
+        private NumberSetting _smoothing 
+            = new NumberSetting("Smoothing", "How smooth aim assist is", 0.1f, 0.01f, 1f, 0.01f);
+        
+        private NumberSetting _recoilCompensation 
+            = new NumberSetting("Recoil compensation", "How much recoil to compensate for", 0.1f, 0f, 1f, 0.01f);
+        
+        private NumberSetting _reactionTime 
+            = new NumberSetting("Reaction time", "How long it takes to react to a player, in milliseconds", 
+                100f, 0f, 1000f);
+        
+        private NumberSetting _fov 
+            = new NumberSetting("FOV", "The field of view to aim at players", 100f, 0f, 360f);
+        
+        private ModeSetting<TargetHitbox> _targetHitbox 
+            = new ModeSetting<TargetHitbox>("Target hitbox", "Which hitbox to aim at", TargetHitbox.Head);
+        
         public AimAssist() : base("AimAssist", "Artificially improve your aim", Category.Combat, KeyCode.I)
         {
+            Settings.Add(_smoothing);
+            Settings.Add(_recoilCompensation);
+            Settings.Add(_reactionTime);
+            Settings.Add(_fov);
+            Settings.Add(_targetHitbox);
         }
 
         private const float maxDistanceFromCenter = 200f;

@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -6,6 +7,19 @@ namespace Unfair.Module.Modules.Misc
 {
     public class NameChanger : Module
     {
+        private enum NameAnimation
+        {
+            Scrolling,
+            Buildup,
+            Static
+        }
+        
+        private TextSetting _name 
+            = new TextSetting("Name", "The name to change to", "Unfair on Top!!");
+        
+        private ModeSetting<NameAnimation> _animationMode 
+            = new ModeSetting<NameAnimation>("Animation mode", "How the name should be animated", NameAnimation.Scrolling);
+        
         private string _oldName = "";
         private string _scrollingText = "Unfair on Top!! "; // space is intentional
         private int _updateTicks;
@@ -13,6 +27,8 @@ namespace Unfair.Module.Modules.Misc
         // Constructor
         public NameChanger() : base("NameChanger", "Change your name", Category.Misc, KeyCode.UpArrow)
         {
+            Settings.Add(_name);
+            Settings.Add(_animationMode);
         }
 
         // Called when the module gets disabled

@@ -10,7 +10,7 @@ namespace Unfair.Module.Modules.Combat
             = new NumberSetting("Reaction time", "How long it takes to react to a player, in milliseconds", 
                 100f, 0f, 1000f);
         
-        public Triggerbot() : base("Triggerbot", "Automatically shoot at players", Category.Combat, KeyCode.None)
+        public Triggerbot() : base("Triggerbot", "Triggerbot", Category.Combat, KeyCode.None)
         {
             Settings.Add(_reactionTime);
         }

@@ -14,7 +14,7 @@ namespace Unfair.Module.Modules.Movement
         
         private int i = 0;
 
-        public Spinbot() : base("Spinbot", "Spins around", Category.Movement, KeyCode.G)
+        public Spinbot() : base("Spinbot", "Spin around", Category.Movement, KeyCode.G)
         {
             Settings.Add(_speed);
             Settings.Add(_spinX);

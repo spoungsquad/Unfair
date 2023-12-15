@@ -25,7 +25,7 @@ namespace Unfair.Module.Modules.Visual
         
         private List<PlayerController> _players = new List<PlayerController>();
 
-        public ESP() : base("ESP", "Allows you to see players through walls", Category.Visuals, KeyCode.K)
+        public ESP() : base("ESP", "See players through walls", Category.Visuals, KeyCode.K)
         {
             Settings.Add(_mode);
             Settings.Add(_color);

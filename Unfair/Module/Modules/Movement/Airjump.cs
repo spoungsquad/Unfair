@@ -7,7 +7,7 @@ namespace Unfair.Module.Modules.Movement
     public class Airjump : Module
     {
         // Constructor
-        public Airjump() : base("Airjump", "Allows you to jump in midair", Category.Movement, KeyCode.F5)
+        public Airjump() : base("Airjump", "Jump midair", Category.Movement, KeyCode.F5)
         {
         }
         

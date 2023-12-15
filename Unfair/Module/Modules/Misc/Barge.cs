@@ -9,7 +9,7 @@ namespace Unfair.Module.Modules.Misc
 {
     public class Barge : Module
     {
-        public Barge() : base("Barge", "Allows you to invite yourself to a players game", Category.Misc, KeyCode.End)
+        public Barge() : base("Barge", "Force join party", Category.Misc, KeyCode.End)
         {
         }
         

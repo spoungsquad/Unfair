@@ -11,9 +11,9 @@ namespace Unfair.Module.Modules.Visual
         private Pickupable[] _items = Array.Empty<Pickupable>();
 
         // Constructor
-        public ItemESP() : base("ItemESP", "Draws a box around items", Category.Visuals, KeyCode.None)
+        public ItemESP() : base("ItemESP", "Item ESP", Category.Visuals, KeyCode.None)
         {
-            Enabled = false;
+            
         }
 
         // Called every frame

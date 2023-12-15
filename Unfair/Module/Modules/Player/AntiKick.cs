@@ -8,7 +8,7 @@ namespace Unfair.Module.Modules.Player
     {
         private string _oldUserId;
 
-        public AntiKick() : base("AntiKick", "Prevents you from being kicked", Category.Player, KeyCode.F7)
+        public AntiKick() : base("AntiKick", "Anti kick", Category.Player, KeyCode.F7)
         {
             Toggle();
         }

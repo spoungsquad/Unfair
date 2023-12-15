@@ -7,7 +7,7 @@ namespace Unfair.Module.Modules.Movement
 {
     public class AutoTP : Module
     {
-        public AutoTP() : base("AutoTP", "Teleports you to the closest player", Category.Combat, KeyCode.P)
+        public AutoTP() : base("AutoTP", "Teleport to nearby players", Category.Combat, KeyCode.P)
         {
         }
 

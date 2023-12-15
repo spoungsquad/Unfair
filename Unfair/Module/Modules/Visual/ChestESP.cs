@@ -9,9 +9,9 @@ namespace Unfair.Module.Modules.Visual
     {
         private readonly List<SupplyCrate> _supplyCrates = new List<SupplyCrate>();
 
-        public ChestESP() : base("ChestESP", "Allows you to see chests through walls", Category.Visuals, KeyCode.K)
+        public ChestESP() : base("ChestESP", "Chest ESP", Category.Visuals, KeyCode.K)
         {
-            Enabled = true;
+            
         }
 
         // Called every frame

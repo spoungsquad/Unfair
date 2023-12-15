@@ -7,7 +7,7 @@ namespace Unfair.Module.Modules.Misc
 {
     public class Crasher : Module
     {
-        public Crasher() : base("Crasher", "Crashes other players", Category.Misc, KeyCode.None)
+        public Crasher() : base("Crasher", "Crash other players", Category.Misc, KeyCode.None)
         {
         }
 

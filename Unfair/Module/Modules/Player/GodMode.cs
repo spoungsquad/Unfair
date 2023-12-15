@@ -5,7 +5,7 @@ namespace Unfair.Module.Modules.Player
 {
     public class GodMode : Module
     {
-        public GodMode() : base("GodMode", "Be invincible to all damage", Category.Player, KeyCode.F9)
+        public GodMode() : base("GodMode", "Remove damage (godmode)", Category.Player, KeyCode.F9)
         {
             Enabled = true;
         }

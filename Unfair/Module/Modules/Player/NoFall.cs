@@ -6,7 +6,7 @@ namespace Unfair.Module.Modules.Player
     public class NoFall : Module
     {
         // Constructor
-        public NoFall() : base("NoFall", "No fall damage", Category.Player, KeyCode.None)
+        public NoFall() : base("NoFall", "Remove fall damage", Category.Player, KeyCode.None)
         {
         }
 

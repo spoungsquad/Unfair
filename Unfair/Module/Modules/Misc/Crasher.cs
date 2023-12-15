@@ -9,7 +9,6 @@ namespace Unfair.Module.Modules.Misc
     {
         public Crasher() : base("Crasher", "Crashes other players", Category.Misc, KeyCode.None)
         {
-            Enabled = false;
         }
 
         public override void OnUpdate()

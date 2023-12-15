@@ -7,7 +7,7 @@ namespace Unfair.Module.Modules.Combat
     {
         public NoRecoil() : base("NoRecoil", "Remove recoil", Category.Combat, KeyCode.L)
         {
-            Enabled = true;
+            
         }
         
         public override void OnUpdate()

@@ -17,8 +17,9 @@ namespace Unfair.Module.Modules.Movement
             List<PlayerController> players = GameData.PlayerControllers.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
             players.Remove(GameData.LocalPlayer);
             PlayerController target = players.FirstOrDefault();
+            if (target == null) return;
 
-            GameData.LocalPlayer.gameObject.transform.position = target.transform.position;
+            GameData.LocalPlayer.transform.position = target.transform.position;
         }
     }
 }

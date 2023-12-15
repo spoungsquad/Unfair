@@ -12,7 +12,6 @@ namespace Unfair.Module.Modules.Misc
     {
         public ForceWin() : base("ForceWin", "Force a win", Category.Misc, KeyCode.Keypad0)
         {
-            Enabled = false;
         }
 
         public override void OnEnable()

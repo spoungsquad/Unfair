@@ -5,9 +5,9 @@ namespace Unfair.Module.Modules.Combat
 {
     public class NoSpread : Module
     {
-        public NoSpread() : base("NoSpread", "Removes spread", Category.Combat, KeyCode.L)
+        public NoSpread() : base("NoSpread", "Remove spread", Category.Combat, KeyCode.L)
         {
-            Enabled = true;
+            
         }
 
         public override void OnUpdate()

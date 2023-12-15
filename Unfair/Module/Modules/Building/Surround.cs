@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -7,10 +8,14 @@ namespace Unfair.Module.Modules.Building
 {
     public class Surround : Module
     {
-        private long _lastTime = 0;
+        private NumberSetting _delay =
+            new NumberSetting("Delay", "Delay between each box, in milliseconds", 250, 0, 1000);
+        
+        private long _lastTime;
 
         public Surround() : base("Surround", "Surround all players", Category.Building, KeyCode.J)
         {
+            Settings.Add(_delay);
         }
 
         public override void OnUpdate()

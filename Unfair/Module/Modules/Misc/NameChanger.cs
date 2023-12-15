@@ -20,6 +20,9 @@ namespace Unfair.Module.Modules.Misc
         private ModeSetting<NameAnimation> _animationMode 
             = new ModeSetting<NameAnimation>("Animation mode", "How the name should be animated", NameAnimation.Scrolling);
         
+        private NumberSetting _animationSpeed = new NumberSetting("Animation speed",
+            "How fast the name should be animated, in milliseconds between each update", 100, 0, 1000);
+        
         private string _oldName = "";
         private string _scrollingText = "Unfair on Top!! "; // space is intentional
         private int _updateTicks;

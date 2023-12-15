@@ -8,7 +8,7 @@ namespace Unfair.Module.Modules.Building
 {
     public class Breakdown : Module
     {
-        public Breakdown() : base("Breakdown", "Break everything", Category.Building, KeyCode.F10)
+        public Breakdown() : base("Breakdown", "Break all buildings", Category.Building, KeyCode.F10)
         {
         }
 

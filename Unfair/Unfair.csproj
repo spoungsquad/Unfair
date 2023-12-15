@@ -801,6 +801,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DebugOnlyAttribute.cs" />
+    <Compile Include="Config\SettingBase.cs" />
+    <Compile Include="Config\Settings\BoolSetting.cs" />
+    <Compile Include="Config\Settings\ColorSetting.cs" />
+    <Compile Include="Config\Settings\KeybindSetting.cs" />
+    <Compile Include="Config\Settings\ModeSetting.cs" />
+    <Compile Include="Config\Settings\NumberSetting.cs" />
+    <Compile Include="Config\Settings\TextSetting.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Module\KeybindManager.cs" />

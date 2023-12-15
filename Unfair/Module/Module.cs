@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unfair.Config;
 using UnityEngine;
 
 namespace Unfair.Module
@@ -14,11 +16,14 @@ namespace Unfair.Module
 
     public class Module
     {
-        public Category Category;
+        public string Name;
         public string Description;
+        public Category Category;
+        
         public bool Enabled;
         public KeyCode Key;
-        public string Name;
+        public List<SettingBase> Settings = new List<SettingBase>();
+        
         private const string _randomString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         // Constructor

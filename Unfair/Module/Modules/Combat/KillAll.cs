@@ -1,10 +1,6 @@
 ﻿using Photon.Pun;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Photon.Realtime;
 using Unfair.Util;
 using UnityEngine;
 
@@ -26,6 +22,7 @@ namespace Unfair.Module.Modules.Combat
             long currentMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
             if (Math.Abs(_lastTime - currentMs) < ms) return;
+            _lastTime = currentMs;
 
             var players = GameData.PlayerControllers.OrderBy(x =>
                 Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).ToList();
@@ -33,7 +30,7 @@ namespace Unfair.Module.Modules.Combat
 
             foreach (var player in players.Where(player => !player.photonView.IsMine))
             {
-                player.photonView.RPC("TakeHit", RpcTarget.All, 
+                player.photonView.RPC("TakeHit", RpcTarget.All,
                     1000000, player.transform.position, player.photonView.CreatorActorNr, true);
             }
         }

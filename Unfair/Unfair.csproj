@@ -823,6 +823,7 @@
     <Compile Include="Module\Modules\Combat\AimAssist.cs" />
     <Compile Include="Module\Modules\Misc\Barge.cs" />
     <Compile Include="Module\Modules\Misc\Crasher.cs" />
+    <Compile Include="Module\Modules\Misc\ForceWin.cs" />
     <Compile Include="Module\Modules\Misc\NameChanger.cs" />
     <Compile Include="Module\Modules\Misc\NewHost.cs" />
     <Compile Include="Module\Modules\Misc\RenameToChainsEmoji.cs" />

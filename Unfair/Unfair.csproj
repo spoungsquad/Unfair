@@ -858,6 +858,7 @@
     <Compile Include="UI\Elements\KeybindButton.cs" />
     <Compile Include="UI\Elements\Label.cs" />
     <Compile Include="UI\Elements\Panel.cs" />
+    <Compile Include="UI\Elements\Slider.cs" />
     <Compile Include="UI\Elements\TabPanel.cs" />
     <Compile Include="UI\Elements\ToggleButton.cs" />
     <Compile Include="UI\Elements\UIElement.cs" />

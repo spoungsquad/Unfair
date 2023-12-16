@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unfair.Config.Settings;
 using Unfair.Module;
 using Unfair.UI.Elements;
 using Unfair.Util;
@@ -88,7 +89,28 @@ namespace Unfair.UI
 
                     foreach (var setting in module.Settings)
                     {
-                        // TODO: this
+                        if (setting is NumberSetting numberSetting)
+                        {
+                            smallSettings.Add(new Slider
+                            {
+                                Rect = new Rect(0, 0, 200, 30),
+                                PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                Value = numberSetting.Value,
+                                MinValue = numberSetting.Min,
+                                MaxValue = numberSetting.Max,
+                                Step = numberSetting.Step,
+                                Text = numberSetting.Name,
+                                TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                OnValueChanged = slider =>
+                                {
+                                    numberSetting.Value = slider.Value;
+                                }
+                            });
+                        }
+                        
+                        nextSettingY += smallSettings.Last().Rect.size.y + UIElement.Padding * 2f;
                     }
                 }
                 
@@ -135,7 +157,26 @@ namespace Unfair.UI
                     
                     foreach (var setting in module.Settings)
                     {
-                        // TODO: this
+                        if (setting is NumberSetting numberSetting)
+                        {
+                            moduleSettings.Add(new Slider
+                            {
+                                PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                Value = numberSetting.Value,
+                                MinValue = numberSetting.Min,
+                                MaxValue = numberSetting.Max,
+                                Text = numberSetting.Name,
+                                TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                OnValueChanged = slider =>
+                                {
+                                    numberSetting.Value = slider.Value;
+                                }
+                            });
+                        }
+                        
+                        nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding;
                     }
                     
                     moduleGroups.Add(new GroupPanel

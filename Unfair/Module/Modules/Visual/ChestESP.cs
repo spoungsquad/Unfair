@@ -1,5 +1,6 @@
 using Playtika.Http.Constants;
 using System.Collections.Generic;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -7,11 +8,13 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ChestESP : Module
     {
+        private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.blue);
+        
         private readonly List<SupplyCrate> _supplyCrates = new List<SupplyCrate>();
 
         public ChestESP() : base("ChestESP", "Chest ESP", Category.Visuals, KeyCode.K)
         {
-            
+            Settings.Add(_color);
         }
 
         // Called every frame

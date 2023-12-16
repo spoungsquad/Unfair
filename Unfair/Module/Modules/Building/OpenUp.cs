@@ -1,4 +1,5 @@
-﻿using Unfair.Config.Settings;
+﻿using Photon.Pun;
+using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
 
@@ -6,18 +7,27 @@ namespace Unfair.Module.Modules.Building
 {
     public class OpenUp : Module
     {
-        private BoolSetting _teleportItems = new BoolSetting("TeleportItems", "Teleport items to you", false);
+        private readonly BoolSetting _bringItems = new BoolSetting("Bring items", "Teleport all drops to self", true);
+
         public OpenUp() : base("OpenUp", "Open all chests", Category.Building, KeyCode.Quote)
         {
-            Settings.Add(_teleportItems);
+            Settings.Add(_bringItems);
         }
-        
-        public override void OnGUI()
+
+        public override void OnUpdate()
         {
-            //GUI.Label(new Rect(50, 860, 1000, 20), "crates : " + GameData.Crates.Length);
             foreach (SupplyCrate crate in GameData.Crates)
             {
                 crate.OpenCrate(GameData.LocalPlayer);
+            }
+
+            if (_bringItems.Value)
+            {
+                PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer); //needed
+                foreach (var drop in GameData.Pickupables)
+                {
+                    drop.transform.position = GameData.LocalPlayer.transform.position;
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Unfair.Module.Modules.Building
 
         public override void OnUpdate()
         {
-            BuildingNetworkController.Instance.KillAllBuildings(true);
+            BuildingNetworkController.Instance.KillAllBuildingsRemote(true);
         }
     }
 }

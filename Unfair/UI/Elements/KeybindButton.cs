@@ -24,6 +24,14 @@ namespace Unfair.UI.Elements
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
+                        if (keyCode == KeyCode.Escape)
+                        {
+                            Key = KeyCode.None;
+                            IsBinding = false;
+                            OnKeybind?.Invoke(this);
+                            break;
+                        }
+                        
                         Key = keyCode;
                         IsBinding = false;
                         OnKeybind?.Invoke(this);

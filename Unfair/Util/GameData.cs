@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Network;
 using Invector.CharacterController;
 using JustPlay.Equipment;
 using Photon.Pun;
@@ -20,6 +21,8 @@ namespace Unfair.Util
 
         // misc i guess
         public static ModeInfo CurrentGameMode => EOAHGMEBCEG.PBDDBPPEHAL;
+        
+        public static Connector Connector => Connector.OJICDNBLPIC;
 
         public static WeaponModel CurrentWeapon => WeaponController.PIIMNHFPCBF;
 

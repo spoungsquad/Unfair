@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using Assets.Scripts.Network;
+using Photon.Pun;
 using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
@@ -60,6 +61,7 @@ namespace Unfair.Module.Modules.Misc
             PhotonNetwork.LocalPlayer.NickName = _scrollingText;
             GameData.LocalProfile.GeneralData.Nickname = _scrollingText;
             GameData.UIManager.UpdateProfileInfo();
+            GameData.Connector.OnPlayerDataChanged();
         }
     }
 }

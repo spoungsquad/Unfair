@@ -8,7 +8,7 @@ namespace Unfair.Module.Modules.Movement
     {
         private readonly NumberSetting _distanceY = new NumberSetting("Distance", "Distance to teleport up/down", -5, -100, 100);
 
-        public VClip() : base("VClip", "Allows you to clip through blocks", Category.Movement, KeyCode.DownArrow)
+        public VClip() : base("VClip", "Vertical clip", Category.Movement, KeyCode.DownArrow)
         {
             Settings.Add(_distanceY);
         }

@@ -86,7 +86,22 @@ namespace Unfair.UI
                         }
                     });
                     
-                    nextSettingY += 20f;
+                    smallSettings.Add(new KeybindButton
+                    {
+                        Rect = new Rect(0.9f, 0, 40, 20),
+                        Origin = new Vector2(1, 0),
+                        PositionOffset = new Vector2(10, 10 + nextSettingY),
+                        StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                        TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                        Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                        Key = module.Key,
+                        OnKeybind = keybind =>
+                        {
+                            module.Key = keybind.Key;
+                        }
+                    });
+                    
+                    nextSettingY += smallSettings.Last().Rect.size.y + UIElement.Padding;
 
                     foreach (var setting in module.Settings)
                     {
@@ -158,7 +173,22 @@ namespace Unfair.UI
                         }
                     });
                     
-                    nextSettingY += 20f;
+                    moduleSettings.Add(new KeybindButton
+                    {
+                        Rect = new Rect(0.9f, 0, 40, 20),
+                        Origin = new Vector2(1, 0),
+                        PositionOffset = new Vector2(10, 10 + nextSettingY),
+                        StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                        TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                        Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                        Key = module.Key,
+                        OnKeybind = keybind =>
+                        {
+                            module.Key = keybind.Key;
+                        }
+                    });
+                    
+                    nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding;
                     
                     foreach (var setting in module.Settings)
                     {

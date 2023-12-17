@@ -70,6 +70,7 @@ namespace Unfair.UI
                 {
                     smallSettings.Add(new Checkbox
                     {
+                        Rect = new Rect(0, 0, 200, 20),
                         PositionOffset = new Vector2(10, 13 + nextSettingY),
                         Checked = module.Enabled,
                         Text = module.Description,
@@ -121,7 +122,7 @@ namespace Unfair.UI
                     Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
                     StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
                     StrokeWidth = 1f,
-                    Rect = new Rect(0, 0, 220, 230),
+                    Rect = new Rect(0, 0, 220, nextSettingY + UIElement.Padding * 2f),
                     PositionOffset = new Vector2(nextX, nextY),
                     Children = smallSettings.ToArray()
                 });
@@ -137,9 +138,11 @@ namespace Unfair.UI
                 // big
                 foreach (var module in bigModules)
                 {
+                    nextSettingY = 0f;
                     var moduleSettings = new List<UIElement>();
                     moduleSettings.Add(new Checkbox
                     {
+                        Rect = new Rect(0, 0, 200, 20),
                         PositionOffset = new Vector2(10, 13),
                         Checked = module.Enabled,
                         Text = $"Enable {module.Name}",
@@ -155,12 +158,15 @@ namespace Unfair.UI
                         }
                     });
                     
+                    nextSettingY += 20f;
+                    
                     foreach (var setting in module.Settings)
                     {
                         if (setting is NumberSetting numberSetting)
                         {
                             moduleSettings.Add(new Slider
                             {
+                                Rect = new Rect(0, 0, 200, 30),
                                 PositionOffset = new Vector2(10, 13 + nextSettingY),
                                 Value = numberSetting.Value,
                                 MinValue = numberSetting.Min,
@@ -186,7 +192,7 @@ namespace Unfair.UI
                         Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
                         StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
                         StrokeWidth = 1f,
-                        Rect = new Rect(0, 0, 220, 230),
+                        Rect = new Rect(0, 0, 220, nextSettingY + UIElement.Padding * 2f),
                         PositionOffset = new Vector2(nextX, nextY),
                         Children = moduleSettings.ToArray()
                     });

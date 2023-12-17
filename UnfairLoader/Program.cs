@@ -202,7 +202,7 @@ namespace UnfairLoader
 
             LogLine($"(*) Waiting for game to load...", ConsoleColor.Cyan);
             
-            while (gameProcess.Modules.Count < 85 || gameProcess.MainWindowHandle == IntPtr.Zero)
+            while (gameProcess.Modules.Count < 100 || gameProcess.MainWindowHandle == IntPtr.Zero)
             {
                 gameProcess.Refresh();
             }

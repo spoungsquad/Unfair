@@ -40,7 +40,7 @@ namespace Unfair.UI.Elements
         }
         
         // kinda ripped straight from livesweeper, just Unity-ified
-        protected Vector2 AdjustedPosition()
+        public Vector2 AdjustedPosition()
         {
             var parentPosition = Parent?.AdjustedPosition() ?? Vector2.zero;
             var absoluteOrigin = Rect.size * Origin;

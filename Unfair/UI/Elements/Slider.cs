@@ -16,6 +16,8 @@ namespace Unfair.UI.Elements
 		public Color ThumbColor;
 		public Color TextColor;
 		
+		private bool _isDragging;
+		
 		public Action<Slider> OnValueChanged;
 
 		public override void Draw()
@@ -31,25 +33,34 @@ namespace Unfair.UI.Elements
 			var sliderX = Rect.width / (MaxValue - MinValue) * (Value - MinValue);
 			Render.FillRect(new Vector2(pos.x + sliderX, pos.y + 20), new Vector2(5, 10), ThumbColor);
 			
-			if (GUI.Button(new Rect(new Vector2(pos.x, pos.y + 25), new Vector2(Rect.width, 7)), new GUIContent(""),
-				    GUI.skin.label))
+			var mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+			
+			var sliderPos = new Vector2(pos.x, pos.y + 20);
+			var sliderSize = new Vector2(Rect.width, 10);
+            
+            var isMouseOver = _isDragging || mousePosition.x >= sliderPos.x && mousePosition.x <= sliderPos.x + sliderSize.x &&
+                            mousePosition.y >= sliderPos.y && mousePosition.y <= sliderPos.y + sliderSize.y;
+			
+			_isDragging = isMouseOver && Input.GetMouseButton(0);
+
+			if (_isDragging)
 			{
 				var mouseX = Input.mousePosition.x;
 				var mouseXInRect = mouseX - pos.x;
 				var value = mouseXInRect / Rect.width * (MaxValue - MinValue) + MinValue;
-				
+
 				// step
 				value = Mathf.Round(value / Step) * Step;
-				
+
 				value = Mathf.Clamp(value, MinValue, MaxValue);
-				
+
 				if (Math.Abs(Value - value) > 0.001f)
 				{
 					Value = value;
 					OnValueChanged?.Invoke(this);
 				}
 			}
-			
+
 			base.Draw();
 		}
 	}

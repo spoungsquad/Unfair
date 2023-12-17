@@ -201,6 +201,7 @@ namespace Unfair.UI
                                 Value = numberSetting.Value,
                                 MinValue = numberSetting.Min,
                                 MaxValue = numberSetting.Max,
+                                Step = numberSetting.Step,
                                 Text = numberSetting.Name,
                                 TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
                                 ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Network;
+﻿using System;
+using Assets.Scripts.Network;
 using Photon.Pun;
 using Unfair.Config.Settings;
 using Unfair.Util;
@@ -18,8 +19,8 @@ namespace Unfair.Module.Modules.Misc
         private TextSetting _name 
             = new TextSetting("Name", "The name to change to", "Unfair on Top!!");
         
-        private ModeSetting<NameAnimation> _animationMode 
-            = new ModeSetting<NameAnimation>("Animation mode", "How the name should be animated", NameAnimation.Scrolling);
+        private ModeSetting _animationMode 
+            = new ModeSetting("Animation mode", "How the name should be animated", Enum.GetNames(typeof(NameAnimation)), (int)NameAnimation.Scrolling);
         
         private NumberSetting _animationSpeed = new NumberSetting("Animation speed",
             "How fast the name should be animated, in milliseconds between each update", 100, 0, 1000);

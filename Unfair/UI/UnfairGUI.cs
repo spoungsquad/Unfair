@@ -144,6 +144,22 @@ namespace Unfair.UI
                                     }
                                 });
                                 break;
+                            case ModeSetting modeSetting:
+                                smallSettings.Add(new Button
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}",
+                                    OnClick = button =>
+                                    {
+                                        modeSetting.Next();
+                                        button.Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}";
+                                    }
+                                });
+                                break;
                         }
 
                         nextSettingY += smallSettings.Last().Rect.size.y + UIElement.Padding * 2f;
@@ -251,9 +267,25 @@ namespace Unfair.UI
                                     }
                                 });
                                 break;
+                            case ModeSetting modeSetting:
+                                moduleSettings.Add(new Button
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}",
+                                    OnClick = button =>
+                                    {
+                                        modeSetting.Next();
+                                        button.Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}";
+                                    }
+                                });
+                                break;
                         }
 
-                        nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding;
+                        nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding * 2f;
                     }
                     
                     moduleGroups.Add(new GroupPanel

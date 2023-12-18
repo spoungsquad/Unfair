@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Unfair.Config.Settings;
 using Unfair.Util;
@@ -15,8 +16,8 @@ namespace Unfair.Module.Modules.Combat
             Rank
         }
         
-        private ModeSetting<TargetMode> _targetMode = 
-            new ModeSetting<TargetMode>("Target mode", "How to select targets", TargetMode.Distance);
+        private ModeSetting _targetMode = 
+            new ModeSetting("Target mode", "How to select targets", Enum.GetNames(typeof(TargetMode)), (int)TargetMode.Distance);
         
         private BoolSetting _targetVisible = 
             new BoolSetting("Target visible", "Only target players that are visible", false);

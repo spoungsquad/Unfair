@@ -13,7 +13,7 @@ namespace Unfair.Module.Modules.Movement
 
         private long _lastTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
-        public RAutoTP() : base("RAutoTP", "Bring players to you (client-side)", Category.Combat, KeyCode.O)
+        public RAutoTP() : base("RAutoTP", "Bring players to you", Category.Combat, KeyCode.O)
         {
         }
 

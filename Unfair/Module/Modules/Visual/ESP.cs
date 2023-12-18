@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unfair.Config.Settings;
@@ -17,7 +18,7 @@ namespace Unfair.Module.Modules.Visual
             Fill
         }
         
-        private ModeSetting<Mode> _mode = new ModeSetting<Mode>("Mode", "How to display ESP", Mode.Rectangle);
+        private ModeSetting _mode = new ModeSetting("Mode", "How to display ESP", Enum.GetNames(typeof(Mode)), (int)Mode.Rectangle);
         private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.red);
         private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
         private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);

@@ -1,5 +1,4 @@
-using Photon.Pun;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using Unfair.Config.Settings;
 using Unfair.Util;
@@ -9,18 +8,18 @@ namespace Unfair.Module.Modules.Combat
 {
     public class Aimbot : Module
     {
-        private readonly BoolSetting _autoFire =
-            new BoolSetting("Auto fire", "Automatically fire when aiming at a player", true);
-
-        private readonly List<PlayerController> _players = new List<PlayerController>();
-
-        private readonly BoolSetting _silentAim =
-                    new BoolSetting("Silent aim", "Hide your aimbot (aka magic bullet)", false);
-
-        private readonly ModeSetting<TargetMode> _targetMode =
-                            new ModeSetting<TargetMode>("Target mode", "How to select targets", TargetMode.Distance);
-
-        private readonly BoolSetting _targetVisible =
+        private enum TargetMode
+        {
+            Distance,
+            NearCrosshair,
+            Cycle,
+            Rank
+        }
+        
+        private ModeSetting _targetMode = 
+            new ModeSetting("Target mode", "How to select targets", Enum.GetNames(typeof(TargetMode)), (int)TargetMode.Distance);
+        
+        private BoolSetting _targetVisible = 
             new BoolSetting("Target visible", "Only target players that are visible", false);
 
         private Vector3 _oldPos = Vector3.zero;

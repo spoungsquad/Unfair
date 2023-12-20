@@ -16,13 +16,11 @@ namespace Unfair.Module.Modules.Misc
 
         private NumberSetting _amount
             = new NumberSetting("Amount", "How many weapons to spawn per location", 10f, 1f, 100f);
-
-        private ModeSetting<SpawnLocation> _spawnLocation
-            = new ModeSetting<SpawnLocation>("Spawn location", "Where to spawn the weapons", SpawnLocation.Everyone);
-
-        // TODO: better
-        private TextSetting _weaponName
-            = new TextSetting("Weapon name", "The name of the weapon to spawn", "M4A1");
+        
+        private ModeSetting _spawnLocation 
+            = new ModeSetting("Spawn location", "Where to spawn the weapons", Enum.GetNames(typeof(SpawnLocation)), (int)SpawnLocation.Everyone);
+        
+        private readonly List<PlayerController> _players = new List<PlayerController>();
 
         public WeaponSpawn() : base("WeaponSpawn", "Spawn a shit ton of weapons", Category.Misc, KeyCode.M)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
@@ -7,20 +8,20 @@ namespace Unfair.Module.Modules.Visual
 {
     public class Tracers : Module
     {
+        private enum TracerOrigin
+        {
+            Crosshair,
+            Bottom
+        }
+        
+        private ModeSetting _origin = new ModeSetting("Origin", "Where tracers start", Enum.GetNames(typeof(TracerOrigin)), (int)TracerOrigin.Bottom);
+        
         private readonly List<PlayerController> _players = new List<PlayerController>();
-
-        private ModeSetting<TracerOrigin> _origin = new ModeSetting<TracerOrigin>("Origin", "Where tracers start", TracerOrigin.Bottom);
 
         // Constructor
         public Tracers() : base("Tracers", "Draw lines to players", Category.Visuals, KeyCode.None)
         {
             Settings.Add(_origin);
-        }
-
-        private enum TracerOrigin
-        {
-            Crosshair,
-            Bottom
         }
 
         // Called every frame

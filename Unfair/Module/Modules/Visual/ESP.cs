@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unfair.Config.Settings;
@@ -8,12 +9,18 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
+        // TODO: possible?
+        private enum Mode
+        {
+            Rectangle,
+            Box,
+            Outline,
+            Fill
+        }
+        
+        private ModeSetting _mode = new ModeSetting("Mode", "How to display ESP", Enum.GetNames(typeof(Mode)), (int)Mode.Rectangle);
         private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.red);
-
-        private ModeSetting<Mode> _mode = new ModeSetting<Mode>("Mode", "How to display ESP", Mode.Rectangle);
-
-        private List<PlayerController> _players = new List<PlayerController>();
-
+        private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
         private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);
 
         private BoolSetting _showHealth = new BoolSetting("Show health", "Show player health (and shield)", true);

@@ -70,6 +70,7 @@ namespace Unfair.UI
                 {
                     smallSettings.Add(new Checkbox
                     {
+                        Rect = new Rect(0, 0, 200, 20),
                         PositionOffset = new Vector2(10, 13 + nextSettingY),
                         Checked = module.Enabled,
                         Text = module.Description,
@@ -85,31 +86,82 @@ namespace Unfair.UI
                         }
                     });
                     
-                    nextSettingY += 20f;
+                    smallSettings.Add(new KeybindButton
+                    {
+                        Rect = new Rect(0.9f, 0, 40, 20),
+                        Origin = new Vector2(1, 0),
+                        PositionOffset = new Vector2(10, 10 + nextSettingY),
+                        StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                        TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                        Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                        Key = module.Key,
+                        OnKeybind = keybind =>
+                        {
+                            module.Key = keybind.Key;
+                        }
+                    });
+                    
+                    nextSettingY += smallSettings.Last().Rect.size.y + UIElement.Padding;
 
                     foreach (var setting in module.Settings)
                     {
-                        if (setting is NumberSetting numberSetting)
+                        switch (setting)
                         {
-                            smallSettings.Add(new Slider
-                            {
-                                Rect = new Rect(0, 0, 200, 30),
-                                PositionOffset = new Vector2(10, 13 + nextSettingY),
-                                Value = numberSetting.Value,
-                                MinValue = numberSetting.Min,
-                                MaxValue = numberSetting.Max,
-                                Step = numberSetting.Step,
-                                Text = numberSetting.Name,
-                                TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
-                                ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
-                                TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
-                                OnValueChanged = slider =>
+                            case NumberSetting numberSetting:
+                                smallSettings.Add(new Slider
                                 {
-                                    numberSetting.Value = slider.Value;
-                                }
-                            });
+                                    Rect = new Rect(0, 0, 200, 30),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    Value = numberSetting.Value,
+                                    MinValue = numberSetting.Min,
+                                    MaxValue = numberSetting.Max,
+                                    Step = numberSetting.Step,
+                                    Text = numberSetting.Name,
+                                    TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    OnValueChanged = slider =>
+                                    {
+                                        numberSetting.Value = slider.Value;
+                                    }
+                                });
+                                break;
+                            case BoolSetting boolSetting:
+                                smallSettings.Add(new Checkbox
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    Checked = boolSetting.Value,
+                                    Text = boolSetting.Name,
+                                    Color = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    CheckedColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    StrokeWidth = 1f,
+                                    OnClick = checkbox =>
+                                    {
+                                        boolSetting.Value = checkbox.Checked;
+                                    }
+                                });
+                                break;
+                            case ModeSetting modeSetting:
+                                smallSettings.Add(new Button
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}",
+                                    OnClick = button =>
+                                    {
+                                        modeSetting.Next();
+                                        button.Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}";
+                                    }
+                                });
+                                break;
                         }
-                        
+
                         nextSettingY += smallSettings.Last().Rect.size.y + UIElement.Padding * 2f;
                     }
                 }
@@ -121,7 +173,7 @@ namespace Unfair.UI
                     Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
                     StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
                     StrokeWidth = 1f,
-                    Rect = new Rect(0, 0, 220, 230),
+                    Rect = new Rect(0, 0, 220, nextSettingY + UIElement.Padding * 2f),
                     PositionOffset = new Vector2(nextX, nextY),
                     Children = smallSettings.ToArray()
                 });
@@ -137,9 +189,11 @@ namespace Unfair.UI
                 // big
                 foreach (var module in bigModules)
                 {
+                    nextSettingY = 0f;
                     var moduleSettings = new List<UIElement>();
                     moduleSettings.Add(new Checkbox
                     {
+                        Rect = new Rect(0, 0, 200, 20),
                         PositionOffset = new Vector2(10, 13),
                         Checked = module.Enabled,
                         Text = $"Enable {module.Name}",
@@ -155,28 +209,83 @@ namespace Unfair.UI
                         }
                     });
                     
+                    moduleSettings.Add(new KeybindButton
+                    {
+                        Rect = new Rect(0.9f, 0, 40, 20),
+                        Origin = new Vector2(1, 0),
+                        PositionOffset = new Vector2(10, 10 + nextSettingY),
+                        StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                        TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                        Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                        Key = module.Key,
+                        OnKeybind = keybind =>
+                        {
+                            module.Key = keybind.Key;
+                        }
+                    });
+                    
+                    nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding;
+                    
                     foreach (var setting in module.Settings)
                     {
-                        if (setting is NumberSetting numberSetting)
+                        switch (setting)
                         {
-                            moduleSettings.Add(new Slider
-                            {
-                                PositionOffset = new Vector2(10, 13 + nextSettingY),
-                                Value = numberSetting.Value,
-                                MinValue = numberSetting.Min,
-                                MaxValue = numberSetting.Max,
-                                Text = numberSetting.Name,
-                                TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
-                                ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
-                                TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
-                                OnValueChanged = slider =>
+                            case NumberSetting numberSetting:
+                                moduleSettings.Add(new Slider
                                 {
-                                    numberSetting.Value = slider.Value;
-                                }
-                            });
+                                    Rect = new Rect(0, 0, 200, 30),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    Value = numberSetting.Value,
+                                    MinValue = numberSetting.Min,
+                                    MaxValue = numberSetting.Max,
+                                    Step = numberSetting.Step,
+                                    Text = numberSetting.Name,
+                                    TrackColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    ThumbColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    OnValueChanged = slider =>
+                                    {
+                                        numberSetting.Value = slider.Value;
+                                    }
+                                });
+                                break;
+                            case BoolSetting boolSetting:
+                                moduleSettings.Add(new Checkbox
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    Checked = boolSetting.Value,
+                                    Text = boolSetting.Name,
+                                    Color = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    CheckedColor = new Color(58 / 255f, 220 / 255f, 74 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    StrokeWidth = 1f,
+                                    OnClick = checkbox =>
+                                    {
+                                        boolSetting.Value = checkbox.Checked;
+                                    }
+                                });
+                                break;
+                            case ModeSetting modeSetting:
+                                moduleSettings.Add(new Button
+                                {
+                                    Rect = new Rect(0, 0, 200, 20),
+                                    PositionOffset = new Vector2(10, 13 + nextSettingY),
+                                    StrokeColor = new Color(45 / 255f, 45 / 255f, 45 / 255f),
+                                    TextColor = new Color(142 / 255f, 142 / 255f, 142 / 255f),
+                                    Color = new Color(30 / 255f, 30 / 255f, 30 / 255f),
+                                    Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}",
+                                    OnClick = button =>
+                                    {
+                                        modeSetting.Next();
+                                        button.Text = $"{modeSetting.Name}: {modeSetting.Values[modeSetting.Value]}";
+                                    }
+                                });
+                                break;
                         }
-                        
-                        nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding;
+
+                        nextSettingY += moduleSettings.Last().Rect.size.y + UIElement.Padding * 2f;
                     }
                     
                     moduleGroups.Add(new GroupPanel
@@ -186,7 +295,7 @@ namespace Unfair.UI
                         Color = new Color(20 / 255f, 20 / 255f, 20 / 255f),
                         StrokeColor = new Color(30 / 255f, 30 / 255f, 30 / 255f),
                         StrokeWidth = 1f,
-                        Rect = new Rect(0, 0, 220, 230),
+                        Rect = new Rect(0, 0, 220, nextSettingY + UIElement.Padding * 2f),
                         PositionOffset = new Vector2(nextX, nextY),
                         Children = moduleSettings.ToArray()
                     });

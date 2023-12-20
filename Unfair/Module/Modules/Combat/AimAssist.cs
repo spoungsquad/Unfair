@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unfair.Config.Settings;
@@ -29,8 +30,8 @@ namespace Unfair.Module.Modules.Combat
         private NumberSetting _fov 
             = new NumberSetting("FOV", "The field of view to aim at players", 100f, 0f, 360f);
         
-        private ModeSetting<TargetHitbox> _targetHitbox 
-            = new ModeSetting<TargetHitbox>("Target hitbox", "Which hitbox to aim at", TargetHitbox.Head);
+        private ModeSetting _targetHitbox 
+            = new ModeSetting("Target hitbox", "Which hitbox to aim at", Enum.GetNames(typeof(TargetHitbox)), (int)TargetHitbox.Head);
         
         public AimAssist() : base("AimAssist", "Artificially improve your aim", Category.Combat, KeyCode.I)
         {

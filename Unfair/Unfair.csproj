@@ -867,6 +867,7 @@
     <Compile Include="UI\UnfairGUI.cs" />
     <Compile Include="Util\DebugConsole.cs" />
     <Compile Include="Util\GameData.cs" />
+    <Compile Include="Util\KeyToString.cs" />
     <Compile Include="Util\Memory.cs" />
     <Compile Include="Util\PrivateAccess.cs" />
     <Compile Include="Util\Render.cs" />

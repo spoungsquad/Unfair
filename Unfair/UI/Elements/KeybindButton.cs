@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Unfair.Util;
+using UnityEngine;
 
 namespace Unfair.UI.Elements
 {
@@ -6,6 +8,7 @@ namespace Unfair.UI.Elements
     {
         public KeyCode Key;
         public bool IsBinding;
+        public Action<KeybindButton> OnKeybind;
         
         public override void Draw()
         {
@@ -17,18 +20,31 @@ namespace Unfair.UI.Elements
             if (IsBinding && Input.anyKey) 
             {
                 // Get the first key down
-                foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) // TODO: Un-aids this
+                foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode))) // TODO: Un-aids this
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
+                        if (keyCode == KeyCode.Escape)
+                        {
+                            Key = KeyCode.None;
+                            IsBinding = false;
+                            OnKeybind?.Invoke(this);
+                            break;
+                        }
+                        
                         Key = keyCode;
                         IsBinding = false;
+                        OnKeybind?.Invoke(this);
                         break;
                     }
                 }
             }
+
+            Text = IsBinding ? "..." : KeyToString.KeyMap[Key];
             
-            Text = IsBinding ? "..." : Key.ToString(); // TODO: Convert to use a map that converts KeyCodes like Comma to , for display
+            var textSize = Render.MeasureString(Text);
+            Rect.size = new Vector2(textSize.x + 10, Rect.size.y);
+            
             base.Draw();
         }
     }

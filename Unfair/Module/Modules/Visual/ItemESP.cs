@@ -13,7 +13,6 @@ namespace Unfair.Module.Modules.Visual
         // Constructor
         public ItemESP() : base("ItemESP", "Item ESP", Category.Visuals, KeyCode.None)
         {
-            
         }
 
         // Called every frame
@@ -38,24 +37,24 @@ namespace Unfair.Module.Modules.Visual
 
                 string name = item.name;
 
-                switch (item.JGHDEFACFFB)
+                switch (item.IMFAAGNEDIP)
                 {
-                    case NFCHKEILKOH.BuildingAmmo:
+                    case JDFMKBDHMND.BuildingAmmo:
                         color = Color.green;
                         name = "Mats";
                         break;
 
-                    case NFCHKEILKOH.WeaponAmmo:
+                    case JDFMKBDHMND.WeaponAmmo:
                         color = Color.yellow;
                         name = "Ammo";
                         break;
 
-                    case NFCHKEILKOH.WeaponDrop:
+                    case JDFMKBDHMND.WeaponDrop:
                         color = Color.blue;
                         name = "Weapon";
                         break;
 
-                    case NFCHKEILKOH.WeaponLevelBooster:
+                    case JDFMKBDHMND.WeaponLevelBooster:
                         color = Color.magenta;
                         name = "Weapon Level Booster";
                         break;

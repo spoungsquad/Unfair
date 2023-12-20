@@ -8,22 +8,17 @@ namespace Unfair.Module.Modules.Visual
 {
     public class ESP : Module
     {
-        // TODO: possible?
-        private enum Mode
-        {
-            Rectangle,
-            Box,
-            Outline,
-            Fill
-        }
-        
-        private ModeSetting<Mode> _mode = new ModeSetting<Mode>("Mode", "How to display ESP", Mode.Rectangle);
         private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.red);
-        private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
-        private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);
-        private BoolSetting _showHealth = new BoolSetting("Show health", "Show player health (and shield)", true);
-        
+
+        private ModeSetting<Mode> _mode = new ModeSetting<Mode>("Mode", "How to display ESP", Mode.Rectangle);
+
         private List<PlayerController> _players = new List<PlayerController>();
+
+        private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);
+
+        private BoolSetting _showHealth = new BoolSetting("Show health", "Show player health (and shield)", true);
+
+        private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
 
         public ESP() : base("ESP", "See players through walls", Category.Visuals, KeyCode.K)
         {
@@ -34,18 +29,15 @@ namespace Unfair.Module.Modules.Visual
             Settings.Add(_showHealth);
         }
 
-        public void RenderBoneFromTransform(Transform bone)
+        // TODO: possible?
+        private enum Mode
         {
-            Vector2 boneStartPos = Camera.main.WorldToScreenPoint(bone.position);
-            Vector2 boneEndPos = Camera.main.WorldToScreenPoint(bone.parent.position);
-            
-            // Subtract y pos from screen height to flip the y axis
-            boneStartPos.y = Screen.height - boneStartPos.y;
-            boneEndPos.y = Screen.height - boneEndPos.y;
-                
-            Render.DrawLine(boneEndPos, boneStartPos, Color.white);
+            Rectangle,
+            Box,
+            Outline,
+            Fill
         }
-        
+
         public override void OnGUI()
         {
             foreach (var player in _players)
@@ -67,8 +59,8 @@ namespace Unfair.Module.Modules.Visual
 
                 if (headPos.z < 0 || feetPos.z < 0) continue;
 
-                // FGOFLOEPNHI = Is bot
-                var color = player.FGOFLOEPNHI ? Color.yellow : Color.red;
+                // DKGMJCDBDMN = Is bot
+                var color = player.DKGMJCDBDMN ? Color.yellow : Color.red;
 
                 string name = player.photonView.Controller.NickName;
 
@@ -76,13 +68,11 @@ namespace Unfair.Module.Modules.Visual
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
 
-                
                 Rect rect = new Rect(headPos.x - xDistance / 2, Screen.height - headPos.y, xDistance, yDistance);
-                
-                // Draw box
-                Render.FillRect(rect, new Color(30 / 255f, 30/ 255f, 30/ 255f, 30/ 255f));
-                Render.DrawRect(rect, color);
 
+                // Draw box
+                Render.FillRect(rect, new Color(30 / 255f, 30 / 255f, 30 / 255f, 30 / 255f));
+                Render.DrawRect(rect, color);
 
                 RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.UpperChest));
                 RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.Chest));
@@ -100,11 +90,7 @@ namespace Unfair.Module.Modules.Visual
                 RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightUpperLeg));
                 RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightLowerLeg));
                 RenderBoneFromTransform(animator.GetBoneTransform(HumanBodyBones.RightFoot));
-                
-                
-                
-                
-                
+
                 float textWidth = GUI.skin.label.CalcSize(new GUIContent(name)).x;
 
                 GUI.color = color;
@@ -115,6 +101,18 @@ namespace Unfair.Module.Modules.Visual
         public override void OnUpdate()
         {
             _players = GameData.PlayerControllers.ToList();
+        }
+
+        public void RenderBoneFromTransform(Transform bone)
+        {
+            Vector2 boneStartPos = Camera.main.WorldToScreenPoint(bone.position);
+            Vector2 boneEndPos = Camera.main.WorldToScreenPoint(bone.parent.position);
+
+            // Subtract y pos from screen height to flip the y axis
+            boneStartPos.y = Screen.height - boneStartPos.y;
+            boneEndPos.y = Screen.height - boneEndPos.y;
+
+            Render.DrawLine(boneEndPos, boneStartPos, Color.white);
         }
     }
 }

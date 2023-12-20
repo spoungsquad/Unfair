@@ -7,20 +7,20 @@ namespace Unfair.Module.Modules.Visual
 {
     public class Tracers : Module
     {
-        private enum TracerOrigin
-        {
-            Crosshair,
-            Bottom
-        }
-        
-        private ModeSetting<TracerOrigin> _origin = new ModeSetting<TracerOrigin>("Origin", "Where tracers start", TracerOrigin.Bottom);
-        
         private readonly List<PlayerController> _players = new List<PlayerController>();
+
+        private ModeSetting<TracerOrigin> _origin = new ModeSetting<TracerOrigin>("Origin", "Where tracers start", TracerOrigin.Bottom);
 
         // Constructor
         public Tracers() : base("Tracers", "Draw lines to players", Category.Visuals, KeyCode.None)
         {
             Settings.Add(_origin);
+        }
+
+        private enum TracerOrigin
+        {
+            Crosshair,
+            Bottom
         }
 
         // Called every frame
@@ -45,18 +45,16 @@ namespace Unfair.Module.Modules.Visual
 
                 if (headPos.z < 0 || feetPos.z < 0) continue;
 
-                // FGOFLOEPNHI = Is bot
-                var color = player.FGOFLOEPNHI ? Color.yellow : Color.red;
+                // DKGMJCDBDMN = Is bot
+                var color = player.DKGMJCDBDMN ? Color.yellow : Color.red;
 
                 // Get screen distance from head to feet
                 var yDistance = Vector3.Distance(headPos, feetPos);
                 var xDistance = yDistance / 2;
-                
+
                 Render.DrawLine(new Vector2(headPos.x - (xDistance / 2), Screen.height - headPos.y), new Vector2(Screen.width / 2f, Screen.height), color);
             }
         }
-        
-        
 
         public override void OnUpdate()
         {

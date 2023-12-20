@@ -10,7 +10,7 @@ namespace Unfair.Module.Modules.Combat
     public class KillAll : Module
     {
         private NumberSetting _delay = new NumberSetting("Delay", "Delay between each kill, in milliseconds", 2000, 0, 10000);
-        
+
         private long _lastTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
         public KillAll() : base("KillAll", "Kill every player", Category.Building, KeyCode.N)

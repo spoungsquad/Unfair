@@ -18,17 +18,17 @@ namespace Unfair.Module.Modules.Misc
         {
             Func<PlayerController, bool> func = null;
 
-            if (EOAHGMEBCEG.ADNFNKMBEMF.IsTeams)
+            if (GGGKABIJIFJ.OJINMONIHIE.IsTeams)
             {
-                func = (PlayerController player) => player.EEGHEEOAPPH == GameData.LocalPlayer.EEGHEEOAPPH;
+                func = (PlayerController player) => player.JNGLPAJKPEI == GameData.LocalPlayer.JNGLPAJKPEI;
             }
             else
             {
-                func = (PlayerController player) => player.HIEGIIINGFL == GameData.LocalPlayer.HIEGIIINGFL;
+                func = (PlayerController player) => player.IFJDJGLJHGD == GameData.LocalPlayer.IFJDJGLJHGD;
             }
 
-            List<int> list = (from playerController in PlayersManager.OJICDNBLPIC.EBMPBGPAGPL.Values.Where(func)
-                              select playerController.HJAHHGHDJOC.HIEGIIINGFL).ToList();
+            List<int> list = (from playerController in PlayersManager.LIPLNDMKLDB.HPICKALGINH.Values.Where(func)
+                              select playerController.PBIJHIGLJEM.IFJDJGLJHGD).ToList();
 
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
             GameManager.Instance.EndGame(false, false, list);

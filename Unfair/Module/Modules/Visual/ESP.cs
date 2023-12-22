@@ -22,10 +22,9 @@ namespace Unfair.Module.Modules.Visual
         private ColorSetting _color = new ColorSetting("Color", "The color of the ESP", Color.red);
         private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
         private BoolSetting _showBones = new BoolSetting("Show bones", "Show player bones", true);
-
         private BoolSetting _showHealth = new BoolSetting("Show health", "Show player health (and shield)", true);
-
-        private BoolSetting _showNames = new BoolSetting("Show names", "Show player names", true);
+        
+        private List<PlayerController> _players = new List<PlayerController>();
 
         public ESP() : base("ESP", "See players through walls", Category.Visuals, KeyCode.K)
         {
@@ -34,15 +33,6 @@ namespace Unfair.Module.Modules.Visual
             Settings.Add(_showNames);
             Settings.Add(_showBones);
             Settings.Add(_showHealth);
-        }
-
-        // TODO: possible?
-        private enum Mode
-        {
-            Rectangle,
-            Box,
-            Outline,
-            Fill
         }
 
         public override void OnGUI()

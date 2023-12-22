@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Unfair.Config.Settings;
 using Unfair.Util;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Unfair.Module.Modules.Combat
 {
@@ -21,8 +23,15 @@ namespace Unfair.Module.Modules.Combat
         
         private BoolSetting _targetVisible = 
             new BoolSetting("Target visible", "Only target players that are visible", false);
+        
+        private BoolSetting _autoFire = 
+            new BoolSetting("Auto fire", "Automatically fire when aiming at a player", false);
+        
+        private BoolSetting _silentAim = 
+            new BoolSetting("Silent aim", "Hide your aimbot (aka magic bullet)", false);
 
         private Vector3 _oldPos = Vector3.zero;
+        private readonly List<PlayerController> _players = new List<PlayerController>();
 
         //TODO: KeybindSetting
         public Aimbot() : base("Aimbot", "Automatically aim at the nearest player", Category.Combat, KeyCode.None)
@@ -31,14 +40,6 @@ namespace Unfair.Module.Modules.Combat
             Settings.Add(_targetVisible);
             Settings.Add(_autoFire);
             Settings.Add(_silentAim);
-        }
-
-        private enum TargetMode
-        {
-            Distance,
-            NearCrosshair,
-            Cycle,
-            Rank
         }
 
         public override void OnUpdate()
@@ -58,7 +59,7 @@ namespace Unfair.Module.Modules.Combat
 
             PlayerController target = null;
 
-            switch (_targetMode.Value)
+            switch ((TargetMode)_targetMode.Value)
             {
                 case TargetMode.Distance:
                     target = _players.OrderBy(x => Vector3.Distance(x.transform.position, GameData.LocalPlayer.transform.position)).First();

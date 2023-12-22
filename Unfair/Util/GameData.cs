@@ -22,6 +22,8 @@ namespace Unfair.Util
 
         // misc i guess
         public static ModeInfo CurrentGameMode => GGGKABIJIFJ.OJINMONIHIE;
+        
+        public static Connector Connector => Connector.LIPLNDMKLDB;
 
         public static WeaponModel CurrentWeapon => WeaponController.MMFGMHOCMEP;
 

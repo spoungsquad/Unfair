@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using JustPlay.Localization;
 using Unfair.Module;
+using Unfair.UI.Hooks;
 using Unfair.Util;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -35,6 +36,7 @@ namespace Unfair
             {
                 DebugConsole.Write("Unfair starting...");
                 
+                WindowHook.Hook();
                 ModuleManager.Init();
                 UI.UnfairGUI.Init();
                 

@@ -863,8 +863,10 @@
     <Compile Include="UI\Elements\ToggleButton.cs" />
     <Compile Include="UI\Elements\UIElement.cs" />
     <Compile Include="UI\Elements\Window.cs" />
+    <Compile Include="UI\Hooks\WindowHook.cs" />
     <Compile Include="UI\RenderControls.cs" />
     <Compile Include="UI\UnfairGUI.cs" />
+    <Compile Include="UI\Hooks\Native.cs" />
     <Compile Include="Util\DebugConsole.cs" />
     <Compile Include="Util\GameData.cs" />
     <Compile Include="Util\KeyToString.cs" />

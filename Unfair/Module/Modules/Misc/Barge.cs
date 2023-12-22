@@ -12,17 +12,13 @@ namespace Unfair.Module.Modules.Misc
         public Barge() : base("Barge", "Force join party", Category.Misc, KeyCode.End)
         {
         }
-        
+
         public override void OnEnable()
         {
-            int i = 0;
-            
-            //FirebaseManager.OJICDNBLPIC.PKLGANDEHJB.Friends.Friends
-            
             PhotonNetwork.PlayerList.ToList().ForEach(x =>
             {
                 DebugConsole.Write(x.Party);
-                
+
                 if (x.Party == null)
                 {
                     DebugConsole.Write("Party is null");
@@ -33,14 +29,14 @@ namespace Unfair.Module.Modules.Misc
                 FriendsManager.Instance.SendFriendInvite(x.UserId);
                 FriendsManager.Instance.AcceptInvite(x.UserId);
                 DebugConsole.Write("Added friend");
-                
-                FirebaseManager.OJICDNBLPIC.PKLGANDEHJB.Friends.Friends.Add(new FriendEntry(x.UserId));
-                
+
+                FirebaseManager.LIPLNDMKLDB.IPGFHABIDAC.Friends.Friends.Add(new FriendEntry(x.UserId));
+
                 FriendsManager.Instance.FetchFriendsData();
-                PhotonChatManager.OJICDNBLPIC.AddFriends(x.UserId);
-                PhotonChatManager.OJICDNBLPIC.SendPrivateMessage(x.UserId, new PhotonChatMessage(LEMFLKDJENG.FriendInviteAccept));
-                
-                Connector.OJICDNBLPIC.EnterParty(x.Party);
+                PhotonChatManager.LIPLNDMKLDB.AddFriends(x.UserId);
+                PhotonChatManager.LIPLNDMKLDB.SendPrivateMessage(x.UserId, new PhotonChatMessage(EHHMLNMNHPO.FriendInviteAccept));
+
+                Connector.LIPLNDMKLDB.EnterParty(x.Party);
             });
         }
     }

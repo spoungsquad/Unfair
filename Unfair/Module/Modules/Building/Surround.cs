@@ -10,7 +10,7 @@ namespace Unfair.Module.Modules.Building
     {
         private NumberSetting _delay =
             new NumberSetting("Delay", "Delay between each box, in milliseconds", 250, 0, 1000);
-        
+
         private long _lastTime;
 
         public Surround() : base("Surround", "Surround all players", Category.Building, KeyCode.J)
@@ -37,25 +37,25 @@ namespace Unfair.Module.Modules.Building
             var forward = transform.forward;
             var right = transform.right;
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Floor, pos - new Vector3(0, 0.5f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Floor, pos - new Vector3(0, 0.5f, 0),
                 rotation);
 
             // GameData.BuildingNetworkController.CreateBuilding(NAMFCNDJBDF.Roof, pos + new
             // Vector3(0, 0.5f, 0), rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Floor, pos + new Vector3(0, 1.7f, 0),
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Floor, pos + new Vector3(0, 1.7f, 0),
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Wall, pos + forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Wall, pos + forward * 2,
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Wall, pos - forward * 2,
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Wall, pos - forward * 2,
                 rotation);
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Wall, pos + right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Wall, pos + right * 2,
                 rotation * Quaternion.Euler(0, 90, 0));
 
-            GameData.BuildingNetworkController.CreateBuilding(NBMDNGAOHAG.Wall, pos - right * 2,
+            GameData.BuildingNetworkController.CreateBuilding(HABLAODDMOK.Wall, pos - right * 2,
                 rotation * Quaternion.Euler(0, -90, 0));
 
             _lastTime = currentMs;

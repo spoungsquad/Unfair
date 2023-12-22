@@ -17,22 +17,21 @@ namespace Unfair.Util
 
         public static Building[] Buildings => Object.FindObjectsOfType<Building>();
 
+        public static CameraManager CameraManager => CameraManager.LIPLNDMKLDB;
         public static SupplyCrate[] Crates => Object.FindObjectsOfType<SupplyCrate>();
 
         // misc i guess
-        public static ModeInfo CurrentGameMode => EOAHGMEBCEG.PBDDBPPEHAL;
-        
-        public static Connector Connector => Connector.OJICDNBLPIC;
+        public static ModeInfo CurrentGameMode => GGGKABIJIFJ.OJINMONIHIE;
 
-        public static WeaponModel CurrentWeapon => WeaponController.PIIMNHFPCBF;
+        public static WeaponModel CurrentWeapon => WeaponController.MMFGMHOCMEP;
 
-        public static WeaponBaseData CurrentWeaponData => CurrentWeapon.EKDOLAIHPGP;
+        public static WeaponBaseData CurrentWeaponData => CurrentWeapon.IIPJDHGLFKA;
 
-        public static PlayerController LocalPlayer => PlayerController.IKIFDINMMKC;
+        public static PlayerController LocalPlayer => PlayerController.HGPJOFAPIBH;
 
-        public static PlayerHealth LocalPlayerHealth => LocalPlayer.MECEACOMEMD;
+        public static PlayerHealth LocalPlayerHealth => LocalPlayer.PAEKEKFLHOK;
 
-        public static ServerUser LocalProfile => FirebaseManager.OJICDNBLPIC.PKLGANDEHJB;
+        public static ServerUser LocalProfile => FirebaseManager.LIPLNDMKLDB.IPGFHABIDAC;
 
         public static Camera MainCamera
         {
@@ -48,13 +47,11 @@ namespace Unfair.Util
         //TODO: Cache all FindObjectsOfType calls
         public static PlayerController[] PlayerControllers => Object.FindObjectsOfType<PlayerController>();
 
-        public static vThirdPersonController ThirdPersonController => LocalPlayer.JCEELPIJOML;
+        public static vThirdPersonController ThirdPersonController => LocalPlayer.OEGGIHFLNAN;
 
-        public static UiManager UIManager => UiManager.OJICDNBLPIC;
+        public static UiManager UIManager => UiManager.LIPLNDMKLDB;
 
-        public static WeaponsController WeaponController => LocalPlayer.FFFJCDBAEBO;
-
-        public static CameraManager CameraManager => CameraManager.OJICDNBLPIC;
+        public static WeaponsController WeaponController => LocalPlayer.CIMFGBELHOH;
 
         public static Camera InitCamera(Camera newMain)
         {

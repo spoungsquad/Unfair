@@ -9,7 +9,7 @@ namespace Unfair.UI.Hooks
 		private static IntPtr _originalWndProc;
 		private static int _lol;
 		
-		private static int WndProc(IntPtr hWnd, int msg, int wParam, int lParam)
+		private static int WndProc(IntPtr hWnd, uint msg, UIntPtr wParam, IntPtr lParam)
 		{
 			switch (msg)
 			{

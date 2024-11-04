@@ -5,6 +5,6 @@ utility for 1v1.lol (steam version)
 unreleased gui and new modules Me thinks
 
 # how to use
-you don't!!!! 1v1 switched to il2cpp so this project is unusable
+you don't!!!!
 
 we will not maintain this project
